@@ -1,0 +1,26 @@
+/**
+    @author Moses Gitau
+
+    -----------------
+    Divider
+    -----------------
+
+    Divides components using a thin line
+
+ */
+
+.mg.divider {
+    display: inline-block;
+    content: '';
+    background: rgba(30, 30, 30, .15);
+}
+
+.mg.divider.horizontal {
+    width: 1px;
+    height: 100%;
+}
+
+.mg.divider.vertical {
+    height: 1px;
+    width: 100%;
+}

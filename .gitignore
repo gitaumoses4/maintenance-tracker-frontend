@@ -1,0 +1,9 @@
+.idea
+*.json
+node_modules
+*.log
+server.js
+venv
+.env
+__pycache__/
+.coverage

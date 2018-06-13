@@ -1,0 +1,185 @@
+/**
+    @author Moses Gitau
+
+    This is a CSS row component that helps align UI components in a grid using flex.
+
+    A row is divided into 12 columns of equal size.
+
+    Example
+
+    Create a <p> tag that will fit in a mobile screen, half in a tablet and be a quarter of a computer screen
+
+    <div class="mg row>
+        <p class="twelve-small six-medium three-large column>
+            This is a paragraph
+        </p>
+    </div>
+
+ */
+
+.mg.row {
+    padding: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mg.row > .mg.row:first-child,
+.mg.row > .mg.row:last-child {
+    margin-top: 0;
+}
+
+/*
+    COLUMNS
+ */
+
+.mg.row > [class*="one-large"].column {
+    width: 8.33333333333% !important;
+}
+
+.mg.row > [class*="two-large"].column {
+    width: 16.6666666667% !important;
+}
+
+.mg.row > [class*="three-large"].column {
+    width: 25% !important;
+}
+
+.mg.row > [class*="four-large"].column {
+    width: 33.3333333333% !important;
+}
+
+.mg.row > [class*="five-large"].column {
+    width: 41.6666666667% !important;
+}
+
+.mg.row > [class*="six-large"].column {
+    width: 50% !important;
+}
+
+.mg.row > [class*="seven-large"].column {
+    width: 58.3333333333% !important;
+}
+
+.mg.row > [class*="eight-large"].column {
+    width: 66.6666666667% !important;
+}
+
+.mg.row > [class*="nine-large"].column {
+    width: 75% !important;
+}
+
+.mg.row > [class*="ten-large"].column {
+    width: 83.3333333333% !important;
+}
+
+.mg.row > [class*="eleven-large"].column {
+    width: 91.6666666667% !important;
+}
+
+.mg.row > [class*="twelve-large"].column {
+    width: 100% !important;
+}
+
+/* For Mobile                           */
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+    .mg.row > [class*="one-small"].column {
+        width: 8.33333333333% !important;
+    }
+
+    .mg.row > [class*="two-small"].column {
+        width: 16.6666666667% !important;
+    }
+
+    .mg.row > [class*="three-small"].column {
+        width: 25% !important;
+    }
+
+    .mg.row > [class*="four-small"].column {
+        width: 33.3333333333% !important;
+    }
+
+    .mg.row > [class*="five-small"].column {
+        width: 41.6666666667% !important;
+    }
+
+    .mg.row > [class*="six-small"].column {
+        width: 50% !important;
+    }
+
+    .mg.row > [class*="seven-small"].column {
+        width: 58.3333333333% !important;
+    }
+
+    .mg.row > [class*="eight-small"].column {
+        width: 66.6666666667% !important;
+    }
+
+    .mg.row > [class*="nine-small"].column {
+        width: 75% !important;
+    }
+
+    .mg.row > [class*="ten-small"].column {
+        width: 83.3333333333% !important;
+    }
+
+    .mg.row > [class*="eleven-small"].column {
+        width: 91.6666666667% !important;
+    }
+
+    .mg.row > [class*="twelve-small"].column {
+        width: 100% !important;
+    }
+}
+
+/* For tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.row > [class*="one-medium"].column {
+        width: 8.33333333333% !important;
+    }
+
+    .mg.row > [class*="two-medium"].column {
+        width: 16.6666666667% !important;
+    }
+
+    .mg.row > [class*="three-medium"].column {
+        width: 25% !important;
+    }
+
+    .mg.row > [class*="four-medium"].column {
+        width: 33.3333333333% !important;
+    }
+
+    .mg.row > [class*="five-medium"].column {
+        width: 41.6666666667% !important;
+    }
+
+    .mg.row > [class*="six-medium"].column {
+        width: 50% !important;
+    }
+
+    .mg.row > [class*="seven-medium"].column {
+        width: 58.3333333333% !important;
+    }
+
+    .mg.row > [class*="eight-medium"].column {
+        width: 66.6666666667% !important;
+    }
+
+    .mg.row > [class*="nine-medium"].column {
+        width: 75% !important;
+    }
+
+    .mg.row > [class*="ten-medium"].column {
+        width: 83.3333333333% !important;
+    }
+
+    .mg.row > [class*="eleven-medium"].column {
+        width: 91.6666666667% !important;
+    }
+
+    .mg.row > [class*="twelve-medium"].column {
+        width: 100% !important;
+    }
+}

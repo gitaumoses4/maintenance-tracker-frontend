@@ -1,0 +1,62 @@
+/*
+    @author Moses Gitau
+
+    A card component to help contain items in a simple card with a slight
+    shadow.
+    The card may contain an image, content, title and some text description, footer and meta text
+
+ */
+
+.mg.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 300px;
+    background: #ffffff;
+    font-family: 'Dosis', sans-serif;
+    border-radius: 0.3em;
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    margin: 1em;
+    box-shadow: 0 1px 1px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+}
+
+.mg.card > .image > img,
+.mg.card > .content > .image > img {
+    display: block;
+    height: auto;
+    border-radius: inherit;
+    width: 100%;
+}
+
+.mg.card > .content {
+    padding: 1em;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.mg.card > .content > .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.mg.card > .content > .meta {
+    font-size: 0.8em;
+    color: #666666;
+}
+
+.mg.card > .content > .description {
+    color: #333333;
+    font-size: 0.9em;
+}
+
+.mg.card > .footer {
+    border-top: 1px solid #dddddd;
+}
+.mg.card.hoverable{
+    cursor: pointer;
+}
+.mg.card.hoverable:hover {
+    transform: translateY(-2px);
+}

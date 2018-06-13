@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maintenance Tracker - User</title>
+</head>
+<body>
+<div class="mg sidebar" data-trigger="openSidebar">
+    <div class="menu">
+        <a class="item active" href="index.html">
+            <i class="icon fas fa-tachometer-alt"></i>
+            <div class="title center aligned">My Dashboard</div>
+        </a>
+        <a class="item" href="requests.html">
+            <i class="icon fas fa-cogs"></i>
+            <div class="title center aligned">
+                <div class="title">Repair Requests</div>
+            </div>
+        </a>
+        <a class="item" href="feedback.html">
+            <i class="icon fas fa-comments"></i>
+            <div class="title center aligned">
+                <div class="title">My Feedback</div>
+            </div>
+        </a>
+        <div class="item" id="mobileNotifications">
+            <i class="icon fas fa-bell"></i>
+            <div class="title center aligned">
+                <div class="title">My Notifications</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <i class="open fas fa-bars" id="openSidebar"></i>
+        <div class="header">Maintenance Tracker</div>
+        <div class="menu">
+            <div class="link item" id="largeScreenNotifications">
+                <div class="mg dropdown notifications">
+                    <div class="trigger">
+                        Notifications
+                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
+                    </div>
+                    <div class="menu">
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Your device has been approved
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Your device has been rejected.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item right aligned">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        <div class="account-options">
+                            <div class="title">Moses Gitau</div>
+                            <img src="../images/user-male.png" class="mg tiny image"/></div>
+                    </div>
+                    <div class="menu" style="width: 100%">
+                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <h2>Requests</h2>
+        <div class="mg row">
+            <a class="request button" href="new-request.html">
+                <button class="mg blue-grey circle small button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="title">Make Request</div>
+            </a>
+            <a class="request button" href="feedback.html">
+                <button class="mg pink circle small button">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <div class="title">Feedback</div>
+            </a>
+        </div>
+        <div class="mg vertical divider"></div>
+
+        <div class="mg row">
+            <div class="three-large six-medium six-small column">
+                <div class="padded">
+                    <div class="mg segment">
+                        <div class="header">
+                            Resolved Repair Requests
+                        </div>
+                        <div class="content" style="color: #469d4a">
+                            <h1 class="count">12</h1>
+                        </div>
+                        <div class="footer">
+                            <a href="requests.html" class="right aligned">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large six-medium six-small column">
+                <div class="padded">
+                    <div class="mg segment">
+                        <div class="header">
+                            Rejected Repair Requests
+                        </div>
+                        <div class="content" style="color: red">
+                            <h1 class="count">3</h1>
+                        </div>
+                        <div class="footer">
+                            <a href="requests.html" class="right aligned">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="six-large twelve-medium twelve-small column">
+                <div class="padded">
+                    <div class="mg segment">
+                        <div class="header">
+                            Latest Feedback
+                        </div>
+                        <div class="content feedback-container">
+                            <a class="feedback" href="new-request.html">
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Kindly elaborate on the issue you are facing.
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="feedback" href="request.html">
+                                <img src="../images/user-female.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        Just Now
+                                    </div>
+                                    <div class="description">
+                                       Kindly elaborate on the issue you are facing.
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="feedback" href="request.html">
+                                <img src="../images/user-female.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        Just Now
+                                    </div>
+                                    <div class="description">
+                                       Your device does not have a serial number.
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mg vertical divider"></div>
+        <div class="mg table">
+            <h2>Latest Maintenance/Repair Requests</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Request Date</th>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Repair/Maintenance Request Description</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="request.html">#123456</a></td>
+                    <td>1st January 2012</td>
+                    <td>I Phone 8</td>
+                    <td><img src="../images/product_4.jpeg" class="mg small image"/></td>
+                    <td>Unable to charge</td>
+                    <td>
+                        <button class="mg teal circle tiny button">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <div class="title">Resolved</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="request.html">#232312</a></td>
+                    <td>5th December 2012</td>
+                    <td>Macbook Pro</td>
+                    <td><img src="../images/product_1.jpeg" class="mg small image"/></td>
+                    <td>Spilled coffee on keyboard</td>
+                    <td>
+                        <button class="mg blue-grey circle tiny button">
+                            <i class="fas fa-clock"></i>
+                        </button>
+                        <div class="title">Pending</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="request.html">#134234</a></td>
+                    <td>3rd December 2012</td>
+                    <td>Yamaha Keyboard</td>
+                    <td><img src="../images/product_2.jpeg" class="mg small image"/></td>
+                    <td>Sustain pedal not working</td>
+                    <td>
+                        <button class="mg success circle tiny button">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <div class="title">Approved</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="request.html">#123123</a></td>
+                    <td>4th December 2012</td>
+                    <td>Nikon Camera 230 DSLR</td>
+                    <td><img src="../images/product_3.jpeg" class="mg small image"/></td>
+                    <td>Broken Lens</td>
+                    <td>
+                        <button class="mg danger circle tiny button">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="title">Rejected</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="request.html">#123456</a></td>
+                    <td>6th December 2012</td>
+                    <td>HP Desktop Keyboard</td>
+                    <td><img src="../images/product_5.jpg" class="mg small image"/></td>
+                    <td>Caps Lock not working</td>
+                    <td>
+                        <button class="mg teal circle tiny button">
+                            <i class="fas fa-cogs"></i>
+                        </button>
+                        <div class="title">Resolved</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="mg modal" data-trigger="mobileNotifications">
+    <div class="body">
+        <i class="close fas fa-times"></i>
+        <div class="title">
+            Notifications
+        </div>
+        <div class="content">
+            <div class="notifications">
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                               Your request has been rejected.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                               Your request has been approved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="mg primary button">Ok</button>
+        </div>
+    </div>
+</div>
+<script src="../js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

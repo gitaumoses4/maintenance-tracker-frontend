@@ -1,0 +1,148 @@
+/**
+    @author Moses Gitau
+
+    -------------
+    Step
+    -------------
+
+    A step shows the completion of an activity in a series of activities
+
+ */
+
+.mg.steps {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 1em 0;
+    line-height: 1.2em;
+    border-radius: 0.3em;
+    border: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Fluid */
+.mg.steps.fluid {
+    width: 100%;
+}
+
+/** Step **/
+.mg.steps > .step {
+    position: relative;
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em;
+    background: white;
+    color: rgba(0, 0, 0, .8);
+    border-right: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Pointer */
+.mg.steps > .step:after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0;
+    background: white;
+    width: 1em;
+    height: 1em;
+    content: '';
+    border-right: 1px solid rgba(30, 30, 30, .15);
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+    transform: translate(50%, -50%) rotate(-45deg);
+}
+
+/* Completed Step */
+.mg.steps .step.completed .icon:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    color: rgb(0, 145, 0);
+}
+
+/* Failed Step */
+.mg.steps .step.failed .icon:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00d";
+    color: rgb(210, 0, 0);
+}
+
+/* active step */
+.mg.steps .step.active,
+.mg.steps .step.active:after {
+    background: rgb(226, 226, 226);
+}
+
+/* Pointer for last step*/
+.mg.steps > .step:last-child:after {
+    display: none;
+}
+
+/* Set border radius */
+
+.mg.steps > .step:first-child {
+    padding-left: 2em;
+    border-radius: 0.3em 0 0 0.3em;
+}
+
+.mg.steps > .step:last-child {
+    border-radius: 0 0.3em 0.3em 0;
+}
+
+/* Step body */
+.mg.steps > .step .title {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+}
+
+.mg.steps > .step .description {
+    font-family: 'Dosis', sans-serif;
+    font-weight: normal;
+    color: rgba(0, 0, 0, .8)
+}
+
+/* Step Icon */
+.mg.steps .step .icon {
+    line-height: 1em;
+    font-size: 2.5em;
+    margin: 0 1em 0 0;
+}
+
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.steps {
+        width: 100%;
+        align-items: normal;
+    }
+
+    .mg.steps .step .description {
+        display: none;
+    }
+
+    .mg.steps > .step {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .mg.steps .step .icon {
+        font-size: 1.5em;
+        margin: 0 0 0.5em 0;
+    }
+
+    .mg.steps .step:first-child {
+        padding-left: 1em;
+    }
+
+    .mg.steps .step .title,
+    .mg.steps .step .description {
+        text-align: center;
+    }
+
+    .mg.steps .step .body {
+        align-content: center;
+    }
+}

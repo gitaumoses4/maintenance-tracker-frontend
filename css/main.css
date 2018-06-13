@@ -1,0 +1,334 @@
+/**
+    @author Moses Gitau
+
+    Main styles for the Maintenance Tracker App
+ */
+
+body {
+    background: #ffffff;
+}
+
+.margined.left {
+    margin: 0 0 0 2em;
+}
+
+.padded {
+    padding: 2em;
+}
+
+.center.aligned {
+    width: 100%;
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.padded.left {
+    padding: 0 0 0 2em;
+}
+
+.purple.button {
+    background-color: #673AB7;
+    color: white;
+}
+
+.purple.button:hover {
+    background-color: #5e35a7;
+}
+
+.teal.button {
+    background-color: #009688;
+    color: white;
+}
+
+.teal.button:hover {
+    background-color: #008074;
+}
+
+.blue-grey.button {
+    background-color: #607D8B;
+    color: white;
+}
+
+.blue-grey.button:hover {
+    background-color: #536c78;
+}
+
+.pink.button {
+    background-color: #E91E63;
+    color: white;
+}
+
+.pink.button:hover {
+    background-color: #d31b5a;
+}
+
+.request.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+    font-weight: bold;
+    color: rgba(0, 0, 0, .8);
+}
+
+.request.button > button {
+    color: white;
+}
+
+.count {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.divider {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+table img {
+    margin: auto;
+}
+
+.mg.card .image img {
+    height: 250px;
+    object-position: center;
+    object-fit: cover;
+}
+
+.mg.card .content > .meta img {
+    display: inline-block;
+    margin-right: 1em;
+    vertical-align: middle;
+}
+
+.mg.card .content > .meta a {
+    float: right;
+    margin-top: 0.5em;
+}
+
+.mg.card.fluid {
+    width: 95%;
+    margin: auto;
+}
+
+.account-options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.account-options img {
+    width: 2em !important;
+    margin-left: 1em;
+}
+
+.mg.very.tiny.circle.button {
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+/** Feedback and notification **/
+.feedback-container > .feedback:last-child {
+    border-bottom: none;
+}
+
+.notifications .notification {
+    border-bottom: none !important;
+}
+
+.notifications .item {
+    border-bottom: 1px solid rgba(30, 30, 30, .15) !important;
+}
+
+.notification .close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    cursor: pointer;
+}
+
+.feedback,
+.notification {
+    color: rgba(0, 0, 0, .8);
+    display: flex;
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+    align-items: center;
+    margin-top: 0.6em;
+    flex-direction: row;
+}
+
+.feedback > .content .date,
+.notification > .content .date {
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, .5)
+}
+
+.feedback > .content,
+.notification > .content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5em;
+}
+
+.feedback > .content .title,
+.notification > .content . title {
+    font-weight: bold;
+}
+
+#mobileNotifications {
+    display: none;
+}
+
+.notifications > .item:last-child {
+    border-bottom: none !important;
+}
+
+.notifications > .item {
+    padding: 0.5em 0;
+}
+
+.card.ribbon {
+    position: relative;
+    overflow: hidden;
+}
+
+.ribbon:not(.card) {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    transform: rotate(45deg) translate(17%, -60%);
+    top: 0;
+    right: 0;
+    background: white;
+}
+
+.ribbon:not(.card) > .content {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 50%;
+    font-weight: bold;
+    transform: translateX(-50%);
+}
+
+.pending.ribbon {
+    background: #607D8B;
+    color: white;
+}
+
+.approved.ribbon {
+    background: #4CAF50;
+    color: white;
+}
+
+.resolved.ribbon {
+    background: #008074;
+    color: white;
+}
+
+.rejected.ribbon {
+    background: #F44336;
+    color: white;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    margin-bottom: 1em !important;
+}
+
+.landing.header {
+    font-size: 4em;
+    font-weight: lighter;
+    text-align: center;
+    color: white;
+    margin: 1em 0 0 0;
+}
+
+.landing.body {
+    background: url("../images/landing.jpeg") center center;
+    width: 100% !important;
+}
+
+.landing.body > .pushable {
+    background: rgba(0, 0, 0, .4);
+    height: 100% !important;
+}
+
+.landing.sub.header {
+    color: rgba(255, 255, 255, .8);
+    font-size: 2em;
+}
+
+.landing.button {
+    margin-top: 1em;
+    font-size: 2em;
+    background-color: #1c7dcb;
+    color: white;
+}
+
+/* Responsiveness */
+/* For Mobile */
+@media only screen and (max-width: 767px) {
+    .request.button > button {
+        font-size: 1.2em !important;
+    }
+
+    .landing.header {
+        font-size: 2em;
+    }
+
+    .landing.sub.header {
+        font-size: 1.5em;
+    }
+
+    .landing.button {
+        margin-top: 1em;
+        font-size: 1.4em;
+    }
+
+    .request.button .title {
+        font-weight: normal;
+    }
+
+    .feedback-profile {
+        display: none !important;
+    }
+
+    .count {
+        font-size: 3em;
+        padding: 0;
+    }
+
+    .notifications .menu {
+        position: absolute;
+        left: 0;
+    }
+
+    #largeScreenNotifications {
+        display: none;
+    }
+
+    #mobileNotifications {
+        display: flex;
+    }
+}
