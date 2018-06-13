@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maintenance Tracker - Request</title>
+</head>
+<body>
+<div class="mg sidebar" data-trigger="openSidebar">
+    <div class="menu">
+        <a class="item active" href="index.html">
+            <i class="icon fas fa-tachometer-alt"></i>
+            <div class="title center aligned">My Dashboard</div>
+        </a>
+        <a class="item" href="requests.html">
+            <i class="icon fas fa-cogs"></i>
+            <div class="title center aligned">
+                <div class="title">Repair Requests</div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <i class="open fas fa-bars" id="openSidebar"></i>
+        <div class="header">Maintenance Tracker</div>
+        <div class="menu">
+            <div class="item right aligned">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        <div class="account-options">
+                            <div class="title">Moses Gitau</div>
+                            <img src="../images/user-male.png" class="mg tiny image"/></div>
+                    </div>
+                    <div class="menu">
+                        <a class="item" href="requests.html">
+                            Pending Requests
+                            <button class="mg very tiny circle button primary" style="margin-left: 1em;">1</button>
+                        </a>
+                        <a class="item" href="../login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <h2>Requests</h2>
+        <div class="mg row">
+            <a class="request button" href="requests.html">
+                <button class="mg teal circle small button">
+                    <i class="fas fa-cogs"></i>
+                </button>
+                <div class="title">Resolved</div>
+            </a>
+            <a class="request button" href="requests.html">
+                <button class="mg danger circle small button">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="title">Rejected</div>
+            </a>
+            <a class="request button" href="requests.html">
+                <button class="mg success circle small button">
+                    <i class="fas fa-check"></i>
+                </button>
+                <div class="title">Approved</div>
+            </a>
+            <a class="request button" href="requests.html">
+                <button class="mg blue-grey circle small button">
+                    <i class="fas fa-clock"></i>
+                </button>
+                <div class="title">Pending</div>
+            </a>
+        </div>
+        <div class="mg vertical divider"></div>
+        <div class="mg container">
+            <div class="mg segment">
+                <div class="header">
+                    Maintenance / Repair Request
+                </div>
+                <div class="content">
+                    <div class="mg row">
+                        <div class="six-medium twelve-small six-large column">
+                            <img class="mg image" src="../images/product_1.jpeg"/>
+                            <div class="mg vertical divider"></div>
+                            <img class="mg image" src="../images/product_1.jpeg"/>
+                        </div>
+                        <div class="six-large six-medium twelve-small column">
+                            <div style="padding: 2em">
+                                <div class="mg row centered">
+                                    <img src="../images/user-female.png" class="mg small circle image"/>
+                                    <div class="padded">
+                                        <div>Posted by: <b>Jenna</b></div>
+                                        <div>12th January 2012</div>
+                                    </div>
+                                </div>
+                                <div class="mg vertical divider"></div>
+                                <h2>Macbook Pro</h2>
+                                <p>
+                                   The device does not start. It occassionally does start but does not last for
+                                    more than 12 minutes without
+                                </p>
+                                <h2>Request Status</h2>
+                                <form class="mg form">
+                                    <div class="field">
+                                        <select>
+                                            <option>Pending</option>
+                                            <option>Approved</option>
+                                            <option>Rejected</option>
+                                            <option>Resolved</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <button class="mg primary button">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="padded">
+                <h2>Provide Feedback</h2>
+                <div class="mg vertical divider"></div>
+                <div class="mg row">
+                    <div class="two-large three-medium column">
+                        <img src="../images/user-male.png" alt="" class="mg small image feedback-profile"/>
+                    </div>
+                    <div class="ten-large nine-medium twelve-small column">
+                        <form class="mg form">
+                            <div class="field">
+                                <textarea></textarea>
+                            </div>
+                           <div class="field">
+                               <button class="mg primary button">Submit</button>
+                           </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

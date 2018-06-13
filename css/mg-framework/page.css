@@ -1,0 +1,43 @@
+/*
+    @author Moses Gitau
+
+    ------------------
+    Page
+    ------------------
+
+    Page /Site properties, these are styles that can be shared by all the components
+    in the page, including alignment, font, e.t.c
+ */
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+    min-width: 300px;
+    color: rgba(0, 0, 0, .8);
+    font-smoothing: antialiased;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3em;
+    font-weight: 500;
+}
+
+/* Alignment */
+.right.aligned {
+    order: 2;
+    margin-left: auto;
+    float: right;
+}
+
+.left.aligned {
+    float: left;
+}
+
+.centered{
+    align-items: center;
+}

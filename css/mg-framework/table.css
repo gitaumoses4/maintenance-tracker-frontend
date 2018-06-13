@@ -1,0 +1,57 @@
+/**
+    @author Moses Gitau
+
+    --------------
+    Table
+    --------------
+
+    Aligns data in columns and rows. Appropriate for displaying data directly from a database
+
+    The table should be in a container in order to allow scrolling during overflow
+ */
+
+.mg.table {
+    overflow: auto;
+}
+
+.mg.table > table {
+    background: white;
+    margin: 1em 0;
+    border: 1px solid rgba(30, 30, 30, .15);
+    border-radius: 0.3em;
+    color: rgba(0, 0, 0, .8);
+    border-collapse: separate;
+    font-family: 'Dosis', sans-serif;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Table header */
+.mg.table > table thead th,
+.mg.table > table tfoot th {
+    background: #f7f8f9;
+    text-align: inherit;
+    padding: 0.7em;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, .8);
+    font-weight: bold;
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Table data */
+.mg.table > table tr td {
+    border-top: 1px solid rgba(30, 30, 30, .15);
+    padding: 0.7em;
+    white-space: nowrap;
+}
+
+/* Remove top border for first row */
+
+.mg.table > table tr:first-child td {
+    border-top: none;
+}
+
+/* Responsive */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+
+}

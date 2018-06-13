@@ -1,0 +1,32 @@
+/**
+    @author Moses Gitau
+
+    -------------------------------
+    Container Component
+    -------------------------------
+
+    Enclose your items in a container to avoid then stretching over a wide screen
+
+ */
+
+.mg.container {
+    width: 993px;
+    margin: auto !important;
+    display: block;
+}
+
+/* Container for mobile */
+@media only screen and (max-width: 767px) {
+    .mg.container {
+        width: auto !important;
+        margin: 1em !important;
+    }
+}
+
+/* Container for tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.container {
+        width: 723px;
+        margin: auto !important;
+    }
+}

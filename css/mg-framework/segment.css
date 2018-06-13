@@ -1,0 +1,48 @@
+/*
+    @author Moses Gitau
+
+    ------------
+    Segment
+    ------------
+
+    Helps contain content into a single container with a header, body and a footer.
+ */
+
+.mg.segment {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid rgba(30, 30, 30, .15);
+    border-radius: 0.3em;
+}
+
+.mg.segment .header {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    background: #f7f8f9;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+    font-weight: bold;
+}
+
+.mg.segment .content {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+}
+
+.mg.segment .footer {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2em;
+    background: #f7f8f9;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-top: 1px solid rgba(30, 30, 30, .15);
+}

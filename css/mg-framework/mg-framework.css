@@ -1,0 +1,1542 @@
+/**
+    @author Moses Gitau
+
+    A button component, provides a materialistic button with a slight shadow and background
+
+
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
+@import url('https://use.fontawesome.com/releases/v5.0.13/css/all.css');
+
+.mg.button {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background: rgba(224, 225, 226, 0.98) none;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Dosis', sans-serif;
+    padding: 0.8em 1.5em 0.8em;
+    font-weight: normal;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 0.3em;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+/* Circle button */
+.mg.button.circle {
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    padding: 0.5em;
+}
+
+.mg.button:hover:not('.disabled') {
+    background-color: rgba(202, 203, 205, 0.85);
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.mg.button.fluid {
+    width: 100% !important;
+}
+
+/*
+    Different probable button states
+ */
+
+.mg.danger.button {
+    background: #F44336;
+    color: #e8e8e8;
+}
+
+.mg.danger.button:hover {
+    background-color: #bf3430;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.success.button {
+    background: #4CAF50;
+    color: #e8e8e8;
+}
+
+.mg.success.button:hover {
+    background-color: #469d4a;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.warning.button {
+    background: #FFC107;
+    color: #393939;
+}
+
+.mg.warning.button:hover {
+    background-color: #c99607;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.primary.button {
+    background-color: #2196F3;
+    color: #e8e8e8;
+}
+
+.mg.primary.button:hover {
+    background-color: #1c7dcb;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.secondary.button {
+    background-color: #607D8B;
+    color: #e8e8e8;
+}
+
+.mg.secondary.button:hover {
+    background-color: #4c636e;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+/*
+    Disabled button
+ */
+
+.mg.disabled.button,
+.mg.button:disabled,
+.mg.disabled.button:hover {
+    cursor: default;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+}
+
+/* Button sizes */
+.mg.tiny.circle.button {
+    font-size: 1em;
+}
+
+.mg.small.circle.button {
+    font-size: 2em;
+}
+
+.mg.large.circle.button {
+    font-size: 3em;
+}
+
+/**
+    @author Moses Gitau
+
+    -------------------------------
+    Container Component
+    -------------------------------
+
+    Enclose your items in a container to avoid then stretching over a wide screen
+
+ */
+
+.mg.container {
+    width: 993px;
+    margin: auto !important;
+    display: block;
+}
+
+/* Container for mobile */
+@media only screen and (max-width: 767px) {
+    .mg.container {
+        width: auto !important;
+        margin: 1em !important;
+    }
+}
+
+/* Container for tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.container {
+        width: 723px;
+        margin: auto !important;
+    }
+}
+
+/**
+    @author Moses Gitau
+
+    --------------------
+    Dropdown
+    --------------------
+
+    Drop down component with menu, use this component to create simple menus
+
+ */
+
+.mg.dropdown {
+    display: inline-block;
+    cursor: pointer;
+    text-align: left;
+    transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
+    position: relative;
+}
+
+/* Drop down menu */
+.mg.dropdown .menu {
+    cursor: auto;
+    position: absolute;
+    min-width: max-content;
+    background: #ffffff;
+    margin-top: 0.3em !important;
+    border-radius: 0.3em;
+    left: 0;
+    opacity: 0;
+    max-height: 0;
+    right: auto;
+    display: block;
+    text-align: left;
+    box-shadow: 1px 2px 3px 1px rgba(30, 30, 30, 0.15);
+    z-index: 10;
+    transition: opacity 0.2s ease-in, max-height 0.2s ease-out;
+}
+
+.mg.dropdown .menu.visible {
+    opacity: 1;
+}
+
+/* Drop down menu item */
+.mg.dropdown .menu > .item {
+    position: relative;
+    height: auto;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    display: block;
+    line-height: 1em;
+    white-space: nowrap;
+    font-family: 'Dosis', sans-serif;
+    padding: 0.7em 1.1em !important;
+    font-size: 1em;
+    transition: background-color 0.5s ease;
+}
+
+.mg.dropdown .menu > .item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.9);
+    z-index: 13;
+}
+
+.mg.dropdown .menu > .item > .icon {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.mg.dropdown > .trigger {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Dosis', sans-serif;
+    padding: 0.6em 1.2em 0.6em;
+    font-weight: normal;
+    text-decoration: none;
+    border-radius: 0.3em;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+/*
+    @author Moses Gitau
+
+    --------------
+    Image
+    --------------
+
+    Provides different styling for images, including circle image,
+    different image sizes and image links
+ */
+
+.mg.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Sizes */
+
+.mg.image.tiny {
+    width: 3em;
+}
+
+.mg.image.small {
+    width: 7em;
+}
+
+.mg.image.large {
+    width: 20em;
+}
+
+.mg.image.circle {
+    border-radius: 50%;
+}
+
+.mg.image.tiny.circle {
+    width: 3em;
+    height: 3em;
+}
+
+.mg.image.small.circle {
+    width: 7em;
+    height: 7em;
+}
+
+.mg.image.large.circle {
+    width: 20em;
+    height: 20em;
+}
+
+/* image link */
+
+.mg.image.link {
+    cursor: pointer;
+}
+
+/**
+    @author Moses Gitau
+
+    ---------------
+    Modal
+    ---------------
+
+    Dialog component, displays above any other content, has a dimmed background,
+    a title, content, a footer and buttons.
+ */
+
+.mg.modal {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    display: none;
+    height: 100%;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+}
+
+.mg.modal > .body {
+    z-index: 1000;
+    background: white;
+    position: fixed;
+    text-align: left;
+    left: 50%;
+    top: 50%;
+    height: fit-content;
+    flex: 0 0 auto;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5em;
+    box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+    will-change: top, left, margin, opacity, transform;
+    transition: scale 0.3s ease, opacity 0.3s ease;
+}
+
+/* Close Button */
+.mg.modal > .body > .close {
+    cursor: pointer;
+    top: .5em;
+    right: .1em;
+    z-index: 1;
+    font-size: 1.2em;
+    width: 2.2em;
+    height: 2.2em;
+    opacity: 0.7;
+    position: absolute;
+    padding: 0.6em 0 0 0;
+    transition: opacity 0.3s ease;
+}
+
+.mg.modal > .body > .close:hover {
+    opacity: 1;
+}
+
+/** Title **/
+.mg.modal > .body > .title {
+    display: block;
+    font-family: 'Dosis', sans-serif;
+    background: white;
+    padding: 1.2em 1.5em;
+    box-shadow: none;
+    font-size: 1.4em;
+    line-height: 1.2em;
+    font-weight: bold;
+    color: rgba(0, 0, 0, .8);
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+    border-bottom: 1px solid rgba(30, 30, 30, 0.15);
+}
+
+/* Content */
+.mg.modal > .body > .content {
+    width: calc(100% - 3em);
+    display: block;
+    font-size: 1em;
+    font-family: 'Dosis', sans-serif;
+    padding: 1.5em;
+    background: white;
+}
+
+/* Image Content */
+.mg.modal > .body > .image.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mg.modal > .body > .image.content img {
+    display: inline-block;
+    margin-right: 1em;
+    width: 33.333333%;
+    height: auto;
+}
+
+/* Footer */
+.mg.modal > .body > .footer {
+    background: #f7f8f9;
+    padding: 1em 1em;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    border-top: 1px solid rgba(30, 30, 30, .15);
+    text-align: right;
+}
+
+.mg.modal > .body > .footer > .button {
+    margin-left: 0.75em;
+}
+
+/* Responsive Modal */
+
+/* Mobile */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.modal > .body {
+        width: 95%;
+        margin: 0;
+    }
+
+    .mg.modal > .body > .image.content > img {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.modal > .body {
+        width: 88%;
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .mg.modal > .body {
+        width: 850px;
+        margin: 0;
+    }
+}
+
+/*
+    @author Moses Gitau
+
+    ------------------
+    Page
+    ------------------
+
+    Page /Site properties, these are styles that can be shared by all the components
+    in the page, including alignment, font, e.t.c
+ */
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+    min-width: 300px;
+    color: rgba(0, 0, 0, .8);
+    font-smoothing: antialiased;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3em;
+    font-weight: 500;
+}
+
+/* Alignment */
+.right.aligned {
+    order: 2;
+    margin-left: auto;
+    float: right;
+}
+
+.left.aligned {
+    float: left;
+}
+
+.centered {
+    align-items: center;
+}
+
+/**
+    @author Moses Gitau
+
+    This is a CSS row component that helps align UI components in a grid using flex.
+
+    A row is divided into 12 columns of equal size.
+
+    Example
+
+    Create a <p> tag that will fit in a mobile screen, half in a tablet and be a quarter of a computer screen
+
+    <div class="mg row>
+        <p class="twelve-small six-medium three-large column>
+            This is a paragraph
+        </p>
+    </div>
+
+ */
+
+.mg.row {
+    padding: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mg.row > .mg.row:first-child,
+.mg.row > .mg.row:last-child {
+    margin-top: 0;
+}
+
+/*
+    COLUMNS
+ */
+
+.mg.row > [class*="one-large"].column {
+    width: 8.33333333333% !important;
+}
+
+.mg.row > [class*="two-large"].column {
+    width: 16.6666666667% !important;
+}
+
+.mg.row > [class*="three-large"].column {
+    width: 25% !important;
+}
+
+.mg.row > [class*="four-large"].column {
+    width: 33.3333333333% !important;
+}
+
+.mg.row > [class*="five-large"].column {
+    width: 41.6666666667% !important;
+}
+
+.mg.row > [class*="six-large"].column {
+    width: 50% !important;
+}
+
+.mg.row > [class*="seven-large"].column {
+    width: 58.3333333333% !important;
+}
+
+.mg.row > [class*="eight-large"].column {
+    width: 66.6666666667% !important;
+}
+
+.mg.row > [class*="nine-large"].column {
+    width: 75% !important;
+}
+
+.mg.row > [class*="ten-large"].column {
+    width: 83.3333333333% !important;
+}
+
+.mg.row > [class*="eleven-large"].column {
+    width: 91.6666666667% !important;
+}
+
+.mg.row > [class*="twelve-large"].column {
+    width: 100% !important;
+}
+
+/* For Mobile                           */
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+    .mg.row > [class*="one-small"].column {
+        width: 8.33333333333% !important;
+    }
+
+    .mg.row > [class*="two-small"].column {
+        width: 16.6666666667% !important;
+    }
+
+    .mg.row > [class*="three-small"].column {
+        width: 25% !important;
+    }
+
+    .mg.row > [class*="four-small"].column {
+        width: 33.3333333333% !important;
+    }
+
+    .mg.row > [class*="five-small"].column {
+        width: 41.6666666667% !important;
+    }
+
+    .mg.row > [class*="six-small"].column {
+        width: 50% !important;
+    }
+
+    .mg.row > [class*="seven-small"].column {
+        width: 58.3333333333% !important;
+    }
+
+    .mg.row > [class*="eight-small"].column {
+        width: 66.6666666667% !important;
+    }
+
+    .mg.row > [class*="nine-small"].column {
+        width: 75% !important;
+    }
+
+    .mg.row > [class*="ten-small"].column {
+        width: 83.3333333333% !important;
+    }
+
+    .mg.row > [class*="eleven-small"].column {
+        width: 91.6666666667% !important;
+    }
+
+    .mg.row > [class*="twelve-small"].column {
+        width: 100% !important;
+    }
+}
+
+/* For tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.row > [class*="one-medium"].column {
+        width: 8.33333333333% !important;
+    }
+
+    .mg.row > [class*="two-medium"].column {
+        width: 16.6666666667% !important;
+    }
+
+    .mg.row > [class*="three-medium"].column {
+        width: 25% !important;
+    }
+
+    .mg.row > [class*="four-medium"].column {
+        width: 33.3333333333% !important;
+    }
+
+    .mg.row > [class*="five-medium"].column {
+        width: 41.6666666667% !important;
+    }
+
+    .mg.row > [class*="six-medium"].column {
+        width: 50% !important;
+    }
+
+    .mg.row > [class*="seven-medium"].column {
+        width: 58.3333333333% !important;
+    }
+
+    .mg.row > [class*="eight-medium"].column {
+        width: 66.6666666667% !important;
+    }
+
+    .mg.row > [class*="nine-medium"].column {
+        width: 75% !important;
+    }
+
+    .mg.row > [class*="ten-medium"].column {
+        width: 83.3333333333% !important;
+    }
+
+    .mg.row > [class*="eleven-medium"].column {
+        width: 91.6666666667% !important;
+    }
+
+    .mg.row > [class*="twelve-medium"].column {
+        width: 100% !important;
+    }
+}
+
+/**
+    @author Moses Gitau
+
+    -------------
+    Step
+    -------------
+
+    A step shows the completion of an activity in a series of activities
+
+ */
+
+.mg.steps {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 1em 0;
+    line-height: 1.2em;
+    border-radius: 0.3em;
+    border: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Fluid */
+.mg.steps.fluid {
+    width: 100%;
+}
+
+/** Step **/
+.mg.steps > .step {
+    position: relative;
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em;
+    background: white;
+    color: rgba(0, 0, 0, .8);
+    border-right: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Pointer */
+.mg.steps > .step:after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0;
+    background: white;
+    width: 1em;
+    height: 1em;
+    content: '';
+    border-right: 1px solid rgba(30, 30, 30, .15);
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+    transform: translate(50%, -50%) rotate(-45deg);
+}
+
+/* Completed Step */
+.mg.steps .step.completed .icon:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    color: rgb(0, 145, 0);
+}
+
+/* Failed Step */
+.mg.steps .step.failed .icon:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00d";
+    color: rgb(210, 0, 0);
+}
+
+/* active step */
+.mg.steps .step.active,
+.mg.steps .step.active:after {
+    background: rgb(226, 226, 226);
+}
+
+/* Pointer for last step*/
+.mg.steps > .step:last-child:after {
+    display: none;
+}
+
+/* Set border radius */
+
+.mg.steps > .step:first-child {
+    padding-left: 2em;
+    border-radius: 0.3em 0 0 0.3em;
+}
+
+.mg.steps > .step:last-child {
+    border-radius: 0 0.3em 0.3em 0;
+}
+
+/* Step body */
+.mg.steps > .step .title {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+}
+
+.mg.steps > .step .description {
+    font-family: 'Dosis', sans-serif;
+    font-weight: normal;
+    color: rgba(0, 0, 0, .8)
+}
+
+/* Step Icon */
+.mg.steps .step .icon {
+    line-height: 1em;
+    font-size: 2.5em;
+    margin: 0 1em 0 0;
+}
+
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.steps {
+        width: 100%;
+        align-items: normal;
+    }
+
+    .mg.steps .step .description {
+        display: none;
+    }
+
+    .mg.steps > .step {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .mg.steps .step .icon {
+        font-size: 1.5em;
+        margin: 0 0 0.5em 0;
+    }
+
+    .mg.steps .step:first-child {
+        padding-left: 1em;
+    }
+
+    .mg.steps .step .title,
+    .mg.steps .step .description {
+        text-align: center;
+    }
+
+    .mg.steps .step .body {
+        align-content: center;
+    }
+}
+
+/*
+    @author Moses Gitau
+
+    A card component to help contain items in a simple card with a slight
+    shadow.
+    The card may contain an image, content, title and some text description, footer and meta text
+
+ */
+
+.mg.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 300px;
+    background: #ffffff;
+    font-family: 'Dosis', sans-serif;
+    border-radius: 0.3em;
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    margin: 1em;
+    box-shadow: 0 1px 1px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+}
+
+.mg.card > .image > img,
+.mg.card > .content > .image > img {
+    display: block;
+    height: auto;
+    border-radius: inherit;
+    width: 100%;
+}
+
+.mg.card > .content {
+    padding: 1em;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+
+.mg.card > .content > .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.mg.card > .content > .meta {
+    font-size: 0.8em;
+    color: #666666;
+}
+
+.mg.card > .content > .description {
+    color: #333333;
+    font-size: 0.9em;
+}
+
+.mg.card > .footer {
+    border-top: 1px solid #dddddd;
+}
+
+.mg.card.hoverable {
+    cursor: pointer;
+}
+
+.mg.card.hoverable:hover {
+    transform: translateY(-2px);
+}
+
+/**
+    @author Moses Gitau
+
+    -----------------
+    Divider
+    -----------------
+
+    Divides components using a thin line
+
+ */
+
+.mg.divider {
+    display: inline-block;
+    content: '';
+    background: rgba(30, 30, 30, .15);
+}
+
+.mg.divider.horizontal {
+    width: 1px;
+    height: 100%;
+}
+
+.mg.divider.vertical {
+    height: 1px;
+    width: 100%;
+}
+
+/**
+    @author Moses Gitau
+
+    ------------------
+    Form
+    ------------------
+
+    Form component - Formatting and styling for fields and inputs
+    <form class="mg form">
+        .
+        .
+        .
+    </form>
+ */
+
+.mg.form {
+    position: relative;
+    max-width: 100%;
+}
+
+.mg.form .field > label {
+    display: block;
+    margin: 0 0 0.3em 0;
+    font-family: 'Dosis', sans-serif;
+    color: rgba(0, 0, 0, .8);
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.mg.form .fields {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -0.5em 1em;
+    flex-wrap: wrap;
+}
+
+.mg.form > .field {
+    margin: 0 -0.5em 1em;
+}
+
+.mg.form .field {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+}
+
+/* Form Grid System */
+
+.mg.form .fields > .mg.form .fields:first-child,
+.mg.form > .field > .fields > .mg.form .fields:last-child {
+    margin-top: 0;
+}
+
+/*
+    COLUMNS
+ */
+
+.mg.form .fields > [class*="one-large"].field {
+    width: calc(8.33333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="two-large"].field {
+    width: calc(16.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="three-large"].field {
+    width: calc(25% - 1em) !important;
+}
+
+.mg.form .fields > [class*="four-large"].field {
+    width: calc(33.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="five-large"].field {
+    width: calc(41.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="six-large"].field {
+    width: calc(50% - 1em) !important;
+}
+
+.mg.form .fields > [class*="seven-large"].field {
+    width: calc(58.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="eight-large"].field {
+    width: calc(66.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="nine-large"].field {
+    width: calc(75% - 1em) !important;
+}
+
+.mg.form .fields > [class*="ten-large"].field {
+    width: calc(83.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="eleven-large"].field {
+    width: calc(91.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="twelve-large"].field {
+    width: calc(100% - 1em) !important;
+}
+
+/* For Mobile */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.form .fields > .inline.field {
+        width: calc(100% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="one-small"].field {
+        width: calc(8.33333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="two-small"].field {
+        width: calc(16.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="three-small"].field {
+        width: calc(25% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="four-small"].field {
+        width: calc(33.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="five-small"].field {
+        width: calc(41.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="six-small"].field {
+        width: calc(50% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="seven-small"].field {
+        width: calc(58.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eight-small"].field {
+        width: calc(66.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="nine-small"].field {
+        width: calc(75% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="ten-small"].field {
+        width: calc(83.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eleven-small"].field {
+        width: calc(91.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="twelve-small"].field {
+        width: calc(100% - 1em) !important;
+    }
+}
+
+/* For tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.form .fields > [class*="one-medium"].field {
+        width: calc(8.33333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="two-medium"].field {
+        width: calc(16.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="three-medium"].field {
+        width: calc(25% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="four-medium"].field {
+        width: calc(33.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="five-medium"].field {
+        width: calc(41.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="six-medium"].field {
+        width: calc(50% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="seven-medium"].field {
+        width: calc(58.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eight-medium"].field {
+        width: calc(66.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="nine-medium"].field {
+        width: calc(75% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="ten-medium"].field {
+        width: calc(83.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eleven-medium"].field {
+        width: calc(91.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="twelve-medium"].field {
+        width: calc(100% - 1em) !important;
+    }
+}
+
+/* inputs */
+.mg.form input,
+.mg.form textarea,
+.mg.form select {
+    width: calc(100% - 2em);
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0.6em 1em;
+    tap-highlight-color: white;
+    line-height: 1.2em;
+    font-size: 1em;
+    background: white;
+    border: 1px solid rgba(30, 30, 30, 0.15);
+    border-radius: 0.2em;
+    transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+/** Focused **/
+
+.mg.form .field input:focus,
+.mg.form .field select:focus,
+.mg.form .field textarea:focus {
+    border-color: #1ca9ff !important;
+    box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
+}
+
+/** disabled field **/
+.mg.form .disabled.field,
+.mg.form .field:disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/** placeholder **/
+.mg.form ::placeholder {
+    color: rgba(200, 200, 200, 0.9);
+}
+
+/**
+    Inline fields
+ */
+.mg.form .inline.field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mg.form .inline.field > input {
+    vertical-align: middle;
+}
+
+.mg.form .inline.field > label {
+    white-space: nowrap;
+    margin: 0.03em 1em 0 0;
+    vertical-align: baseline;
+    display: inline-block;
+}
+
+/**
+    @author Moses Gitau
+
+    -----------------
+    Sidebar and Navbar
+    -----------------
+
+    An icon sidebar component to display a persistent menu.
+    Each icon has a title and is specific to a particular action in the menu
+
+    In order to ensure responsiveness, the sidebar should be used with the top navigation bar
+ */
+
+/*
+    -------------------
+    Sidebar
+    -------------------
+ */
+.mg.sidebar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transition: background 0.4s ease;
+    z-index: 200;
+}
+
+.mg.sidebar > .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    pointer-events: all;
+    display: flex;
+    height: 100%;
+    align-content: center;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+    background: #04101d;
+    border-right: 1px solid rgba(30, 30, 30, .15);
+}
+
+.mg.sidebar ~ .mg.pushable {
+    margin-left: 100px;
+    transition: margin-left 0.4s ease;
+}
+
+.mg.pushable .content {
+    padding: 1em;
+}
+
+/*Sidebar Menu Item */
+
+.mg.sidebar > .menu > .item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Dosis', sans-serif;
+    color: rgba(255, 255, 255, .9);
+    align-items: center;
+    padding: 1em;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.mg.sidebar > .menu > .item:hover {
+    background: rgba(255, 255, 255, .15)
+}
+
+.mg.sidebar > .menu > .item .icon {
+    font-size: 2em;
+    align-content: center;
+}
+
+.mg.sidebar > .menu > .item > .title {
+    margin-top: 0.5em;
+}
+
+/* Active item */
+.mg.sidebar > .menu > .item.active {
+    background: rgba(255, 255, 255, .15);
+}
+
+/*
+    --------------------
+    Navbar
+    --------------------
+
+ */
+
+.mg.pushable > .mg.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+    align-items: center;
+    margin: 0;
+    background: white;
+    height: 50px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.mg.pushable > .mg.navbar > .open {
+    padding: 1em;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.mg.pushable > .mg.navbar > .header {
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Nav bar menu */
+
+.mg.pushable > .mg.navbar > .menu {
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.mg.pushable > .mg.navbar > .menu > .item {
+    font-family: 'Dosis', sans-serif;
+    height: 45px;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: background 0.4s ease;
+}
+
+.mg.pushable > .mg.navbar > .item.link {
+    cursor: pointer;
+}
+
+.mg.pushable > .mg.navbar > .item.link:hover {
+    background: rgba(0, 0, 0, .15);
+}
+
+/* Pushable content */
+
+.mg.pushable {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+Hidden
+ */
+
+.mg.sidebar.hidden > .menu {
+    transform: translateX(-100%);
+}
+
+.mg.sidebar.hidden ~ .mg.pushable {
+    margin-left: 0;
+}
+
+/**
+    Responsiveness
+ */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.sidebar > .menu {
+        width: 50%;
+    }
+
+    .mg.sidebar > .menu > .item {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .mg.sidebar > .menu > .item > .icon {
+        width: 2em;
+    }
+
+    .mg.sidebar > .menu {
+        transform: translateX(-100%);
+    }
+
+    .mg.sidebar ~ .mg.pushable {
+        margin-left: 0;
+    }
+
+    .mg.sidebar.hidden > .menu {
+        transform: translateX(0);
+    }
+
+    .mg.sidebar.hidden {
+        background: rgba(0, 0, 0, .6);
+        pointer-events: all;
+    }
+
+    .mg.sidebar.hidden ~ .mg.pushable {
+        margin-left: 0;
+    }
+}
+
+/**
+    @author Moses Gitau
+
+    --------------
+    Paginator
+    --------------
+
+    Paginator allows navigation between pages, displays a row of buttons with a page index
+ */
+
+.mg.paginator {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: white;
+    border-radius: 0.3em;
+    border: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Item */
+.mg.paginator .item {
+    cursor: pointer;
+    padding: 0.3em 1em;
+    border-right: inherit;
+    transition: background 0.4s ease;
+}
+
+.mg.paginator .item:last-child {
+    border-right: none;
+}
+
+.mg.paginator .item:hover {
+    background: rgba(30, 30, 30, .1);
+}
+
+.mg.paginator .item.active {
+    background: rgba(30, 30, 30, .1);
+}
+
+/* Disabled */
+.mg.paginator .item.disabled,
+.mg.paginator .item:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Show next border instead */
+
+.mg.paginator .item.disabled:not(:last-child) ~ .item {
+    border-left: inherit;
+}
+
+/*
+    @author Moses Gitau
+
+    ------------
+    Segment
+    ------------
+
+    Helps contain content into a single container with a header, body and a footer.
+ */
+
+.mg.segment {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid rgba(30, 30, 30, .15);
+    border-radius: 0.3em;
+}
+
+.mg.segment .header {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    background: #f7f8f9;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+    font-weight: bold;
+}
+
+.mg.segment .content {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+}
+
+.mg.segment .footer {
+    padding: 0.6em;
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2em;
+    background: #f7f8f9;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-top: 1px solid rgba(30, 30, 30, .15);
+}
+
+/**
+    @author Moses Gitau
+
+    --------------
+    Table
+    --------------
+
+    Aligns data in columns and rows. Appropriate for displaying data directly from a database
+
+    The table should be in a container in order to allow scrolling during overflow
+ */
+
+.mg.table {
+    overflow: auto;
+}
+
+.mg.table > table {
+    background: white;
+    margin: 1em 0;
+    border: 1px solid rgba(30, 30, 30, .15);
+    border-radius: 0.3em;
+    color: rgba(0, 0, 0, .8);
+    border-collapse: separate;
+    font-family: 'Dosis', sans-serif;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Table header */
+.mg.table > table thead th,
+.mg.table > table tfoot th {
+    background: #f7f8f9;
+    text-align: inherit;
+    padding: 0.7em;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, .8);
+    font-weight: bold;
+    border-bottom: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Table data */
+.mg.table > table tr td {
+    border-top: 1px solid rgba(30, 30, 30, .15);
+    padding: 0.7em;
+    white-space: nowrap;
+}
+
+/* Remove top border for first row */
+
+.mg.table > table tr:first-child td {
+    border-top: none;
+}
+
+/* Responsive */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maintenance Tracker - Log in</title>
+</head>
+<body>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <div class="header padded left">Maintenance Tracker</div>
+        <div class="menu">
+            <div class="item right aligned">
+                <i class="fas fa-phone"></i>
+                <span class="padded left">+254705045048</span>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <div class="mg container">
+            <div class="center aligned">
+                <h2>Log In</h2>
+            </div>
+            <div class="mg row">
+                <div class="mg six-large eight-medium twelve-small column center">
+                    <div class="mg segment">
+                        <div class="content">
+                            <form class="mg form">
+                                <div class="field">
+                                    <label for="username">Username</label>
+                                    <input id="username" name="username" placeholder="Username"/>
+                                </div>
+                                <div class="field">
+                                    <label for="password">Password</label>
+                                    <input id="password" name="password" type="password" placeholder="Password"/>
+                                </div>
+                                <div class="field">
+                                    <button class="mg fluid button primary" id="login">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center aligned">
+                <p>Don't have an account?</p>
+                <a href="register.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Temporary-->
+<div class="mg modal" data-trigger="login">
+    <div class="body">
+        <i class="close fas fa-times"></i>
+        <div class="title">
+            Login as Admin or User
+        </div>
+        <div class="content" style="border-bottom-left-radius: inherit; border-bottom-right-radius: inherit">
+            <div class="mg row">
+                <div class="five-large five-medium five-small column">
+                    <img src="images/admin-female.png" class="mg small image"/>
+                    <h2>Admin</h2>
+                    <a href="admin" class="mg primary button">Proceed</a>
+                </div>
+                <div class="two-large two-medium two-small column">
+                    <div class="mg horizontal divider"></div>
+                </div>
+                <div class="five-large five-medium five-small column">
+                    <img src="images/admin-male.png" class="mg small image"/>
+                    <h2>User</h2>
+                    <a href="user" class="mg primary button">Proceed</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("login").addEventListener("click", function (event) {
+        event.preventDefault();
+    })
+</script>
+<script src="js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

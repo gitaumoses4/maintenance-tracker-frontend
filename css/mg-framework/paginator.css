@@ -1,0 +1,52 @@
+/**
+    @author Moses Gitau
+
+    --------------
+    Paginator
+    --------------
+
+    Paginator allows navigation between pages, displays a row of buttons with a page index
+ */
+
+.mg.paginator {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: white;
+    border-radius: 0.3em;
+    border: 1px solid rgba(30, 30, 30, .15);
+}
+
+/* Item */
+.mg.paginator .item {
+    cursor: pointer;
+    padding: 0.3em 1em;
+    border-right: inherit;
+    transition: background 0.4s ease;
+}
+
+.mg.paginator .item:last-child {
+    border-right: none;
+}
+
+.mg.paginator .item:hover {
+    background: rgba(30, 30, 30, .1);
+}
+
+.mg.paginator .item.active {
+    background: rgba(30, 30, 30, .1);
+}
+
+/* Disabled */
+.mg.paginator .item.disabled,
+.mg.paginator .item:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Show next border instead */
+
+.mg.paginator .item.disabled:not(:last-child) ~ .item {
+    border-left: inherit;
+}

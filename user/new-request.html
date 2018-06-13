@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maintenance Tracker - User</title>
+</head>
+<body>
+<div class="mg sidebar" data-trigger="openSidebar">
+    <div class="menu">
+        <a class="item" href="index.html">
+            <i class="icon fas fa-tachometer-alt"></i>
+            <div class="title center aligned">My Dashboard</div>
+        </a>
+        <a class="item" href="requests.html">
+            <i class="icon fas fa-cogs"></i>
+            <div class="title center aligned">
+                <div class="title">Repair Requests</div>
+            </div>
+        </a>
+        <a class="item" href="feedback.html">
+            <i class="icon fas fa-comments"></i>
+            <div class="title center aligned">
+                <div class="title">My Feedback</div>
+            </div>
+        </a>
+        <div class="item" id="mobileNotifications">
+            <i class="icon fas fa-bell"></i>
+            <div class="title center aligned">
+                <div class="title">My Notifications</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <i class="open fas fa-bars" id="openSidebar"></i>
+        <div class="header">Maintenance Tracker</div>
+        <div class="menu">
+            <div class="link item" id="largeScreenNotifications">
+                <div class="mg dropdown notifications">
+                    <div class="trigger">
+                        Notifications
+                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
+                    </div>
+                    <div class="menu">
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Your product has been rejected.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Your product has been verified
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item right aligned">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        <div class="account-options">
+                            <div class="title">Moses Gitau</div>
+                            <img src="../images/user-male.png" class="mg tiny image"/></div>
+                    </div>
+                    <div class="menu" style="width: 100%">
+                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <h2>Requests</h2>
+        <div class="mg row">
+            <a class="request button" href="new-request.html">
+                <button class="mg blue-grey circle small button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="title">Make Request</div>
+            </a>
+            <a class="request button" href="feedback.html">
+                <button class="mg pink circle small button">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <div class="title">Feedback</div>
+            </a>
+        </div>
+        <div class="mg vertical divider"></div>
+
+        <div class="mg segment">
+            <div class="header">
+                New Maintenance/Repair Request
+            </div>
+            <div class="content">
+
+                <div class="mg row">
+                    <div class="six-large eight-medium twelve-small column center">
+                        <form action="" class="mg form">
+                            <div class="field">
+                                <label>Photo</label>
+                                <div class="fields">
+                                    <div class="four-large four-medium six-small field">
+                                        <img src="../images/product_1.jpeg" class="mg image" style="width: 100%"/>
+                                    </div>
+                                    <div class="eight-large eight-medium six-small field">
+                                        <button class="mg primary button">Change</button>
+                                        <button class="mg danger button">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Product Name</label>
+                                <input type="text" name="product-name" placeholder="Product Name"/>
+                            </div>
+                            <div class="field">
+                                <label>Description</label>
+                                <textarea rows="10"></textarea>
+                            </div>
+                            <div class="field">
+                                <div class="fields">
+                                    <div class="field">
+                                        <button class="mg button">Cancel</button>
+                                    </div>
+                                    <div class="field">
+                                        <button class="mg primary button">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="mg modal" data-trigger="mobileNotifications">
+    <div class="body">
+        <i class="close fas fa-times"></i>
+        <div class="title">
+            Notifications
+        </div>
+        <div class="content">
+            <div class="notifications">
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                                Your product has been approved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                               Your product has been assessed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="mg primary button">Ok</button>
+        </div>
+    </div>
+</div>
+<script src="../js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/**
+    @author Moses Gitau
+
+    -----------------
+    Sidebar and Navbar
+    -----------------
+
+    An icon sidebar component to display a persistent menu.
+    Each icon has a title and is specific to a particular action in the menu
+
+    In order to ensure responsiveness, the sidebar should be used with the top navigation bar
+ */
+
+/*
+    -------------------
+    Sidebar
+    -------------------
+ */
+.mg.sidebar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transition: background 0.4s ease;
+    z-index: 200;
+}
+
+.mg.sidebar > .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    pointer-events: all;
+    display: flex;
+    height: 100%;
+    align-content: center;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+    background: #04101d;
+    border-right: 1px solid rgba(30, 30, 30, .15);
+}
+
+.mg.sidebar ~ .mg.pushable {
+    margin-left: 100px;
+    transition: margin-left 0.4s ease;
+}
+
+.mg.pushable .content {
+    padding: 1em;
+}
+
+/*Sidebar Menu Item */
+
+.mg.sidebar > .menu > .item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Dosis', sans-serif;
+    color: rgba(255, 255, 255, .9);
+    align-items: center;
+    padding: 1em;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.mg.sidebar > .menu > .item:hover {
+    background: rgba(255, 255, 255, .15)
+}
+
+.mg.sidebar > .menu > .item .icon {
+    font-size: 2em;
+    align-content: center;
+}
+
+.mg.sidebar > .menu > .item > .title {
+    margin-top: 0.5em;
+}
+
+/* Active item */
+.mg.sidebar > .menu > .item.active {
+    background: rgba(255, 255, 255, .15);
+}
+
+/*
+    --------------------
+    Navbar
+    --------------------
+
+ */
+
+.mg.pushable >.mg.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+    align-items: center;
+    margin: 0;
+    background: white;
+    height: 50px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.mg.pushable > .mg.navbar > .open {
+    padding: 1em;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.mg.pushable > .mg.navbar > .header {
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Nav bar menu */
+
+.mg.pushable > .mg.navbar > .menu {
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.mg.pushable > .mg.navbar > .menu > .item {
+    font-family: 'Dosis', sans-serif;
+    height: 45px;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: background 0.4s ease;
+}
+
+.mg.pushable > .mg.navbar > .item.link {
+    cursor: pointer;
+}
+
+.mg.pushable > .mg.navbar > .item.link:hover {
+    background: rgba(0, 0, 0, .15);
+}
+
+/* Pushable content */
+
+.mg.pushable {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+Hidden
+ */
+
+.mg.sidebar.hidden > .menu {
+    transform: translateX(-100%);
+}
+
+.mg.sidebar.hidden ~ .mg.pushable {
+    margin-left: 0;
+}
+
+/**
+    Responsiveness
+ */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.sidebar >  .menu {
+        width: 50%;
+    }
+
+    .mg.sidebar > .menu > .item {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .mg.sidebar > .menu > .item > .icon {
+        width: 2em;
+    }
+
+    .mg.sidebar > .menu {
+        transform: translateX(-100%);
+    }
+
+    .mg.sidebar ~ .mg.pushable {
+        margin-left: 0;
+    }
+
+    .mg.sidebar.hidden > .menu {
+        transform: translateX(0);
+    }
+
+    .mg.sidebar.hidden {
+        background: rgba(0, 0, 0, .6);
+        pointer-events: all;
+    }
+
+    .mg.sidebar.hidden ~ .mg.pushable {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,120 @@
+/**
+    @author Moses Gitau
+
+    A button component, provides a materialistic button with a slight shadow and background
+
+
+ */
+
+.mg.button {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background: rgba(224, 225, 226, 0.98) none;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Dosis', sans-serif;
+    padding: 0.8em 1.5em 0.8em;
+    font-weight: normal;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 0.3em;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+/* Circle button */
+.mg.button.circle {
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    padding: 0.5em;
+}
+
+.mg.button:hover:not('.disabled') {
+    background-color: rgba(202, 203, 205, 0.85);
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.mg.button.fluid {
+    width: 100% !important;
+}
+
+/*
+    Different probable button states
+ */
+
+.mg.danger.button {
+    background: #F44336;
+    color: #e8e8e8;
+}
+
+.mg.danger.button:hover {
+    background-color: #bf3430;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.success.button {
+    background: #4CAF50;
+    color: #e8e8e8;
+}
+
+.mg.success.button:hover {
+    background-color: #469d4a;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.warning.button {
+    background: #FFC107;
+    color: #393939;
+}
+
+.mg.warning.button:hover {
+    background-color: #c99607;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.primary.button {
+    background-color: #2196F3;
+    color: #e8e8e8;
+}
+
+.mg.primary.button:hover {
+    background-color: #1c7dcb;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+.mg.secondary.button {
+    background-color: #607D8B;
+    color: #e8e8e8;
+}
+
+.mg.secondary.button:hover {
+    background-color: #4c636e;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+}
+
+/*
+    Disabled button
+ */
+
+.mg.disabled.button,
+.mg.button:disabled,
+.mg.disabled.button:hover {
+    cursor: default;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+}
+
+/* Button sizes */
+.mg.tiny.circle.button{
+    font-size: 1em;
+}
+
+.mg.small.circle.button{
+    font-size: 2em;
+}
+
+.mg.large.circle.button{
+    font-size: 3em;
+}

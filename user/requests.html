@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maintenance Tracker - User</title>
+</head>
+<body>
+<div class="mg sidebar" data-trigger="openSidebar">
+    <div class="menu">
+        <a class="item" href="index.html">
+            <i class="icon fas fa-tachometer-alt"></i>
+            <div class="title center aligned">My Dashboard</div>
+        </a>
+        <a class="item active" href="requests.html">
+            <i class="icon fas fa-cogs"></i>
+            <div class="title center aligned">
+                <div class="title">Repair Requests</div>
+            </div>
+        </a>
+        <a class="item" href="feedback.html">
+            <i class="icon fas fa-comments"></i>
+            <div class="title center aligned">
+                <div class="title">My Feedback</div>
+            </div>
+        </a>
+        <div class="item" id="mobileNotifications">
+            <i class="icon fas fa-bell"></i>
+            <div class="title center aligned">
+                <div class="title">My Notifications</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <i class="open fas fa-bars" id="openSidebar"></i>
+        <div class="header">Maintenance Tracker</div>
+        <div class="menu">
+            <div class="link item" id="largeScreenNotifications">
+                <div class="mg dropdown notifications">
+                    <div class="trigger">
+                        Notifications
+                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
+                    </div>
+                    <div class="menu">
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                        Your product has been approved
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="notification">
+                                <i class="close fas fa-times"></i>
+                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                                <div class="content">
+                                    <div class="title">
+                                        Moses Gitau
+                                    </div>
+                                    <div class="date">
+                                        5 minutes ago
+                                    </div>
+                                    <div class="description">
+                                       Your product has been rejected.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item right aligned">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        <div class="account-options">
+                            <div class="title">Moses Gitau</div>
+                            <img src="../images/user-male.png" class="mg tiny image"/></div>
+                    </div>
+                    <div class="menu" style="width: 100%">
+                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <h2>Requests</h2>
+        <div class="mg row">
+            <a class="request button" href="new-request.html">
+                <button class="mg blue-grey circle small button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="title">Make Request</div>
+            </a>
+            <a class="request button" href="feedback.html">
+                <button class="mg pink circle small button">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <div class="title">Feedback</div>
+            </a>
+        </div>
+        <div class="mg vertical divider"></div>
+
+        <div class="mg row" style="margin-bottom: 2em;">
+            <div class="mg paginator center">
+                <div class="item"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></div>
+                <div class="item"><i class="fas fa-chevron-left"></i></div>
+                <div class="item">1</div>
+                <div class="item active">2</div>
+                <div class="item">3</div>
+                <div class="item">4</div>
+                <div class="item">5</div>
+                <div class="item disabled">6</div>
+                <div class="item"><i class="fas fa-chevron-right"></i></div>
+                <div class="item"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div class="mg row">
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card ribbon fluid">
+                    <div class="rejected ribbon">
+                        <div class="content">Rejected</div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_1.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Macbook Pro
+                        </div>
+                        <div class="description">
+                            The battery does not has as expected.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card fluid ribbon">
+                    <div class="approved ribbon">
+                        <div class="content">
+                            Approved
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_2.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Yamaha Keyboard
+                        </div>
+                        <div class="description">
+                            The keyboard sustain pedal does not work.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card fluid ribbon">
+                    <div class="pending ribbon">
+                        <div class="content">
+                            Pending
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_3.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Nikon Camera
+                        </div>
+                        <div class="description">
+                            The battery does not retain power.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card ribbon fluid">
+                    <div class="resolved ribbon">
+                        <div class="content">
+                            Resolved
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_4.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Iphone 9
+                        </div>
+                        <div class="description">
+                            The I Phone screen is broken.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card ribbon fluid">
+                    <div class="rejected ribbon">
+                        <div class="content">Rejected</div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_1.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Macbook Pro
+                        </div>
+                        <div class="description">
+                            The keyboard does not work.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card fluid ribbon">
+                    <div class="approved ribbon">
+                        <div class="content">
+                            Approved
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_2.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Yamaha Keyboard
+                        </div>
+                        <div class="description">
+                            The keyboard does not have touch sensitivity.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card fluid ribbon">
+                    <div class="pending ribbon">
+                        <div class="content">
+                            Pending
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_3.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Nikon Camera
+                        </div>
+                        <div class="description">
+                            The battery drains very fast.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three-large twelve-small four-medium column">
+                <div class="mg card ribbon fluid">
+                    <div class="resolved ribbon">
+                        <div class="content">
+                            Resolved
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../images/product_4.jpeg"/>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            Iphone 9
+                        </div>
+                        <div class="description">
+                            The screen is broken.
+                        </div>
+                        <div class="mg vertical divider"></div>
+                        <div class="meta">
+                            <a href="request.html">View...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mg modal" data-trigger="mobileNotifications">
+    <div class="body">
+        <i class="close fas fa-times"></i>
+        <div class="title">
+            Notifications
+        </div>
+        <div class="content">
+            <div class="notifications">
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                               Your device has been approved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="notification">
+                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
+                        <div class="content">
+                            <div class="title">
+                                Moses Gitau
+                            </div>
+                            <div class="date">
+                                5 minutes ago
+                            </div>
+                            <div class="description">
+                               Your device has been rejected.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="mg primary button">Ok</button>
+        </div>
+    </div>
+</div>
+<script src="../js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

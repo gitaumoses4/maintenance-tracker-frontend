@@ -1,0 +1,55 @@
+/*
+    @author Moses Gitau
+
+    --------------
+    Image
+    --------------
+
+    Provides different styling for images, including circle image,
+    different image sizes and image links
+ */
+
+.mg.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Sizes */
+
+.mg.image.tiny {
+    width: 3em;
+}
+
+.mg.image.small {
+    width: 7em;
+}
+
+.mg.image.large {
+    width: 20em;
+}
+
+.mg.image.circle {
+    border-radius: 50%;
+}
+
+.mg.image.tiny.circle{
+    width: 3em;
+    height: 3em;
+}
+
+.mg.image.small.circle{
+    width: 7em;
+    height: 7em;
+}
+
+.mg.image.large.circle{
+    width: 20em;
+    height: 20em;
+}
+
+/* image link */
+
+.mg.image.link {
+    cursor: pointer;
+}

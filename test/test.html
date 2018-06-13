@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/mg-framework/mg-framework.css" rel="stylesheet"/>
+    <title>Test</title>
+</head>
+<body style="background-color: #f8f8f8; margin: 0;padding: 0">
+<div class="mg sidebar" data-trigger="openSidebar">
+    <div class="menu">
+        <div class="item">
+            <i class="icon fas fa-user"></i>
+            <div class="title">Account</div>
+        </div>
+        <div class="item active">
+            <i class="icon fas fa-credit-card"></i>
+            <div class="title">
+                Payment
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mg pushable">
+    <div class="mg navbar">
+        <i class="open fas fa-bars" id="openSidebar"></i>
+        <div class="header">
+            Maintenance Tracker App
+        </div>
+        <div class="menu">
+            <div class="item link">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="item" style="margin-left: auto;order: 2">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        Moses Gitau <i class="icon fas fa-caret-down"></i>
+                    </div>
+                    <div class="menu">
+                        <div class="item"><i class="icon fas fa-user"></i> First</div>
+                        <div class="item">Second Button here</div>
+                        <div class="item">Third</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mg content">
+        <div class="mg container">
+            <h1>Button</h1>
+            <div class="mg container">
+                <button class="mg button success">Hello World</button>
+                <button class="mg button primary">Hello World</button>
+                <button class="mg button secondary">Hello World</button>
+                <button class="mg button danger">Hello World</button>
+                <button class="mg button warning disabled">Hello World</button>
+                <button class="mg button large circle"><i class="fas fa-user"></i></button>
+                <button class="mg button small circle"><i class="fas fa-user"></i></button>
+                <button class="mg button tiny circle"><i class="fas fa-user"></i></button>
+            </div>
+            <div class="mg divider vertical"></div>
+            <h1>Segment</h1>
+            <div class="mg segment">
+                <div class="header">
+                    This is the title
+                    <div class="right aligned">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>
+                        This is the content he common approach for handling git authentication is to delegate it to SSH.
+                        Typically you set your SSH public key in the remote repository (e.g. on GitHub), and then you
+                        use
+                        that whenever you need to authenticate. You can use a key agent of course, either handled by
+                        your
+                        desktop environment or manually with ssh-agent and ssh-add. To avoid having to specify the
+                        username,
+                        you can configure that in SSH too, in ~/.ssh/config; for example I have
+                    </p>
+                </div>
+                <div class="footer">
+                    <div class="mg row">
+                        <div class="six-large column">
+                            This is a footer
+                        </div>
+                        <div class="six-large column">
+                            <div class="mg paginator">
+                                <div class="item"><i class="fas fa-chevron-left"></i></div>
+                                <div class="item">1</div>
+                                <div class="item active">2</div>
+                                <div class="item">3</div>
+                                <div class="item">4</div>
+                                <div class="item disabled">5</div>
+                                <div class="item"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Table</h1>
+            <div class="mg table">
+                <table class="mg table">
+                    <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Samson</td>
+                        <td>Wanjihia</td>
+                        <td>samsonwanjihia@gmail.com</td>
+                        <td>Kenya</td>
+                    </tr>
+                    <tr>
+                        <td>Margaret</td>
+                        <td>Wangui</td>
+                        <td>margaretwangui@gmail.com</td>
+                        <td>Kenya</td>
+                    </tr>
+                    <tr>
+                        <td>Carolyne</td>
+                        <td>Wanjiku</td>
+                        <td>carolynwanjiku@gmail.com</td>
+                        <td>Egypt</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h1>Steps</h1>
+            <div class="mg steps">
+                <div class="step completed">
+                    <i class="icon fas fa-user"></i>
+                    <div class="body">
+                        <div class="title">Start</div>
+                        <div class="description">This is the beginning</div>
+                    </div>
+                </div>
+                <div class="step active">
+                    <i class="icon fas fa-credit-card"></i>
+                    <div class="body">
+                        <div class="title">Payment</div>
+                        <div class="description">This is where you pay</div>
+                    </div>
+                </div>
+                <div class="step failed">
+                    <i class="icon fas fa-crow"></i>
+                    <div class="body">
+                        <div class="title">Send</div>
+                        <div class="description">Successfully completed</div>
+                    </div>
+                </div>
+            </div>
+            <h1>Modal</h1>
+            <button class="mg button primary" id="showModal">Show Modal</button>
+            <div class="mg modal" data-trigger="showModal">
+                <div class="body">
+                    <i class="close icon fas fa-times"></i>
+                    <div class="title">
+                        Complete Purchase
+                    </div>
+                    <div class="image content">
+                        <img src="test.png"/>
+                        <div>
+                            Do you want to purchase the following items?
+                            <ul>
+                                <li>HP Laptop Core i5 6GB RAM</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <button class="mg success button">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <h1>Image</h1>
+            <h4>Tiny</h4>
+            <img src="test.png" class="mg image tiny"/>
+            <h4>Small</h4>
+            <img src="test.png" class="mg image small"/>
+            <h5>Large</h5>
+            <img src="test.png" class="mg image large"/>
+            <h4>Circle</h4>
+            <img src="test.png" class="mg image small circle"/>
+            <h1>Form</h1>
+            <form class="mg form container">
+                <div class="field">
+                    <label>Name</label>
+                    <div class="fields">
+                        <div class="four-large twelve-small field">
+                            <input name="lastname" placeholder="First Name" type="text"/>
+                        </div>
+                        <div class="four-large twelve-small field">
+                            <input name="lastname" placeholder="Last Name" type="text"/>
+                        </div>
+                        <div class="four-large twelve-small field">
+                            <input name="middlename" placeholder="Middle Name" type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="field disabled">
+                    <label>Country</label>
+                    <input type="text" placeholder="Country" name="country"/>
+                </div>
+                <div class="fields">
+                    <div class="six-large inline field">
+                        <label>First Name: </label>
+                        <input name="lastname" placeholder="First Name" type="text"/>
+                    </div>
+                    <div class="six-large inline field">
+                        <label>Last Name: </label>
+                        <input name="lastname" placeholder="Last Name" type="text"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="states">State</label>
+                    <select name="states" id="states">
+                        <option>Kenya</option>
+                        <option>Uganda</option>
+                        <option>Tanzania</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea></textarea>
+                </div>
+                <div class="field">
+                    <button class="mg button primary fluid">Submit</button>
+                </div>
+            </form>
+            <h1>Row</h1>
+            <div class="mg container">
+                <div class="mg row">
+                    <div class="three-large twelve-small four-medium column">
+                        <div style="background:red;height:100px;margin:5px">
+
+                        </div>
+                    </div>
+                    <div class="three-large twelve-small four-medium column">
+                        <div style="background:red;height:100px;margin:5px">
+
+                        </div>
+                    </div>
+                    <div class="three-large twelve-small four-medium column">
+                        <div style="background:red;height:100px;margin:5px">
+
+                        </div>
+                    </div>
+                    <div class="three-large twelve-small four-medium column">
+                        <div style="background:red;height:100px;margin:5px">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Drop down <i class="fas fa-user"></i></h1>
+            <div class="mg row">
+                <div class="mg dropdown">
+                    <div class="trigger">
+                        Save <i class="icon fas fa-caret-down"></i>
+                    </div>
+                    <div class="menu">
+                        <div class="item"><i class="icon fas fa-user"></i> First</div>
+                        <div class="item">Second Button here</div>
+                        <div class="item">Third</div>
+                    </div>
+                </div>
+            </div>
+            <h1>Card</h1>
+            <div class="mg row">
+                <div class="mg card twelve-small column">
+                    <div class="content">
+                        <div class="title">
+                            This is the title
+                        </div>
+                        This is the content he common approach for handling git authentication is to delegate it to SSH.
+                        Typically
+                        you
+                        set your SSH public key in the remote repository (e.g. on GitHub), and then you use that
+                        whenever
+                        you
+                        need
+                        to
+                        authenticate. You can use a key agent of course, either handled by your desktop environment or
+                        manually
+                        with
+                        ssh-agent and ssh-add.
+
+                        To avoid having to specify the username, you can configure that in SSH too, in ~/.ssh/config;
+                        for
+                        example I
+                        have
+                    </div>
+                    <div class="content footer">
+                        <a href="#" class="meta">
+                            View
+                        </a>
+                    </div>
+                </div>
+                <div class="mg card hoverable twelve-small column">
+                    <div class="image">
+                        <img src="test.png">
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            This is the title
+                        </div>
+                        <div class="description">
+                            This is a short description
+                        </div>
+                        This is the content he common approach for handling git authentication is to delegate it to SSH.
+                        Typically
+                        you
+                        have
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/mg-framework/mg-framework.js"></script>
+</body>
+</html>

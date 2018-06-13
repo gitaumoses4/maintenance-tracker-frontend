@@ -1,0 +1,268 @@
+/**
+    @author Moses Gitau
+
+    ------------------
+    Form
+    ------------------
+
+    Form component - Formatting and styling for fields and inputs
+    <form class="mg form">
+        .
+        .
+        .
+    </form>
+ */
+
+.mg.form {
+    position: relative;
+    max-width: 100%;
+}
+
+.mg.form .field > label {
+    display: block;
+    margin: 0 0 0.3em 0;
+    font-family: 'Dosis', sans-serif;
+    color: rgba(0, 0, 0, .8);
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.mg.form .fields {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -0.5em 1em;
+    flex-wrap: wrap;
+}
+
+.mg.form > .field {
+    margin: 0 -0.5em 1em;
+}
+
+.mg.form .field {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+}
+
+/* Form Grid System */
+
+.mg.form .fields > .mg.form .fields:first-child,
+.mg.form > .field > .fields > .mg.form .fields:last-child {
+    margin-top: 0;
+}
+
+/*
+    COLUMNS
+ */
+
+.mg.form .fields > [class*="one-large"].field {
+    width: calc(8.33333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="two-large"].field {
+    width: calc(16.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="three-large"].field {
+    width: calc(25% - 1em) !important;
+}
+
+.mg.form .fields > [class*="four-large"].field {
+    width: calc(33.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="five-large"].field {
+    width: calc(41.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="six-large"].field {
+    width: calc(50% - 1em) !important;
+}
+
+.mg.form .fields > [class*="seven-large"].field {
+    width: calc(58.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="eight-large"].field {
+    width: calc(66.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="nine-large"].field {
+    width: calc(75% - 1em) !important;
+}
+
+.mg.form .fields > [class*="ten-large"].field {
+    width: calc(83.3333333333% - 1em) !important;
+}
+
+.mg.form .fields > [class*="eleven-large"].field {
+    width: calc(91.6666666667% - 1em) !important;
+}
+
+.mg.form .fields > [class*="twelve-large"].field {
+    width: calc(100% - 1em) !important;
+}
+
+/* For Mobile */
+@media only screen and (min-width: 0) and (max-width: 767px) {
+    .mg.form .fields > .inline.field {
+        width: calc(100% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="one-small"].field {
+        width: calc(8.33333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="two-small"].field {
+        width: calc(16.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="three-small"].field {
+        width: calc(25% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="four-small"].field {
+        width: calc(33.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="five-small"].field {
+        width: calc(41.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="six-small"].field {
+        width: calc(50% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="seven-small"].field {
+        width: calc(58.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eight-small"].field {
+        width: calc(66.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="nine-small"].field {
+        width: calc(75% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="ten-small"].field {
+        width: calc(83.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eleven-small"].field {
+        width: calc(91.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="twelve-small"].field {
+        width: calc(100% - 1em) !important;
+    }
+}
+
+/* For tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mg.form .fields > [class*="one-medium"].field {
+        width: calc(8.33333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="two-medium"].field {
+        width: calc(16.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="three-medium"].field {
+        width: calc(25% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="four-medium"].field {
+        width: calc(33.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="five-medium"].field {
+        width: calc(41.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="six-medium"].field {
+        width: calc(50% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="seven-medium"].field {
+        width: calc(58.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eight-medium"].field {
+        width: calc(66.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="nine-medium"].field {
+        width: calc(75% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="ten-medium"].field {
+        width: calc(83.3333333333% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="eleven-medium"].field {
+        width: calc(91.6666666667% - 1em) !important;
+    }
+
+    .mg.form .fields > [class*="twelve-medium"].field {
+        width: calc(100% - 1em) !important;
+    }
+}
+
+/* inputs */
+.mg.form input,
+.mg.form textarea,
+.mg.form select {
+    width: calc(100% - 2em);
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0.6em 1em;
+    tap-highlight-color: white;
+    line-height: 1.2em;
+    font-size: 1em;
+    background: white;
+    border: 1px solid rgba(30, 30, 30, 0.15);
+    border-radius: 0.2em;
+    transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+/** Focused **/
+
+.mg.form .field input:focus,
+.mg.form .field select:focus,
+.mg.form .field textarea:focus{
+    border-color: #1ca9ff !important;
+    box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
+}
+
+/** disabled field **/
+.mg.form .disabled.field,
+.mg.form .field:disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/** placeholder **/
+.mg.form ::placeholder {
+    color: rgba(200, 200, 200, 0.9);
+}
+
+/**
+    Inline fields
+ */
+.mg.form .inline.field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mg.form .inline.field > input {
+    vertical-align: middle;
+}
+
+.mg.form .inline.field > label {
+    white-space: nowrap;
+    margin: 0.03em 1em 0 0;
+    vertical-align: baseline;
+    display: inline-block;
+}
