@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="css/main.css"/>
@@ -27,29 +28,32 @@
                 <div class="mg six-large eight-medium twelve-small column center">
                     <div class="mg segment">
                         <div class="content">
-                            <form class="mg form">
+                            <form class="mg form" id="registrationForm" method="post" onsubmit="return registerUser(this)" enctype="multipart/form-data">
+                                <div class="mg segment error">
+
+                                </div>
                                 <div class="field">
                                     <label>Name</label>
                                     <div class="fields">
                                         <div class="six-small six-medium field">
-                                            <input name="firstname" placeholder="First Name" type="text"/>
+                                            <input name="firstname" required placeholder="First Name" type="text"/>
                                         </div>
                                         <div class="six-small six-medium field">
-                                            <input name="lastname" placeholder="Last Name" type="text"/>
+                                            <input name="lastname" placeholder="Last Name" required type="text"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label for="email">Email</label>
-                                    <input id="email" name="email" placeholder="Email" type="email"/>
+                                    <input id="email" name="email" placeholder="Email" type="email" required/>
                                 </div>
                                 <div class="field">
                                     <label for="username">Username</label>
-                                    <input id="username" name="username" placeholder="Username"/>
+                                    <input id="username" name="username" placeholder="Username" required/>
                                 </div>
                                 <div class="field">
                                     <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" placeholder="Password"/>
+                                    <input id="password" name="password" type="password" placeholder="Password" required/>
                                 </div>
                                 <div class="field">
                                     <button class="mg fluid button primary" id="register">Register</button>
@@ -66,37 +70,6 @@
         </div>
     </div>
 </div>
-<!--Temporary-->
-<div class="mg modal" data-trigger="register">
-    <div class="body">
-        <i class="close fas fa-times"></i>
-        <div class="title">
-            Login as Admin or User
-        </div>
-        <div class="content" style="border-bottom-left-radius: inherit; border-bottom-right-radius: inherit">
-            <div class="mg row">
-                <div class="five-large five-medium five-small column">
-                    <img src="images/admin-female.png" class="mg small image"/>
-                    <h2>Admin</h2>
-                    <a href="admin" class="mg primary button">Proceed</a>
-                </div>
-                <div class="two-large two-medium two-small column">
-                    <div class="mg horizontal divider"></div>
-                </div>
-                <div class="five-large five-medium five-small column">
-                    <img src="images/admin-male.png" class="mg small image"/>
-                    <h2>User</h2>
-                    <a href="user" class="mg primary button">Proceed</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    document.getElementById("register").addEventListener("click", function (event) {
-        event.preventDefault();
-    })
-</script>
 <script src="js/mg-framework/mg-framework.js"></script>
 </body>
 </html>

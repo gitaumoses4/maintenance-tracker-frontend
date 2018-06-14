@@ -5,7 +5,7 @@
  */
 
 body {
-    background: #ffffff;
+    background: #f4f4f4;
 }
 
 .margined.left {
@@ -234,6 +234,73 @@ table img {
 .approved.ribbon {
     background: #4CAF50;
     color: white;
+}
+
+.mg.form .error,
+.mg.form .success {
+    display: none;
+}
+
+.mg.form.error .error {
+    display: block;
+}
+
+.mg.form.success .success {
+    display: block;
+}
+
+.mg.segment.error {
+    border-color: #a81005;
+    color: #a81005
+}
+
+.mg.segment.success {
+    border-color: #058f12;
+    color: #058f12;
+}
+
+.loading {
+    position: relative;
+    cursor: default;
+    pointer-events: none;
+}
+
+.loading:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .8);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.loading:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: -0.5em 0 0 -1.5em;
+    width: 2em;
+    height: 2em;
+    -webkit-animation: progress-bar 0.8s linear;
+    -webkit-animation-iteration-count: infinite;
+    border: 0.2em solid;
+    border-color: #105d8f rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 1px transparent;
+    visibility: visible;
+    z-index: 101;
+    border-radius: 500rem;
+}
+
+@keyframes progress-bar {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 .resolved.ribbon {
