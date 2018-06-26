@@ -1,3 +1,5 @@
+import {parseHTML} from "./html-parser";
+
 const API_BASE_URL = "http://localhost:5000/api/v2";
 const HEADERS = {"Content-Type": "application/json"};
 
