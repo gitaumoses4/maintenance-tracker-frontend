@@ -100,6 +100,15 @@ function registerUser(form) {
     return false;
 }
 
+function networkError(form) {
+    let errorDisplay = form.getElementsByClassName("error")[0];
+    let error = document.createElement("p");
+    error.innerHTML = "Error accessing the server. Please try again.";
+
+    errorDisplay.innerHTML = "";
+    errorDisplay.appendChild(error);
+}
+
 function loginUser(form) {
     form.classList.add("loading");
     fetch(API_BASE_URL + "/auth/login", {
@@ -109,7 +118,20 @@ function loginUser(form) {
     }).then(response => response.json())
         .then(data => {
             form.classList.remove("loading");
-            setUserDetails(data.data.token, data.data.user);
-            window.location.href = isAdmin() ? "/admin" : "/user";
-        })
+            if (data.status === "success") {
+                setUserDetails(data.data.token, data.data.user);
+                window.location.href = isAdmin() ? "/admin" : "/user";
+            } else {
+                let errorDisplay = form.getElementsByClassName("error")[0];
+                errorDisplay.innerHTML = "";
+                let error = document.createElement("p");
+                error.innerHTML = data.message;
+
+                errorDisplay.appendChild(error);
+                form.classList.add("error");
+            }
+        }).catch(function () {
+        networkError(form)
+    });
+    return false;
 }
