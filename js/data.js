@@ -97,11 +97,7 @@ function registerUser(form) {
 
 function networkError(form) {
     let errorDisplay = form.getElementsByClassName("error")[0];
-    let error = document.createElement("p");
-    error.innerHTML = "Error accessing the server. Please try again.";
-
-    errorDisplay.innerHTML = "";
-    errorDisplay.appendChild(error);
+    errorDisplay.innerHTML = "<ul><li>Error accessing the server. Please try again.</li></ul>";
 }
 
 function loginUser(form) {
