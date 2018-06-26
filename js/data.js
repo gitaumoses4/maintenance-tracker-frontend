@@ -74,7 +74,6 @@ function toJSON(form) {
 }
 
 function registerUser(form) {
-    alert("hi")
     form.classList.add("loading");
     fetch(API_BASE_URL + "/auth/signup", {
         method: "post",
