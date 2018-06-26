@@ -1,5 +1,3 @@
-import {parseHTML} from "./html-parser";
-
 const API_BASE_URL = "http://localhost:5000/api/v2";
 const HEADERS = {"Content-Type": "application/json"};
 
@@ -76,6 +74,7 @@ function toJSON(form) {
 }
 
 function registerUser(form) {
+    alert("hi")
     form.classList.add("loading");
     fetch(API_BASE_URL + "/auth/signup", {
         method: "post",
@@ -87,13 +86,7 @@ function registerUser(form) {
                 form.classList.remove("loading");
 
                 let errorDisplay = form.getElementsByClassName("error")[0];
-                errorDisplay.innerHTML = "";
-                let list = document.createElement("ul");
-                Object.keys(data.data).forEach(function (key) {
-                    list.innerHTML += "<li>" + data.data[key] + "</li>";
-                });
-
-                errorDisplay.appendChild(list);
+                errorDisplay.innerHTML = "<ul>" + bindListItems("<li>{{ data }}</li>", data.message) + "</ul>";
                 form.classList.add("error");
             } else {
                 loginUser(form);
@@ -125,15 +118,50 @@ function loginUser(form) {
                 window.location.href = isAdmin() ? "/admin" : "/user";
             } else {
                 let errorDisplay = form.getElementsByClassName("error")[0];
-                errorDisplay.innerHTML = "";
-                let error = document.createElement("p");
-                error.innerHTML = data.message;
-
-                errorDisplay.appendChild(error);
+                errorDisplay.innerHTML = "<ul>" + bindObject("<li>{{ message }}</li>", data) + "</ul>";
                 form.classList.add("error");
             }
         }).catch(function () {
         networkError(form)
     });
     return false;
+}
+
+function bindListItems(element, data) {
+    let output = "";
+    for (let i = 0; i < data.length; i++) {
+        output += bindObject(element, {"data": data[i]});
+    }
+
+    return output;
+}
+
+function bindListObjects(element, data) {
+    let output = "";
+    for (let i = 0; i < data.length; i++) {
+        output += bindObject(element, data[i]);
+    }
+
+    return output;
+}
+
+function bindObject(content, data) {
+    let regExp = /{{ [A-Za-z0-9.]+ }}/g;
+    let result;
+    let output = content;
+    while (result = regExp.exec(content)) {
+        output = output.replace(result[0], getValue(result, data));
+    }
+    return output;
+}
+
+function getValue(variable, data) {
+    variable = String(variable).replace("{{", "").replace("}}", "");
+
+    let res = variable.split(".");
+    let current = data;
+    for (let i = 0; i < res.length; i++) {
+        current = current[res[i].trim()]
+    }
+    return current;
 }
