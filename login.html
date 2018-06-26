@@ -28,14 +28,17 @@
                 <div class="mg six-large eight-medium twelve-small column center">
                     <div class="mg segment">
                         <div class="content">
-                            <form class="mg form">
+                            <form class="mg form" method="post" enctype="multipart/form-data" onsubmit="return loginUser(this)">
+                                <div class="mg segment error">
+
+                                </div>
                                 <div class="field">
                                     <label for="username">Username</label>
-                                    <input id="username" name="username" placeholder="Username"/>
+                                    <input id="username" name="username" required placeholder="Username"/>
                                 </div>
                                 <div class="field">
                                     <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" placeholder="Password"/>
+                                    <input id="password" name="password" type="password" required placeholder="Password"/>
                                 </div>
                                 <div class="field">
                                     <button class="mg fluid button primary" id="login">Login</button>

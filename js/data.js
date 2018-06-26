@@ -94,16 +94,22 @@ function registerUser(form) {
                 errorDisplay.appendChild(list);
                 form.classList.add("error");
             } else {
-                fetch(API_BASE_URL + "/auth/login", {
-                    method: "post",
-                    headers: HEADERS,
-                    body: JSON.stringify(toJSON(form))
-                }).then(response => response.json())
-                    .then(data => {
-                        setUserDetails(data.data.token, data.data.user);
-                        window.location.href = isAdmin() ? "/admin" : "/user";
-                    })
+                loginUser(form);
             }
         });
     return false;
+}
+
+function loginUser(form) {
+    form.classList.add("loading");
+    fetch(API_BASE_URL + "/auth/login", {
+        method: "post",
+        headers: HEADERS,
+        body: JSON.stringify(toJSON(form))
+    }).then(response => response.json())
+        .then(data => {
+            form.classList.remove("loading");
+            setUserDetails(data.data.token, data.data.user);
+            window.location.href = isAdmin() ? "/admin" : "/user";
+        })
 }
