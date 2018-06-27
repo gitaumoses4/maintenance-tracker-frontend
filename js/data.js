@@ -73,90 +73,22 @@ function toJSON(form) {
     return object;
 }
 
-function registerUser(form) {
-    form.classList.add("loading");
-    fetch(API_BASE_URL + "/auth/signup", {
-        method: "post",
+document.addEventListener("DOMContentLoaded", function () {
+    // Login form component
+    new Component({
+        id: "loginForm",
+        url: API_BASE_URL + "/auth/login",
+        method: "POST",
         headers: HEADERS,
-        body: JSON.stringify(toJSON(form))
-    }).then(response => response.json())
-        .then(data => {
-            if (data.status === "error") {
-                form.classList.remove("loading");
-
-                let errorDisplay = form.getElementsByClassName("error")[0];
-                errorDisplay.innerHTML = "<ul>" + bindListItems("<li>{{ data }}</li>", data.message) + "</ul>";
-                form.classList.add("error");
-            } else {
-                loginUser(form);
-            }
-        });
-    return false;
-}
-
-function networkError(form) {
-    let errorDisplay = form.getElementsByClassName("error")[0];
-    errorDisplay.innerHTML = "<ul><li>Error accessing the server. Please try again.</li></ul>";
-}
-
-function loginUser(form) {
-    form.classList.add("loading");
-    fetch(API_BASE_URL + "/auth/login", {
-        method: "post",
-        headers: HEADERS,
-        body: JSON.stringify(toJSON(form))
-    }).then(response => response.json())
-        .then(data => {
-            form.classList.remove("loading");
+        success: function (data) {
             if (data.status === "success") {
                 setUserDetails(data.data.token, data.data.user);
                 window.location.href = isAdmin() ? "/admin" : "/user";
-            } else {
-                let errorDisplay = form.getElementsByClassName("error")[0];
-                errorDisplay.innerHTML = "<ul>" + bindObject("<li>{{ message }}</li>", data) + "</ul>";
-                form.classList.add("error");
             }
-        }).catch(function () {
-        networkError(form)
+        },
+        error: function () {
+
+        }
     });
-    return false;
-}
 
-function bindListItems(element, data) {
-    let output = "";
-    for (let i = 0; i < data.length; i++) {
-        output += bindObject(element, {"data": data[i]});
-    }
-
-    return output;
-}
-
-function bindListObjects(element, data) {
-    let output = "";
-    for (let i = 0; i < data.length; i++) {
-        output += bindObject(element, data[i]);
-    }
-
-    return output;
-}
-
-function bindObject(content, data) {
-    let regExp = /{{ [A-Za-z0-9.]+ }}/g;
-    let result;
-    let output = content;
-    while (result = regExp.exec(content)) {
-        output = output.replace(result[0], getValue(result, data));
-    }
-    return output;
-}
-
-function getValue(variable, data) {
-    variable = String(variable).replace("{{", "").replace("}}", "");
-
-    let res = variable.split(".");
-    let current = data;
-    for (let i = 0; i < res.length; i++) {
-        current = current[res[i].trim()]
-    }
-    return current;
-}
+});

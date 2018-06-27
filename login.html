@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="js/mg-frontend.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
@@ -28,9 +29,19 @@
                 <div class="mg six-large eight-medium twelve-small column center">
                     <div class="mg segment">
                         <div class="content">
-                            <form class="mg form" method="post" enctype="multipart/form-data" onsubmit="return loginUser(this)">
-                                <div class="mg segment error">
-
+                            <form class="mg form" method="post" enctype="multipart/form-data"
+                                  id="loginForm">
+                                <div class="status">
+                                    <div class="mg segment error" m-if="status === 'error'">
+                                        <ul>
+                                            <li m-for="error in message">{{ error }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mg segment success" m-else>
+                                        <ul>
+                                            <li>Login successful</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="field">
                                     <label for="username">Username</label>
@@ -38,7 +49,8 @@
                                 </div>
                                 <div class="field">
                                     <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" required placeholder="Password"/>
+                                    <input id="password" name="password" type="password" required
+                                           placeholder="Password"/>
                                 </div>
                                 <div class="field">
                                     <button class="mg fluid button primary">Login</button>
