@@ -5,28 +5,30 @@ function Component(content) {
 
     let statusView;
 
-    if (element.tagName.toLowerCase() === "form") {
-        let statusPanel = element.getElementsByClassName("status")[0];
-        if (statusPanel) {
-            statusView = new View({
-                element: statusPanel
+    if (element) {
+        if (element.tagName.toLowerCase() === "form") {
+            let statusPanel = element.getElementsByClassName("status")[0];
+            if (statusPanel) {
+                statusView = new View({
+                    element: statusPanel
+                })
+            }
+            element.addEventListener("submit", function (event) {
+                event.preventDefault();
+                let formData = new FormData(element);
+                let object = {};
+
+                formData.forEach(function (value, key) {
+                    object[key] = value;
+                });
+
+                content.data = object;
+                load(content, element);
             })
-        }
-        element.addEventListener("submit", function (event) {
-            event.preventDefault();
-            let formData = new FormData(element);
-            let object = {};
 
-            formData.forEach(function (value, key) {
-                object[key] = value;
-            });
-
-            content.data = object;
+        } else {
             load(content, element);
-        })
-
-    } else {
-        load(content, element);
+        }
     }
 
 
@@ -68,16 +70,18 @@ function View(content) {
 
     let element = content.hasOwnProperty("id") ? document.getElementById(content.id) : content.element;
 
-    this.html = element.innerHTML;
+    if (element) {
+        this.html = element.innerHTML;
 
-    if (this.data) {
-        parse(element, this.data, this.methods)
-    }
+        if (this.data) {
+            parse(element, this.data, this.methods)
+        }
 
-    this.refresh = function (data) {
-        this.data = data;
-        element.innerHTML = this.html;
-        parse(element, data, this.methods);
+        this.refresh = function (data) {
+            this.data = data;
+            element.innerHTML = this.html;
+            parse(element, data, this.methods);
+        }
     }
 
     function setData(element, data, methods) {
@@ -117,6 +121,7 @@ function View(content) {
             }
         }
         if (element.children.length > 0 || element.style.display === "none") {
+
             return;
         }
         let inner = element.innerHTML.trim();
@@ -135,8 +140,9 @@ function View(content) {
             element.removeAttribute("m-on:click");
 
             element.addEventListener("click", function () {
-                let variables = /\([A-Za-z0-9]+\)/.exec(func);
+                let variables = /\([A-Za-z0-9.]+\)/.exec(func);
                 let methodName = func.replace(variables, "");
+
 
                 variables = String(variables);
                 let args = variables.replace("(", "").replace(")", "").trim().split(",");
@@ -146,7 +152,6 @@ function View(content) {
                         args[i] = getValue(args[i], data);
                     }
                 }
-
                 methods[methodName].apply(this, args);
             });
         }
@@ -156,73 +161,101 @@ function View(content) {
         variable = String(variable).replace("{{", "").replace("}}", "");
 
         let res = variable.split(".");
+
         let current = data;
         for (let i = 0; i < res.length; i++) {
-            current = current[res[i].trim()]
+            if (current) {
+                current = current[res[i].trim()]
+            }
         }
         return current;
     }
 
-    function parse(element, data, methods) {
-        if (element.hasAttribute("m-for")) {
-            let check = element.getAttribute("m-for");
-            let _for = check.split(" ");
-            let key = _for[2];
-            let value = _for[0];
+    function getElements(element) {
+        let elements = []
+        let nodes = element.children;
+        for (let i = 0; i < nodes.length; i++) {
+            elements.push(nodes[i]);
+            if (!element.hasAttribute("m-for")) {
+                elements = elements.concat(getElements(nodes[i]))
+            }
+        }
+        return elements;
+    }
 
-            let parent = element.parentNode;
+    function parse(parent, data, methods) {
+        let elements = getElements(parent);
 
-            element.removeAttribute("m-for");
-            parent.removeChild(element);
+        for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            if (element.hasAttribute("m-for")) {
+                let check = element.getAttribute("m-for");
+                let _for = check.split(" ");
+                let key = _for[2].trim().split(".");
+                let value = _for[0];
 
-            if (Array.isArray(data[key])) {
-                for (let i = 0; i < data[key].length; i++) {
-                    let clone = element.cloneNode(true);
+                let _data = data;
 
-                    let obj = {}
-                    obj[value] = data[key][i];
-
-                    setData(clone, obj, methods);
-
-                    parent.appendChild(clone);
+                for (let i = 0; i < key.length; i++) {
+                    _data = _data[key[i]];
                 }
-            } else {
-                if (/\([A-Za-z0-9,_]+\)/.exec(value)) {
-                    let a = value.replace("(", "").replace(")", "").split(",");
 
-                    Object.keys(data[key]).forEach(function (i) {
+                let parent = element.parentNode;
+
+                element.removeAttribute("m-for");
+                parent.removeChild(element);
+
+                if (typeof _data === "string") {
+                    _data = [_data];
+                }
+                if (Array.isArray(_data)) {
+                    for (let i = 0; i < _data.length; i++) {
                         let clone = element.cloneNode(true);
 
                         let obj = {}
-                        obj[a[1]] = i;
-                        obj[a[0]] = data[key][i];
+                        obj[value] = _data[i];
 
                         setData(clone, obj, methods)
+                        let children = clone.children;
+                        for (let j = 0; j < children.length; j++) {
+                            setData(children[j], obj, methods);
+                        }
 
                         parent.appendChild(clone);
-                    });
+                    }
                 } else {
-                    if (data[key]) {
-                        Object.keys(data[key]).forEach(function (i) {
+                    if (/\([A-Za-z0-9,_]+\)/.exec(value)) {
+                        let a = value.replace("(", "").replace(")", "").split(",");
+
+                        Object.keys(_data).forEach(function (i) {
                             let clone = element.cloneNode(true);
 
                             let obj = {}
-                            obj[value] = data[key][i];
+                            obj[a[1]] = i;
+                            obj[a[0]] = _data[i];
 
                             setData(clone, obj, methods);
 
                             parent.appendChild(clone);
                         });
+                    } else {
+                        if (_data) {
+                            Object.keys(_data).forEach(function (i) {
+                                let clone = element.cloneNode(true);
+
+                                let obj = {}
+                                obj[value] = _data[i];
+
+                                setData(clone, obj, methods);
+
+                                parent.appendChild(clone);
+                            });
+                        }
                     }
                 }
-            }
 
-        } else {
-            setData(element, data, methods);
-
-            let nodes = element.children;
-            for (let i = 0; i < nodes.length; i++) {
-                parse(nodes[i], data, methods)
+            } else {
+                setData(element, data, methods);
             }
         }
     }
