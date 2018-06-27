@@ -179,9 +179,13 @@
             </div>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg table">
+        <div class="mg table" id="user-home-requests">
             <h2>Latest Maintenance/Repair Requests</h2>
-            <table id="user-home-requests">
+            <div m-if="data.requests.length == 0" class="empty">
+                No maintenance/repair requests <br/>
+                <i class="fas fa-database"></i>
+            </div>
+            <table m-else>
                 <thead>
                 <tr>
                     <th>Request ID</th>
