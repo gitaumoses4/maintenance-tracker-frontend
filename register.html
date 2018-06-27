@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/mg-frontend.js"></script>
     <script src="js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
@@ -28,10 +29,19 @@
                 <div class="mg six-large eight-medium twelve-small column center">
                     <div class="mg segment">
                         <div class="content">
-                            <form class="mg form" id="registrationForm" method="post"
-                                  onsubmit="return registerUser(this)" enctype="multipart/form-data">
-                                <div class="mg segment error">
-
+                            <form class="mg form" id="signUpForm" method="post"
+                                  enctype="multipart/form-data">
+                                <div class="status">
+                                    <div class="mg segment error" m-if="status === 'error'">
+                                        <ul>
+                                            <li m-for="error in message">{{ error }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mg segment success" m-else>
+                                        <ul>
+                                            <li>Registration successful</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="field">
                                     <label>Name</label>
@@ -73,5 +83,6 @@
     </div>
 </div>
 <script src="js/mg-framework/mg-framework.js"></script>
+<script src="js/signup.js"></script>
 </body>
 </html>
