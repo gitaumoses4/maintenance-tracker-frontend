@@ -14,3 +14,12 @@ new View({
     url: API_BASE_URL + "/users/requests/rejected",
     headers: getAuthHeaders()
 });
+
+
+new View({
+    id: "user-home-feedback"
+}).load({
+    method: "GET",
+    url: API_BASE_URL + "/users/feedback",
+    headers: getAuthHeaders()
+});

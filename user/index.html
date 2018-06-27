@@ -154,46 +154,18 @@
                         <div class="header">
                             Latest Feedback
                         </div>
-                        <div class="content feedback-container">
-                            <a class="feedback" href="new-request.html">
+                        <div class="content feedback-container" id="user-home-feedback">
+                            <a class="feedback" href="new-request.html" m-for="feed in data">
                                 <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                                 <div class="content">
                                     <div class="title">
-                                        Moses Gitau
+                                        {{ feed.created_by.firstname }} {{ feed.created_by.lastname }}
                                     </div>
                                     <div class="date">
-                                        5 minutes ago
+                                        {{ feed.feedback.updated_at }}
                                     </div>
                                     <div class="description">
-                                        Kindly elaborate on the issue you are facing.
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="feedback" href="request.html">
-                                <img src="../images/user-female.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        Just Now
-                                    </div>
-                                    <div class="description">
-                                        Kindly elaborate on the issue you are facing.
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="feedback" href="request.html">
-                                <img src="../images/user-female.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        Just Now
-                                    </div>
-                                    <div class="description">
-                                        Your device does not have a serial number.
+                                        {{ feed.feedback.message }}
                                     </div>
                                 </div>
                             </a>

@@ -108,18 +108,15 @@ function View(content) {
                 body: JSON.stringify(details.data)
             })
         }
-        let that = this;
 
-        window.setTimeout(function () {
-            fet.then(response => response.json())
-                .then(data => {
-                    element.innerHTML = inner;
-                    that.refresh(data);
-                    element.classList.remove("loading")
-                }).catch(error => {
+        fet.then(response => response.json())
+            .then(data => {
                 element.innerHTML = inner;
-            })
-        }, 5000)
+                this.refresh(data);
+                element.classList.remove("loading")
+            }).catch(error => {
+            element.innerHTML = inner;
+        })
     };
 
     function setData(element, data, methods) {
@@ -221,6 +218,14 @@ function View(content) {
         return elements;
     }
 
+    function setDataRecursive(parent, data, methods) {
+        setData(parent, data, methods);
+        let children = parent.children;
+        for (let j = 0; j < children.length; j++) {
+            setDataRecursive(children[j], data, methods);
+        }
+    }
+
     function parse(parent, data, methods) {
         let elements = getElements(parent);
 
@@ -252,12 +257,7 @@ function View(content) {
 
                         let obj = {}
                         obj[value] = _data[i];
-
-                        setData(clone, obj, methods)
-                        let children = clone.children;
-                        for (let j = 0; j < children.length; j++) {
-                            setData(children[j], obj, methods);
-                        }
+                        setDataRecursive(clone, obj, methods);
 
                         parent.appendChild(clone);
                     }
