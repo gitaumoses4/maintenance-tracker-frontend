@@ -14,6 +14,10 @@ let dropdowns = document.getElementsByClassName("mg dropdown");
 
 for (let i = 0; i < dropdowns.length; i++) {
     let dropdown = dropdowns[i];
+    initDropdown(dropdown)
+}
+
+function initDropdown(dropdown) {
     let trigger, menu;
     for (let j = 0; j < dropdown.childNodes.length; j++) {
         let child = dropdown.childNodes[j];
@@ -47,7 +51,9 @@ for (let i = 0; i < dropdowns.length; i++) {
             });
         }
     }
-}/**
+}
+
+/**
  *  @author Moses Gitau
  *
  *  -----------------
@@ -110,6 +116,7 @@ function showModal(modal, modalBody) {
         modalBody.style.opacity = "1";
     }, 100);
 }
+
 /**
  * @author Moses Gitau
  *

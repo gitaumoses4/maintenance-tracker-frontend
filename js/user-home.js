@@ -4,16 +4,16 @@ const resolved = new View({
     method: "GET",
     url: API_BASE_URL + "/users/requests/resolved",
     headers: getAuthHeaders()
-});
+}).start();
 
 
 const rejected = new View({
     id: "user-home-rejected"
 }).load({
     method: "GET",
-    url: API_BASE_URL + "/users/requests/rejected",
+    url: API_BASE_URL + "/users/requests/disapproved",
     headers: getAuthHeaders()
-});
+}).start();
 
 
 const feedback = new View({
@@ -22,7 +22,7 @@ const feedback = new View({
     method: "GET",
     url: API_BASE_URL + "/users/feedback",
     headers: getAuthHeaders()
-});
+}).start();
 
 const requests = new View({
     id: "user-home-requests"
@@ -30,8 +30,36 @@ const requests = new View({
     method: "GET",
     url: API_BASE_URL + "/users/requests/all",
     headers: getAuthHeaders()
+}).start();
+
+const notifications = new View({
+    id: "user-home-notifications",
+    methods: {
+        readNotification: function (id) {
+            console.log(id)
+            fetch(API_BASE_URL + "/users/notifications/" + id, {
+                method: "PUT",
+                headers: getAuthHeaders(),
+                body: ''
+            }).then(response => response.json())
+                .then(data => {
+                    notifications.start();
+                    mobileNotifications.start();
+                })
+        }
+    }
+}).load({
+    method: "GET",
+    url: API_BASE_URL + "/users/notifications/unread",
+    headers: getAuthHeaders()
+}).start().then(function () {
+    initDropdown(document.getElementById("user-home-notifications"))
 });
 
-const all = [resolved, rejected, feedback, requests];
-
-fetchData(all);
+const mobileNotifications = new View({
+    id: "user-home-notifications-2"
+}).load({
+    method: "GET",
+    url: API_BASE_URL + "/users/notifications/unread",
+    headers: getAuthHeaders()
+}).start();
