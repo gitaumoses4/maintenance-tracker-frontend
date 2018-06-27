@@ -84,6 +84,44 @@ function View(content) {
         }
     }
 
+    this.load = function (details) {
+        let fet;
+        element.classList.add("loading");
+        let inner = element.innerHTML;
+
+        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
+        let result;
+        let output = inner;
+        while (result = regExp.exec(inner)) {
+            output = output.replace(result[0], "");
+        }
+        element.innerHTML = output;
+        if (details.method.toLowerCase() === "get") {
+            fet = fetch(details.url, {
+                method: details.method,
+                headers: details.headers
+            })
+        } else {
+            fet = fetch(details.url, {
+                method: details.method,
+                headers: details.headers,
+                body: JSON.stringify(details.data)
+            })
+        }
+        let that = this;
+
+        window.setTimeout(function () {
+            fet.then(response => response.json())
+                .then(data => {
+                    element.innerHTML = inner;
+                    that.refresh(data);
+                    element.classList.remove("loading")
+                }).catch(error => {
+                element.innerHTML = inner;
+            })
+        }, 5000)
+    };
+
     function setData(element, data, methods) {
         if (element.hasAttribute("m-if")) {
             let currentElement = element;
