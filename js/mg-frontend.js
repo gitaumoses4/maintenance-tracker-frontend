@@ -84,18 +84,14 @@ function View(content) {
         }
     }
 
-    this.load = function (details) {
-        let fet;
-        element.classList.add("loading");
-        let inner = element.innerHTML;
+    this.then = function (another) {
+        this.success = another;
+        return this;
+    };
 
-        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
-        let result;
-        let output = inner;
-        while (result = regExp.exec(inner)) {
-            output = output.replace(result[0], "");
-        }
-        element.innerHTML = output;
+    this.start = function () {
+        let fet;
+        let details = this.details;
         if (details.method.toLowerCase() === "get") {
             fet = fetch(details.url, {
                 method: details.method,
@@ -111,12 +107,34 @@ function View(content) {
 
         fet.then(response => response.json())
             .then(data => {
-                element.innerHTML = inner;
+                element.innerHTML = this.inner;
                 this.refresh(data);
-                element.classList.remove("loading")
+                element.classList.remove("loading");
+                if (this.success) {
+                    this.success.apply(this, [])
+                }
             }).catch(error => {
-            element.innerHTML = inner;
-        })
+            element.innerHTML = this.inner;
+            if (this.success) {
+                this.success.apply(this, [])
+            }
+        });
+        return this;
+    };
+
+    this.load = function (details) {
+        this.details = details;
+        element.classList.add("loading");
+        this.inner = element.innerHTML;
+
+        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
+        let result;
+        let output = this.inner;
+        while (result = regExp.exec(this.inner)) {
+            output = output.replace(result[0], "");
+        }
+        element.innerHTML = output;
+        return this;
     };
 
     function setData(element, data, methods) {
@@ -141,9 +159,10 @@ function View(content) {
 
                 expression[0] = getValue(expression[0], data);
 
-                expression[0] = /'[A-Za-z0-9_]+'/.exec(expression[2]) ? "'" + expression[0] + "'" : expression[0];
+                expression[0] = /'[A-Za-z0-9_]*'/.exec(expression[2]) ? "'" + expression[0] + "'" : expression[0];
 
                 let result = eval(expression.join(" "));
+
 
                 if (result) {
                     currentElement.style.display = "";
@@ -155,20 +174,6 @@ function View(content) {
                 currentElement = currentElement.nextElementSibling;
             }
         }
-        if (element.children.length > 0 || element.style.display === "none") {
-
-            return;
-        }
-        let inner = element.innerHTML.trim();
-
-        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
-        let result;
-        let output = inner;
-        while (result = regExp.exec(inner)) {
-            output = output.replace(result[0], getValue(result, data));
-        }
-
-        element.innerHTML = output;
 
         if (element.hasAttribute("m-on:click")) {
             let func = element.getAttribute("m-on:click");
@@ -190,6 +195,40 @@ function View(content) {
                 methods[methodName].apply(this, args);
             });
         }
+
+        if (element.tagName.toLowerCase() === "img") {
+            setAttribute("src", element, data);
+        } else if (element.tagName.toLowerCase() === "a") {
+            setAttribute("href", element, data);
+        }
+
+        if (element.children.length > 0 || element.style.display === "none") {
+            return;
+        }
+        let inner = element.innerHTML.trim();
+
+
+        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
+        let result;
+        let output = inner;
+        while (result = regExp.exec(inner)) {
+            output = output.replace(result[0], getValue(result, data));
+        }
+
+        element.innerHTML = output;
+
+    }
+
+    function setAttribute(attribute, element, data) {
+        let attr = element.getAttribute(attribute);
+        let regExp = /{{ [A-Za-z0-9._]+ }}/g;
+        let result;
+        let output = attr;
+        while (result = regExp.exec(attr)) {
+            output = output.replace(result[0], getValue(result, data));
+        }
+
+        element.setAttribute(attribute, output);
     }
 
     function getValue(variable, data) {
@@ -255,7 +294,7 @@ function View(content) {
                     for (let i = 0; i < _data.length; i++) {
                         let clone = element.cloneNode(true);
 
-                        let obj = {}
+                        let obj = {};
                         obj[value] = _data[i];
                         setDataRecursive(clone, obj, methods);
 

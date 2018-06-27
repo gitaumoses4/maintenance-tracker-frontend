@@ -275,6 +275,14 @@ table img {
     min-height: 100px;
 }
 
+.empty {
+    background: white;
+    padding: 2em 1em;
+    color: rgba(0, 0, 0, .5);
+    font-size: 2em;
+    text-align: center;
+}
+
 .loading:before {
     position: absolute;
     content: '';

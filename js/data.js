@@ -72,3 +72,16 @@ function toJSON(form) {
 
     return object;
 }
+
+function fetchData(views) {
+
+    fetchNext(0);
+
+    function fetchNext(index) {
+        views[index].start().then(function () {
+            if (index < views.length - 1) {
+                fetchNext(index + 1)
+            }
+        })
+    }
+}
