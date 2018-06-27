@@ -73,37 +73,22 @@ function toJSON(form) {
     return object;
 }
 
-function registerUser(form) {
-    form.classList.add("loading");
-    fetch(API_BASE_URL + "/auth/signup", {
-        method: "post",
+document.addEventListener("DOMContentLoaded", function () {
+    // Login form component
+    new Component({
+        id: "loginForm",
+        url: API_BASE_URL + "/auth/login",
+        method: "POST",
         headers: HEADERS,
-        body: JSON.stringify(toJSON(form))
-    }).then(response => response.json())
-        .then(data => {
-            if (data.status === "error") {
-                form.classList.remove("loading");
-
-                let errorDisplay = form.getElementsByClassName("error")[0];
-                errorDisplay.innerHTML = "";
-                let list = document.createElement("ul");
-                Object.keys(data.data).forEach(function (key) {
-                    list.innerHTML += "<li>" + data.data[key] + "</li>";
-                });
-
-                errorDisplay.appendChild(list);
-                form.classList.add("error");
-            } else {
-                fetch(API_BASE_URL + "/auth/login", {
-                    method: "post",
-                    headers: HEADERS,
-                    body: JSON.stringify(toJSON(form))
-                }).then(response => response.json())
-                    .then(data => {
-                        setUserDetails(data.data.token, data.data.user);
-                        window.location.href = isAdmin() ? "/admin" : "/user";
-                    })
+        success: function (data) {
+            if (data.status === "success") {
+                setUserDetails(data.data.token, data.data.user);
+                window.location.href = isAdmin() ? "/admin" : "/user";
             }
-        });
-    return false;
-}
+        },
+        error: function () {
+
+        }
+    });
+
+});

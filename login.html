@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="js/mg-frontend.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
@@ -28,17 +29,31 @@
                 <div class="mg six-large eight-medium twelve-small column center">
                     <div class="mg segment">
                         <div class="content">
-                            <form class="mg form">
+                            <form class="mg form" method="post" enctype="multipart/form-data"
+                                  id="loginForm">
+                                <div class="status">
+                                    <div class="mg segment error" m-if="status === 'error'">
+                                        <ul>
+                                            <li m-for="error in message">{{ error }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mg segment success" m-else>
+                                        <ul>
+                                            <li>Login successful</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="field">
                                     <label for="username">Username</label>
-                                    <input id="username" name="username" placeholder="Username"/>
+                                    <input id="username" name="username" required placeholder="Username"/>
                                 </div>
                                 <div class="field">
                                     <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" placeholder="Password"/>
+                                    <input id="password" name="password" type="password" required
+                                           placeholder="Password"/>
                                 </div>
                                 <div class="field">
-                                    <button class="mg fluid button primary" id="login">Login</button>
+                                    <button class="mg fluid button primary">Login</button>
                                 </div>
                             </form>
                         </div>
@@ -52,37 +67,6 @@
         </div>
     </div>
 </div>
-<!--Temporary-->
-<div class="mg modal" data-trigger="login">
-    <div class="body">
-        <i class="close fas fa-times"></i>
-        <div class="title">
-            Login as Admin or User
-        </div>
-        <div class="content" style="border-bottom-left-radius: inherit; border-bottom-right-radius: inherit">
-            <div class="mg row">
-                <div class="five-large five-medium five-small column">
-                    <img src="images/admin-female.png" class="mg small image"/>
-                    <h2>Admin</h2>
-                    <a href="admin" class="mg primary button">Proceed</a>
-                </div>
-                <div class="two-large two-medium two-small column">
-                    <div class="mg horizontal divider"></div>
-                </div>
-                <div class="five-large five-medium five-small column">
-                    <img src="images/admin-male.png" class="mg small image"/>
-                    <h2>User</h2>
-                    <a href="user" class="mg primary button">Proceed</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    document.getElementById("login").addEventListener("click", function (event) {
-        event.preventDefault();
-    })
-</script>
 <script src="js/mg-framework/mg-framework.js"></script>
 </body>
 </html>
