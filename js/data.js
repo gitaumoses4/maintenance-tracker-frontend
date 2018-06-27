@@ -19,6 +19,10 @@ function guardUserPages(page) {
     }
 }
 
+function deleteUserDetails() {
+    localStorage.clear();
+}
+
 function setUserDetails(token, user) {
     localStorage.setItem("token", token);
     localStorage.setItem("email", user.email);
@@ -85,3 +89,16 @@ function fetchData(views) {
         })
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const logout = document.getElementById("logout");
+    logout.addEventListener("click", function () {
+        deleteUserDetails();
+        window.location.href = "../login.html";
+    });
+
+    new View({
+        id: "user-name",
+        data: {"user": getUser()}
+    });
+});

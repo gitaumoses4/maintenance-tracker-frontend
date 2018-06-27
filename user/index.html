@@ -88,12 +88,13 @@
             <div class="item right aligned">
                 <div class="mg dropdown">
                     <div class="trigger">
-                        <div class="account-options">
-                            <div class="title">Moses Gitau</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/></div>
+                        <div class="account-options"  id="user-name">
+                            <div class="title">{{ user.firstname }} {{ user.lastname }}</div>
+                            <img src="../images/user-male.png" class="mg tiny image"/>
+                        </div>
                     </div>
                     <div class="menu" style="width: 100%">
-                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                        <a class="item" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
                     </div>
                 </div>
             </div>
