@@ -1,35 +1,54 @@
-const resolved = new View({
-    id: "user-home-resolved"
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/requests/resolved",
-    headers: getAuthHeaders()
-}).start();
+class ResolvedRequests extends WebComponent {
+    constructor() {
+        super("user-home-resolved", "GET", API_BASE_URL + '/users/requests/resolved', getAuthHeaders());
+    }
 
+    render() {
+        return "";
+    }
 
-const rejected = new View({
-    id: "user-home-rejected"
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/requests/disapproved",
-    headers: getAuthHeaders()
-}).start();
+    success() {
+        super.success();
+        let data = this.data;
+        this.element.innerHTML = `
+           <div class="header">
+                Resolved Repair Requests
+            </div>
+            <div class="content" style="color: #469d4a">
+                <h1 class="count">${ data.data.total_results }</h1>
+            </div>
+            <div class="footer">
+                <a href="requests.html?status=resolved" class="right aligned">View...</a>
+            </div>
+        `
+    }
+}
 
+class DisapprovedRequests extends WebComponent{
+    constructor() {
+        super("user-home-resolved", "GET", API_BASE_URL + '/users/requests/resolved', getAuthHeaders());
+    }
 
-const feedback = new View({
-    id: "user-home-feedback"
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/feedback",
-    headers: getAuthHeaders()
-}).start();
+    render() {
+        return "";
+    }
 
-const requests = new View({
-    id: "user-home-requests"
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/requests/all",
-    headers: getAuthHeaders()
-}).start();
+    success() {
+        super.success();
+        let data = this.data;
+        this.element.innerHTML = `
+           <div class="header">
+                Resolved Repair Requests
+            </div>
+            <div class="content" style="color: #469d4a">
+                <h1 class="count">${ data.data.total_results }</h1>
+            </div>
+            <div class="footer">
+                <a href="requests.html?status=resolved" class="right aligned">View...</a>
+            </div>
+        `
+    }
+}
 
-
+resolved = new ResolvedRequests();
+resolved.load();
