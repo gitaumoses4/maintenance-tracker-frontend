@@ -134,25 +134,7 @@
                             Latest Feedback
                         </div>
                         <div class="content feedback-container" id="user-home-feedback">
-                            <div m-if="data.length == 0" class="empty">
-                                No feedback yet <br/>
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <a class="feedback" href="request.html?id={{ feed.feedback.request }}" m-for="feed in data"
-                               m-else>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        {{ feed.created_by.firstname }} {{ feed.created_by.lastname }}
-                                    </div>
-                                    <div class="date">
-                                        {{ feed.feedback.updated_at }}
-                                    </div>
-                                    <div class="description">
-                                        {{ feed.feedback.message }}
-                                    </div>
-                                </div>
-                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -246,12 +228,16 @@
 <script type="module">
     import DisapprovedRequestCount from "../js/components/DisapprovedRequestCount.js";
     import ResolvedRequests from "../js/components/ResolvedRequestCount.js";
+    import LatestFeedback from "../js/components/LatestFeedback.js";
 
     const disapproved = new DisapprovedRequestCount();
     disapproved.load();
 
     const resolved = new ResolvedRequests();
     resolved.load();
+
+    const feedback = new LatestFeedback();
+    feedback.load();
 </script>
 </body>
 </html>
