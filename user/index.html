@@ -124,7 +124,7 @@
                             <h1 class="count">{{ data.total_results }}</h1>
                         </div>
                         <div class="footer">
-                            <a href="requests.html" class="right aligned">View...</a>
+                            <a href="requests.html?status=resolved" class="right aligned">View...</a>
                         </div>
                     </div>
                 </div>
@@ -133,13 +133,13 @@
                 <div class="padded">
                     <div class="mg segment" id="user-home-rejected">
                         <div class="header">
-                            Rejected Repair Requests
+                            Disapproved Repair Requests
                         </div>
                         <div class="content" style="color: red">
                             <h1 class="count">{{ data.total_results }}</h1>
                         </div>
                         <div class="footer">
-                            <a href="requests.html" class="right aligned">View...</a>
+                            <a href="requests.html?status=disapproved" class="right aligned">View...</a>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                                 No feedback yet <br/>
                                 <i class="fas fa-database"></i>
                             </div>
-                            <a class="feedback" href="new-request.html" m-for="feed in data" m-else>
+                            <a class="feedback" href="request.html?id={{ feed.feedback.request }}" m-for="feed in data" m-else>
                                 <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                                 <div class="content">
                                     <div class="title">
@@ -194,7 +194,7 @@
                 </thead>
                 <tbody>
                 <tr m-for="request in data.requests">
-                    <td><a href="request.html">#{{ request.id }}</a></td>
+                    <td><a href="request.html?id={{ request.id }}">#{{ request.id }}</a></td>
                     <td>{{ request.created_at }}</td>
                     <td>{{ request.product_name }}</td>
                     <td>
