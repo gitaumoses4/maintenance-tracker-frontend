@@ -31,6 +31,17 @@ function Component(content) {
         }
     }
 
+    this.submit = function () {
+        let formData = new FormData(element);
+        let object = {};
+
+        formData.forEach(function (value, key) {
+            object[key] = value;
+        });
+
+        content.data = object;
+        load(content, element);
+    };
 
     function load(component, element) {
         element.classList.add("loading");
