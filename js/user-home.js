@@ -32,34 +32,4 @@ const requests = new View({
     headers: getAuthHeaders()
 }).start();
 
-const notifications = new View({
-    id: "user-home-notifications",
-    methods: {
-        readNotification: function (id) {
-            console.log(id)
-            fetch(API_BASE_URL + "/users/notifications/" + id, {
-                method: "PUT",
-                headers: getAuthHeaders(),
-                body: ''
-            }).then(response => response.json())
-                .then(data => {
-                    notifications.start();
-                    mobileNotifications.start();
-                })
-        }
-    }
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/notifications/unread",
-    headers: getAuthHeaders()
-}).start().then(function () {
-    initDropdown(document.getElementById("user-home-notifications"))
-});
 
-const mobileNotifications = new View({
-    id: "user-home-notifications-2"
-}).load({
-    method: "GET",
-    url: API_BASE_URL + "/users/notifications/unread",
-    headers: getAuthHeaders()
-}).start();

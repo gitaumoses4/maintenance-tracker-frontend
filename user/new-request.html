@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../js/mg-frontend.js"></script>
+    <script src="../js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
@@ -40,42 +42,37 @@
         <div class="header">Maintenance Tracker</div>
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
-                <div class="mg dropdown notifications">
+                <div class="mg dropdown notifications" id="user-home-notifications">
                     <div class="trigger">
                         Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
+                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">
+                            {{ data.total_results }}
+                        </button>
                     </div>
                     <div class="menu">
-                        <div class="item">
-                            <div class="notification">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        5 minutes ago
-                                    </div>
-                                    <div class="description">
-                                       Your product has been rejected.
-                                    </div>
+                        <div class="item" m-if="data.notifications.length == 0">
+                            <div class="content">
+                                <div class="title">
+                                    No notifications
+                                </div>
+                                <div class="description">
+                                    You do not have any unread notifications
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="notification">
+                        <div class="item" m-else m-for="notification in data.notifications">
+                            <div class="notification" m-on:click="readNotification(notification.id)">
                                 <i class="close fas fa-times"></i>
                                 <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                                 <div class="content">
                                     <div class="title">
-                                        Moses Gitau
+                                        {{ notification.admin.firstname }} {{ notification.admin.lastname }}
                                     </div>
                                     <div class="date">
-                                        5 minutes ago
+                                        {{ notification.created_at }}
                                     </div>
                                     <div class="description">
-                                       Your product has been verified
+                                        {{ notification.message }}
                                     </div>
                                 </div>
                             </div>
@@ -86,12 +83,12 @@
             <div class="item right aligned">
                 <div class="mg dropdown">
                     <div class="trigger">
-                        <div class="account-options">
+                        <div class="account-options" id="user-name">
                             <div class="title">Moses Gitau</div>
                             <img src="../images/user-male.png" class="mg tiny image"/></div>
                     </div>
                     <div class="menu" style="width: 100%">
-                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                        <a class="item" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
                     </div>
                 </div>
             </div>
@@ -123,31 +120,36 @@
 
                 <div class="mg row">
                     <div class="six-large eight-medium twelve-small column center">
-                        <form action="" class="mg form">
+                        <form action="" class="mg form" method="post" enctype="multipart/form-data" id="new-request-form">
                             <div class="field">
                                 <label>Photo</label>
                                 <div class="fields">
                                     <div class="four-large four-medium six-small field">
-                                        <img src="../images/product_1.jpeg" class="mg image" style="width: 100%"/>
+                                        <img src="../images/placeholder.png" class="mg image" id="product-photo-img"
+                                             style="width: 100%"/>
                                     </div>
                                     <div class="eight-large eight-medium six-small field">
-                                        <button class="mg primary button">Change</button>
-                                        <button class="mg danger button">Remove</button>
+                                        <label for="product-photo">Choose
+                                            <input type="file" name="photo" size="10" id="product-photo" onchange="displayImageChosen(this)"/>
+                                        </label>
+                                        <button class="mg danger button" onclick="removePhoto()"
+                                                type="button" id="product-photo-remove">Remove
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Product Name</label>
-                                <input type="text" name="product-name" placeholder="Product Name"/>
+                                <input type="text" name="product_name" id="new-request-product-name" placeholder="Product Name"/>
                             </div>
                             <div class="field">
                                 <label>Description</label>
-                                <textarea rows="10"></textarea>
+                                <textarea rows="10" name="description" id="new-request-description"></textarea>
                             </div>
                             <div class="field">
                                 <div class="fields">
                                     <div class="field">
-                                        <button class="mg button">Cancel</button>
+                                        <button class="mg button" type="button" onclick="clearRequestForm()">Cancel</button>
                                     </div>
                                     <div class="field">
                                         <button class="mg primary button">Submit</button>
@@ -169,35 +171,23 @@
             Notifications
         </div>
         <div class="content">
-            <div class="notifications">
-                <div class="item">
-                    <div class="notification">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Your product has been approved.
-                            </div>
-                        </div>
-                    </div>
+            <div class="notifications" id="user-home-notifications-2">
+                <div m-if="data.notifications.length == 0" class="empty">
+                    No notifications
                 </div>
-                <div class="item">
-                    <div class="notification">
+                <div class="item" m-else>
+                    <div class="notification" m-for="notification in data.notifications">
+                        <i class="close fas fa-times"></i>
                         <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                         <div class="content">
                             <div class="title">
-                                Moses Gitau
+                                {{ notification.admin.firstname }} {{ notification.admin.lastname }}
                             </div>
                             <div class="date">
-                                5 minutes ago
+                                {{ notification.created_at }}
                             </div>
                             <div class="description">
-                               Your product has been assessed.
+                                {{ notification.message }}
                             </div>
                         </div>
                     </div>
@@ -210,5 +200,6 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
+<script src="../js/new-request.js"></script>
 </body>
 </html>
