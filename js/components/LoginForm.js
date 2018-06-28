@@ -1,4 +1,6 @@
-class LoginForm extends FormComponent {
+import FormComponent from "./FormComponent.js";
+
+export default class LoginForm extends FormComponent {
     constructor() {
         super("loginForm", "POST", API_BASE_URL + '/auth/login', HEADERS);
     }
@@ -37,5 +39,3 @@ class LoginForm extends FormComponent {
         }
     }
 }
-
-const login = new LoginForm();
