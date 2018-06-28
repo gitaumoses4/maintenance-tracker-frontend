@@ -1,5 +1,5 @@
 const API_BASE_URL = "http://localhost:5000/api/v2";
-const HEADERS = {"Content-Type": "application/json"};
+const HEADERS = {"Content-Type": "application/json", "Access-Control-Allow-Origin": "all"};
 
 let page = window.location.pathname;
 
@@ -17,6 +17,10 @@ function guardUserPages(page) {
     if (page.startsWith("/user") && !isAuthenticated()) {
         window.location.href = "/login.html";
     }
+}
+
+function deleteUserDetails() {
+    localStorage.clear();
 }
 
 function setUserDetails(token, user) {
@@ -72,3 +76,29 @@ function toJSON(form) {
 
     return object;
 }
+
+function fetchData(views) {
+
+    fetchNext(0);
+
+    function fetchNext(index) {
+        views[index].start().then(function () {
+            if (index < views.length - 1) {
+                fetchNext(index + 1)
+            }
+        })
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const logout = document.getElementById("logout");
+    logout.addEventListener("click", function () {
+        deleteUserDetails();
+        window.location.href = "../login.html";
+    });
+
+    new View({
+        id: "user-name",
+        data: {"user": getUser()}
+    });
+});
