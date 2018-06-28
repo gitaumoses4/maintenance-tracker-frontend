@@ -246,6 +246,14 @@ table img {
     display: none;
 }
 
+.mg.form.error .success {
+    display: none !important;
+}
+
+.mg.form.success .error {
+    display: none !important;
+}
+
 .mg.form.error .error {
     display: block;
 }
