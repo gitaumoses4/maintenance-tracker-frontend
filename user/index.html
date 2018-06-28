@@ -42,41 +42,7 @@
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
                 <div class="mg dropdown notifications" id="user-home-notifications">
-                    <div class="trigger">
-                        Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">
-                            {{ data.total_results }}
-                        </button>
-                    </div>
-                    <div class="menu">
-                        <div class="item" m-if="data.notifications.length == 0">
-                            <div class="content">
-                                <div class="title">
-                                    No notifications
-                                </div>
-                                <div class="description">
-                                    You do not have any unread notifications
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item" m-else m-for="notification in data.notifications">
-                            <div class="notification" m-on:click="readNotification(notification.id)">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                                    </div>
-                                    <div class="date">
-                                        {{ notification.created_at }}
-                                    </div>
-                                    <div class="description">
-                                        {{ notification.message }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="item right aligned">
@@ -197,26 +163,6 @@
         </div>
         <div class="content">
             <div class="notifications" id="user-home-notifications-2">
-                <div m-if="data.notifications.length == 0" class="empty">
-                    No notifications
-                </div>
-                <div class="item" m-else>
-                    <div class="notification" m-for="notification in data.notifications">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                            </div>
-                            <div class="date">
-                                {{ notification.created_at }}
-                            </div>
-                            <div class="description">
-                                {{ notification.message }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="footer">
@@ -229,15 +175,23 @@
     import DisapprovedRequestCount from "../js/components/DisapprovedRequestCount.js";
     import ResolvedRequests from "../js/components/ResolvedRequestCount.js";
     import LatestFeedback from "../js/components/LatestFeedback.js";
+    import Notifications from "../js/components/Notifications.js";
+    import {MobileNotifications} from "../js/components/Notifications.js";
 
-    const disapproved = new DisapprovedRequestCount();
+    const disapproved = new DisapprovedRequestCount("user-home-rejected");
     disapproved.load();
 
-    const resolved = new ResolvedRequests();
+    const resolved = new ResolvedRequests("user-home-resolved");
     resolved.load();
 
-    const feedback = new LatestFeedback();
+    const feedback = new LatestFeedback("user-home-feedback");
     feedback.load();
+
+    const desktopNotifications = new Notifications("user-home-notifications");
+    desktopNotifications.load();
+
+    const mobileNotifications = new MobileNotifications("user-home-notifications-2");
+    mobileNotifications.load();
 </script>
 </body>
 </html>

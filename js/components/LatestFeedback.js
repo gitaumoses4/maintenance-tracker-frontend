@@ -1,8 +1,8 @@
 import WebComponent from "./WebComponent.js";
 
 export default class LatestFeedback extends WebComponent {
-    constructor() {
-        super("user-home-feedback", "GET", API_BASE_URL + '/users/feedback', getAuthHeaders());
+    constructor(id) {
+        super(id, "GET", API_BASE_URL + '/users/feedback', getAuthHeaders());
     }
 
     render() {
@@ -34,7 +34,7 @@ export default class LatestFeedback extends WebComponent {
                                 ${ feed.feedback.message }
                             </div>
                         </div>
-                    </a>`)}`
+                    </a>`).join('')}`
         }
     }
 }
