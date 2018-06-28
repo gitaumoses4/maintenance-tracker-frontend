@@ -1,6 +1,6 @@
 import WebComponent from "./WebComponent.js";
 
-class ResolvedRequests extends WebComponent {
+export default class ResolvedRequests extends WebComponent {
     constructor() {
         super("user-home-resolved", "GET", API_BASE_URL + '/users/requests/resolved', getAuthHeaders());
     }
@@ -25,6 +25,3 @@ class ResolvedRequests extends WebComponent {
         `
     }
 }
-
-resolved = new ResolvedRequests();
-resolved.load();

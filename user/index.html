@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="../js/data.js" type="text/javascript"></script>
-    <script src="../js/mg-frontend.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -139,7 +138,8 @@
                                 No feedback yet <br/>
                                 <i class="fas fa-database"></i>
                             </div>
-                            <a class="feedback" href="request.html?id={{ feed.feedback.request }}" m-for="feed in data" m-else>
+                            <a class="feedback" href="request.html?id={{ feed.feedback.request }}" m-for="feed in data"
+                               m-else>
                                 <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                                 <div class="content">
                                     <div class="title">
@@ -243,6 +243,15 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
-<script src="../js/user-home.js"></script>
+<script type="module">
+    import DisapprovedRequestCount from "../js/components/DisapprovedRequestCount.js";
+    import ResolvedRequests from "../js/components/ResolvedRequestCount.js";
+
+    const disapproved = new DisapprovedRequestCount();
+    disapproved.load();
+
+    const resolved = new ResolvedRequests();
+    resolved.load();
+</script>
 </body>
 </html>

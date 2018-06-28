@@ -1,7 +1,7 @@
 import WebComponent from "./WebComponent.js";
 
 
-class DisapprovedRequests extends WebComponent {
+export default class DisapprovedRequestCount extends WebComponent {
     constructor() {
         super("user-home-rejected", "GET", API_BASE_URL + '/users/requests/disapproved', getAuthHeaders());
     }
@@ -26,6 +26,3 @@ class DisapprovedRequests extends WebComponent {
         `
     }
 }
-
-disapproved = new DisapprovedRequests();
-disapproved.load();

@@ -90,54 +90,54 @@ function fetchData(views) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    if (isAuthenticated()) {
-        const logout = document.getElementById("logout");
-        logout.addEventListener("click", function () {
-            deleteUserDetails();
-            window.location.href = "../login.html";
-        });
-
-
-        new View({
-            id: "user-name",
-            data: {"user": getUser()}
-        });
-
-    }
-    if (page.startsWith("/user")) {
-        const mobileNotifications = new View({
-            id: "user-home-notifications-2"
-        }).load({
-            method: "GET",
-            url: API_BASE_URL + "/users/notifications/unread",
-            headers: getAuthHeaders()
-        }).start();
-
-        const notifications = new View({
-            id: "user-home-notifications",
-            methods: {
-                readNotification: function (id) {
-                    console.log(id)
-                    fetch(API_BASE_URL + "/users/notifications/" + id, {
-                        method: "PUT",
-                        headers: getAuthHeaders(),
-                        body: ''
-                    }).then(response => response.json())
-                        .then(data => {
-                            notifications.start();
-                            mobileNotifications.start();
-                        })
-                }
-            }
-        }).load({
-            method: "GET",
-            url: API_BASE_URL + "/users/notifications/unread",
-            headers: getAuthHeaders()
-        }).start().then(function () {
-            initDropdown(document.getElementById("user-home-notifications"))
-        });
-
-    }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//
+//     if (isAuthenticated()) {
+//         const logout = document.getElementById("logout");
+//         logout.addEventListener("click", function () {
+//             deleteUserDetails();
+//             window.location.href = "../login.html";
+//         });
+//
+//
+//         new View({
+//             id: "user-name",
+//             data: {"user": getUser()}
+//         });
+//
+//     }
+//     if (page.startsWith("/user")) {
+//         const mobileNotifications = new View({
+//             id: "user-home-notifications-2"
+//         }).load({
+//             method: "GET",
+//             url: API_BASE_URL + "/users/notifications/unread",
+//             headers: getAuthHeaders()
+//         }).start();
+//
+//         const notifications = new View({
+//             id: "user-home-notifications",
+//             methods: {
+//                 readNotification: function (id) {
+//                     console.log(id)
+//                     fetch(API_BASE_URL + "/users/notifications/" + id, {
+//                         method: "PUT",
+//                         headers: getAuthHeaders(),
+//                         body: ''
+//                     }).then(response => response.json())
+//                         .then(data => {
+//                             notifications.start();
+//                             mobileNotifications.start();
+//                         })
+//                 }
+//             }
+//         }).load({
+//             method: "GET",
+//             url: API_BASE_URL + "/users/notifications/unread",
+//             headers: getAuthHeaders()
+//         }).start().then(function () {
+//             initDropdown(document.getElementById("user-home-notifications"))
+//         });
+//
+//     }
+// });
