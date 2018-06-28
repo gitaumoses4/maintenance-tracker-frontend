@@ -120,7 +120,20 @@
 
                 <div class="mg row">
                     <div class="six-large eight-medium twelve-small column center">
-                        <form action="" class="mg form" method="post" enctype="multipart/form-data" id="new-request-form">
+                        <form action="" class="mg form" method="post" enctype="multipart/form-data"
+                              id="new-request-form">
+                            <div class="status">
+                                <div class="mg segment error" m-if="status === 'error'">
+                                    <ul>
+                                        <li m-for="error in message">{{ error }}</li>
+                                    </ul>
+                                </div>
+                                <div class="mg segment success" m-else>
+                                    <ul>
+                                        <li>Maintenance Requested successfully</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="field">
                                 <label>Photo</label>
                                 <div class="fields">
@@ -129,8 +142,11 @@
                                              style="width: 100%"/>
                                     </div>
                                     <div class="eight-large eight-medium six-small field">
-                                        <label for="product-photo">Choose
-                                            <input type="file" name="photo" size="10" id="product-photo" onchange="displayImageChosen(this)"/>
+                                        <label for="product-photo">Choose Photo
+                                            <input type="file" size="10" id="product-photo" required
+                                                   onchange="displayImageChosen(this)"
+                                                   accept="image/png, image/jpeg"/>
+                                            <input type="hidden" name="photo" id="product-photo-input">
                                         </label>
                                         <button class="mg danger button" onclick="removePhoto()"
                                                 type="button" id="product-photo-remove">Remove
@@ -140,19 +156,21 @@
                             </div>
                             <div class="field">
                                 <label>Product Name</label>
-                                <input type="text" name="product_name" id="new-request-product-name" placeholder="Product Name"/>
+                                <input type="text" name="product_name" id="new-request-product-name" required
+                                       placeholder="Product Name"/>
                             </div>
                             <div class="field">
                                 <label>Description</label>
-                                <textarea rows="10" name="description" id="new-request-description"></textarea>
+                                <textarea rows="10" name="description" required id="new-request-description"></textarea>
                             </div>
                             <div class="field">
                                 <div class="fields">
                                     <div class="field">
-                                        <button class="mg button" type="button" onclick="clearRequestForm()">Cancel</button>
+                                        <button class="mg button" type="button" onclick="clearRequestForm()">Cancel
+                                        </button>
                                     </div>
                                     <div class="field">
-                                        <button class="mg primary button">Submit</button>
+                                        <button class="mg primary button" type="button" onclick="submitMaintenanceRequest()">Submit</button>
                                     </div>
                                 </div>
                             </div>
