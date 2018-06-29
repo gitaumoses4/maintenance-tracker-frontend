@@ -8,6 +8,10 @@ export default class WebComponent extends Component {
         this.link = url;
     }
 
+    onDOMLoaded(){
+        this.element.innerHTML = this.render();
+    }
+
     setHeaders(headers) {
         this.headers = headers;
     }

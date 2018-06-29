@@ -7,6 +7,7 @@ export default class FormComponent extends WebComponent {
     }
 
     onDOMLoaded() {
+        super.onDOMLoaded();
         this.element.addEventListener("submit", (event) => {
             event.preventDefault();
             this.submit();

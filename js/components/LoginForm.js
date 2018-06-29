@@ -7,28 +7,28 @@ export default class LoginForm extends FormComponent {
 
     render() {
         return `
-        <div class="status">
-            <div class="mg segment error">
+            <div class="status">
+                <div class="mg segment error">
+                </div>
+                <div class="mg segment success" m-else>
+                    <ul>
+                        <li>Login successful</li>
+                    </ul>
+                </div>
             </div>
-            <div class="mg segment success" m-else>
-                <ul>
-                    <li>Login successful</li>
-                </ul>
+            <div class="field">
+                <label for="username">Username</label>
+                <input id="username" name="username" required placeholder="Username"/>
             </div>
-        </div>
-        <div class="field">
-            <label for="username">Username</label>
-            <input id="username" name="username" required placeholder="Username"/>
-        </div>
-        <div class="field">
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required
-                   placeholder="Password"/>
-        </div>
-        <div class="field">
-            <button class="mg fluid button primary">Login</button>
-        </div>
-        `
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" required
+                       placeholder="Password"/>
+            </div>
+            <div class="field">
+                <button class="mg fluid button primary">Login</button>
+            </div>
+            `;
     }
 
     success() {

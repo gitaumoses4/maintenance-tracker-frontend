@@ -44,16 +44,16 @@ export default class Notifications extends WebComponent {
                     ${ data.total_results }
                 </button>
             </div>`;
+        let menu = document.createElement("div");
+        menu.classList.add("menu");
         if (data.notifications.length === 0) {
-            this.element.innerHTML += Notifications.empty();
+            menu.innerHTML = Notifications.empty();
         } else {
-            let menu = document.createElement("div");
-            menu.classList.add("menu");
             data.notifications.map(notification => {
                 menu.appendChild(this.showNotification(notification).element);
             });
-            this.element.appendChild(menu);
         }
+        this.element.appendChild(menu);
 
         initDropdown(this.element);
     }
@@ -66,17 +66,12 @@ export class MobileNotifications extends Notifications {
 
     success() {
         let data = this.data.data;
-        this.element.innerHTML = `${data.notifications.length === 0 ? Notifications.empty() :
-            ` ${data.notifications.map(notification => this.showNotification(notification)).join('')}`}`;
-        let that = this;
-        if (data.notifications.length !== 0) {
-            let items = this.element.getElementsByClassName("item");
-            for (let i = 0; i < items.length; i++) {
-                items[i].addEventListener("click", function () {
-                    let id = items[i].dataset.id;
-                    readNotification(id, that);
-                });
-            }
+        if(data.notifications.length === 0){
+            this.element.innerHTML = MobileNotifications.empty();
+        }else{
+            data.notifications.map(notification => {
+                this.element.appendChild(this.showNotification(notification).element);
+            });
         }
     }
 }

@@ -77,6 +77,11 @@ function toJSON(form) {
     return object;
 }
 
+function logout() {
+    deleteUserDetails();
+    window.location.href = "../login.html";
+}
+
 function fetchData(views) {
 
     fetchNext(0);
