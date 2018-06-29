@@ -46,16 +46,8 @@
                 </div>
             </div>
             <div class="item right aligned">
-                <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options" id="user-name">
-                            <div class="title">{{ user.firstname }} {{ user.lastname }}</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/>
-                        </div>
-                    </div>
-                    <div class="menu" style="width: 100%">
-                        <a class="item" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
+                <div class="mg dropdown" id="user-options">
+
                 </div>
             </div>
         </div>
@@ -177,6 +169,7 @@
     import LatestFeedback from "../js/components/LatestFeedback.js";
     import Notifications from "../js/components/Notifications.js";
     import {MobileNotifications} from "../js/components/Notifications.js";
+    import UserOptions from "../js/components/UserOptions.js";
 
     const disapproved = new DisapprovedRequestCount("user-home-rejected");
     disapproved.load();
@@ -192,6 +185,9 @@
 
     const mobileNotifications = new MobileNotifications("user-home-notifications-2");
     mobileNotifications.load();
+
+    const userOptions = new UserOptions("user-options", getUser());
+    initDropdown(userOptions.element);
 </script>
 </body>
 </html>
