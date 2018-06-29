@@ -1,4 +1,5 @@
 import WebComponent from "./WebComponent.js";
+import NotificationItem from "./NotificationItem.js";
 
 
 export default class Notifications extends WebComponent {
@@ -27,24 +28,10 @@ export default class Notifications extends WebComponent {
             </div>`;
     }
 
-    static showNotification(notification) {
-        return `<div class="item" data-id="${notification.id}">
-                    <div class="notification">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                ${ notification.admin.firstname } ${ notification.admin.lastname }
-                            </div>
-                            <div class="date">
-                                ${ notification.created_at }
-                            </div>
-                            <div class="description">
-                                ${ notification.message }
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
+    showNotification(notification) {
+        let item = document.createElement("div");
+        item.classList.add("item");
+        return new NotificationItem(item, notification, this);
     }
 
     success() {
@@ -56,21 +43,18 @@ export default class Notifications extends WebComponent {
                 <button class="mg very tiny circle button primary" style="margin-left: 1em;">
                     ${ data.total_results }
                 </button>
-            </div>
-            <div class="menu">
-                ${data.notifications.length === 0 ? Notifications.empty() :`${data.notifications.map(notification => Notifications.showNotification(notification)).join('')}`}
             </div>`;
-
-        let that = this;
-        if (data.notifications.length !== 0) {
-            let items = this.element.getElementsByClassName("item");
-            for (let i = 0; i < items.length; i++) {
-                items[i].addEventListener("click", function () {
-                    let id = items[i].dataset.id;
-                    readNotification(id, that);
-                });
-            }
+        if (data.notifications.length === 0) {
+            this.element.innerHTML += Notifications.empty();
+        } else {
+            let menu = document.createElement("div");
+            menu.classList.add("menu");
+            data.notifications.map(notification => {
+                menu.appendChild(this.showNotification(notification).element);
+            });
+            this.element.appendChild(menu);
         }
+
         initDropdown(this.element);
     }
 }
@@ -83,7 +67,7 @@ export class MobileNotifications extends Notifications {
     success() {
         let data = this.data.data;
         this.element.innerHTML = `${data.notifications.length === 0 ? Notifications.empty() :
-            ` ${data.notifications.map(notification => MobileNotifications.showNotification(notification)).join('')}`}`;
+            ` ${data.notifications.map(notification => this.showNotification(notification)).join('')}`}`;
         let that = this;
         if (data.notifications.length !== 0) {
             let items = this.element.getElementsByClassName("item");
@@ -98,11 +82,5 @@ export class MobileNotifications extends Notifications {
 }
 
 window.readNotification = (id, component) => {
-    fetch(API_BASE_URL + "/users/notifications/" + id, {
-        method: "PUT",
-        headers: getAuthHeaders()
-    }).then(response => response.json())
-        .then(data => {
-            component.load();
-        })
+
 };
