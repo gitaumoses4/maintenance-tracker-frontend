@@ -99,52 +99,7 @@
             </div>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg table" id="user-home-requests">
-            <h2>Latest Maintenance/Repair Requests</h2>
-            <div m-if="data.requests.length == 0" class="empty">
-                No maintenance/repair requests <br/>
-                <i class="fas fa-database"></i>
-            </div>
-            <table m-else>
-                <thead>
-                <tr>
-                    <th>Request ID</th>
-                    <th>Request Date</th>
-                    <th>Product Name</th>
-                    <th>Product Image</th>
-                    <th>Repair/Maintenance Request Description</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr m-for="request in data.requests">
-                    <td><a href="request.html?id={{ request.id }}">#{{ request.id }}</a></td>
-                    <td>{{ request.created_at }}</td>
-                    <td>{{ request.product_name }}</td>
-                    <td>
-                        <img src="{{ request.photo }}" class="mg small image" m-if="request.photo != ''"/>
-                        <img src="../images/placeholder.png" class="mg small image" m-else=""/>
-                    </td>
-                    <td>{{ request.description }}</td>
-                    <td>
-                        <button class="mg teal circle tiny button" m-if="request.status === 'Resolved' ">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg blue-grey circle tiny button" m-if="request.status === 'Pending'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg success circle tiny button" m-if="request.status === 'Approved'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg danger circle tiny button" m-if="request.status === 'Disapproved'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <div class="title">{{ request.status }}</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <div id="user-home-requests"></div>
     </div>
 </div>
 <div class="mg modal" data-trigger="mobileNotifications">
@@ -170,6 +125,7 @@
     import Notifications from "../js/components/Notifications.js";
     import {MobileNotifications} from "../js/components/Notifications.js";
     import UserOptions from "../js/components/UserOptions.js";
+    import LatestRequests from "../js/components/LatestRequests.js";
 
     const disapproved = new DisapprovedRequestCount("user-home-rejected");
     disapproved.load();
@@ -188,6 +144,9 @@
 
     const userOptions = new UserOptions("user-options", getUser());
     initDropdown(userOptions.element);
+
+    const latestRequests = new LatestRequests("user-home-requests");
+    latestRequests.load();
 </script>
 </body>
 </html>

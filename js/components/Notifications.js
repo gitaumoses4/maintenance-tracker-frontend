@@ -16,7 +16,8 @@ export default class Notifications extends WebComponent {
     }
 
     static empty() {
-        return `<div class="item"">
+        return `
+            <div class="item"">
                 <div class="content">
                     <div class="title">
                         No notifications

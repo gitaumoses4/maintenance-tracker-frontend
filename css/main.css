@@ -275,12 +275,8 @@ table img {
 .loading {
     position: relative;
     cursor: default;
+    min-height: 12em;
     pointer-events: none;
-}
-
-.loading.container {
-    min-width: 100px;
-    min-height: 100px;
 }
 
 .empty {

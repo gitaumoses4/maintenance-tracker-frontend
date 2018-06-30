@@ -8,7 +8,7 @@ export default class WebComponent extends Component {
         this.link = url;
     }
 
-    onDOMLoaded(){
+    onDOMLoaded() {
         this.element.innerHTML = this.render();
     }
 
@@ -40,15 +40,17 @@ export default class WebComponent extends Component {
                 body: JSON.stringify(body)
             });
         }
-        fet.then(response => response.json())
-            .then(data => {
-                that.data = data;
-                that.state = 2;
-                that.success();
-            }).catch(error => {
-            that.state = 3;
-            that.error();
-        })
+        window.setTimeout(function () {
+            fet.then(response => response.json())
+                .then(data => {
+                    that.data = data;
+                    that.state = 2;
+                    that.success();
+                }).catch(error => {
+                that.state = 3;
+                that.error();
+            })
+        }, 2000);
     }
 
     loading() {
