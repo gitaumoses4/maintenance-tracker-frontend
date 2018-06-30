@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/mg-frontend.js"></script>
     <script src="js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mg-framework/mg-framework.css"/>
@@ -31,45 +30,7 @@
                         <div class="content">
                             <form class="mg form" id="signUpForm" method="post"
                                   enctype="multipart/form-data">
-                                <div class="status">
-                                    <div class="mg segment error" m-if="status === 'error'">
-                                        <ul>
-                                            <li m-for="error in message">{{ error }}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mg segment success" m-else>
-                                        <ul>
-                                            <li>Registration successful</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label>Name</label>
-                                    <div class="fields">
-                                        <div class="six-small six-medium field">
-                                            <input name="firstname" required placeholder="First Name" type="text"/>
-                                        </div>
-                                        <div class="six-small six-medium field">
-                                            <input name="lastname" placeholder="Last Name" required type="text"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label for="email">Email</label>
-                                    <input id="email" name="email" placeholder="Email" type="email" required/>
-                                </div>
-                                <div class="field">
-                                    <label for="username">Username</label>
-                                    <input id="username" name="username" placeholder="Username" required/>
-                                </div>
-                                <div class="field">
-                                    <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" placeholder="Password"
-                                           required/>
-                                </div>
-                                <div class="field">
-                                    <button class="mg fluid button primary" id="register">Register</button>
-                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -83,6 +44,11 @@
     </div>
 </div>
 <script src="js/mg-framework/mg-framework.js"></script>
-<script src="js/signup.js"></script>
+<script type="module">
+    import SignUpForm from "./js/components/SignUpForm.js";
+
+    const signUpForm = new SignUpForm("signUpForm");
+    
+</script>
 </body>
 </html>
