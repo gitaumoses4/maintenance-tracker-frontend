@@ -11,17 +11,24 @@ export default class Paginator extends Component {
         this.render();
     }
 
-    renderPage(pageIndex, currentPage = -100) {
+    update(currentPage, numPages) {
+        this.currentPage = currentPage;
+        this.numPages = numPages;
+        this.render();
+    }
+
+    renderPage(pageIndex) {
         let page = document.createElement("div");
         page.classList.add("item");
-        if (currentPage === pageIndex) {
+        if (this.currentPage === pageIndex) {
             page.classList.add("active");
         }
 
         let that = this;
-        if (currentPage !== pageIndex || this.clickActive) {
+        if (this.currentPage !== pageIndex || this.clickActive) {
             page.addEventListener("click", function () {
                 if (that.pageChangeListener) {
+                    that.update(pageIndex, that.numPages);
                     that.pageChangeListener.apply(that, [pageIndex]);
                 }
             });
@@ -33,42 +40,55 @@ export default class Paginator extends Component {
 
     firstPage() {
         let page = this.renderPage(1);
+        if (this.currentPage === 1) {
+            page.classList.add("disabled");
+        }
         page.innerHTML = `<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>`;
         return page;
     }
 
-    previousPage(previous) {
-        let page = this.renderPage(previous);
+    previousPage() {
+        let page = this.renderPage(this.currentPage - 1);
+        if (this.currentPage === 1) {
+            page.classList.add("disabled");
+        }
         page.innerHTML = `<i class='fas fa-chevron-left'></i>`;
         return page;
     }
 
-    nextPage(next) {
-        let page = this.renderPage(next);
+    nextPage() {
+        let page = this.renderPage(this.currentPage + 1);
+        if (this.currentPage === this.numPages) {
+            page.classList.add("disabled");
+        }
         page.innerHTML = `<i class='fas fa-chevron-right'></i>`;
         return page;
     }
 
-    lastPage(last) {
-        let page = this.renderPage(last);
+    lastPage() {
+        let page = this.renderPage(this.numPages);
+        if (this.currentPage === this.numPages) {
+            page.classList.add("disabled");
+        }
         page.innerHTML = `<i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>`;
         return page;
     }
 
     render() {
-        let paginator = this.element;
+        if (this.numPages === 1) {
+            this.element.display = "none";
+        } else {
+            this.element.innerHTML = '';
+            let paginator = this.element;
 
-        let pages = this.getStartAndEnd();
-        if (this.currentPage !== 1) {
+            let pages = this.getStartAndEnd();
             paginator.appendChild(this.firstPage());
-            paginator.appendChild(this.previousPage(this.currentPage - 1))
-        }
-        for (let i = pages[0]; i <= pages[1]; i++) {
-            paginator.appendChild(this.renderPage(i, this.currentPage));
-        }
-        if (this.currentPage !== this.numPages) {
-            paginator.appendChild(this.nextPage(this.currentPage + 1));
-            paginator.appendChild(this.lastPage(this.numPages));
+            paginator.appendChild(this.previousPage())
+            for (let i = pages[0]; i <= pages[1]; i++) {
+                paginator.appendChild(this.renderPage(i));
+            }
+            paginator.appendChild(this.nextPage());
+            paginator.appendChild(this.lastPage());
         }
     }
 
@@ -84,13 +104,19 @@ export default class Paginator extends Component {
 
         let i = 1;
         while (i < this.maxDisplayed) {
+            let pageFound = false;
             if (start > startPage) {
                 start--;
                 i++;
+                pageFound = true;
             }
             if (end < endPage) {
                 end++;
                 i++;
+                pageFound = true;
+            }
+            if (!pageFound) {
+                break;
             }
         }
 
