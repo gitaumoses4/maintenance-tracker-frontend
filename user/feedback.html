@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
@@ -40,59 +41,12 @@
         <div class="header">Maintenance Tracker</div>
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
-                <div class="mg dropdown notifications">
-                    <div class="trigger">
-                        Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
-                    </div>
-                    <div class="menu">
-                        <div class="item">
-                            <div class="notification">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        5 minutes ago
-                                    </div>
-                                    <div class="description">
-                                        Your I-Phone 6 has been successfully accepted.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="notification">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        5 minutes ago
-                                    </div>
-                                    <div class="description">
-                                        Your Yamaha Keyboard has been rejected.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mg dropdown notifications" id="user-home-notifications">
+
                 </div>
             </div>
             <div class="item right aligned">
-                <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options">
-                            <div class="title">Moses Gitau</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/></div>
-                    </div>
-                    <div class="menu" style="width: 100%">
-                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
+                <div class="mg dropdown" id="user-options">
                 </div>
             </div>
         </div>
@@ -117,78 +71,8 @@
         <div class="mg container">
             <div class="mg segment">
                 <div class="header">All Feedback</div>
-                <div class="content feedback-container">
-                    <a class="feedback" href="request.html">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Your product does not have a serial number
-                            </div>
-                        </div>
-                    </a>
-                    <a class="feedback" href="request.html">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Your product has already been fixed before. Kindly provide more information on the
-                                problem you are facing.
-                            </div>
-                        </div>
-                    </a>
-                    <a class="feedback" href="request.html">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Kindly provide your name as indicated in your National ID
-                            </div>
-                        </div>
-                    </a>
-                    <a class="feedback" href="request.html">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                This product does not have a serial number.
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="mg row" style="margin-top: 2em;">
-                <div class="mg paginator center">
-                    <div class="item"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></div>
-                    <div class="item"><i class="fas fa-chevron-left"></i></div>
-                    <div class="item">1</div>
-                    <div class="item active">2</div>
-                    <div class="item">3</div>
-                    <div class="item">4</div>
-                    <div class="item">5</div>
-                    <div class="item disabled">6</div>
-                    <div class="item"><i class="fas fa-chevron-right"></i></div>
-                    <div class="item"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></div>
+                <div class="content feedback-container" id="user-feedback">
+
                 </div>
             </div>
         </div>
@@ -201,41 +85,7 @@
             Notifications
         </div>
         <div class="content">
-            <div class="notifications">
-                <div class="item">
-                    <div class="notification">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Your I-Phone 6 has been successfully accepted.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="notification">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                                Your Yamaha Keyboard has been rejected.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="notifications" id="user-home-mobile-notifications">
             </div>
         </div>
         <div class="footer">
@@ -244,5 +94,23 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
+<script type="module">
+    import {MobileNotifications} from "../js/components/Notifications.js";
+    import Notifications from "../js/components/Notifications.js";
+    import UserOptions from "../js/components/UserOptions.js";
+    import LatestFeedback from "../js/components/LatestFeedback.js";
+
+    const mobileNotifications = new MobileNotifications("user-home-mobile-notifications");
+    mobileNotifications.load();
+
+    const desktopNotifications = new Notifications("user-home-notifications");
+    desktopNotifications.load();
+
+    const userOptions = new UserOptions("user-options");
+
+    const feedback = new LatestFeedback("user-feedback");
+    feedback.load();
+
+</script>
 </body>
 </html>
