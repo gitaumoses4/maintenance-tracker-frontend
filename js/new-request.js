@@ -1,18 +1,5 @@
 function displayImageChosen(input) {
-    let path = input.files[0];
-    let img = document.getElementById("product-photo-img");
 
-    if (path) {
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            img.setAttribute("src", e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        img.setAttribute("src", "../images/placeholder.png");
-    }
 }
 
 function removePhoto() {

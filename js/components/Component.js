@@ -28,10 +28,15 @@ export default class Component {
         this.data = data;
         if (this.element && data) {
             this.element.innerHTML = this.render();
+            this.onRender();
         }
         return this;
     }
 
     render() {
+    }
+
+    onRender(){
+
     }
 }

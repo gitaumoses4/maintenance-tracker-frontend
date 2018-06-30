@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="../js/mg-frontend.js"></script>
     <script src="../js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
@@ -43,53 +42,10 @@
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
                 <div class="mg dropdown notifications" id="user-home-notifications">
-                    <div class="trigger">
-                        Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">
-                            {{ data.total_results }}
-                        </button>
-                    </div>
-                    <div class="menu">
-                        <div class="item" m-if="data.notifications.length == 0">
-                            <div class="content">
-                                <div class="title">
-                                    No notifications
-                                </div>
-                                <div class="description">
-                                    You do not have any unread notifications
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item" m-else m-for="notification in data.notifications">
-                            <div class="notification" m-on:click="readNotification(notification.id)">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                                    </div>
-                                    <div class="date">
-                                        {{ notification.created_at }}
-                                    </div>
-                                    <div class="description">
-                                        {{ notification.message }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="item right aligned">
                 <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options" id="user-name">
-                            <div class="title">Moses Gitau</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/></div>
-                    </div>
-                    <div class="menu" style="width: 100%">
-                        <a class="item" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -122,58 +78,7 @@
                     <div class="six-large eight-medium twelve-small column center">
                         <form action="" class="mg form" method="post" enctype="multipart/form-data"
                               id="new-request-form">
-                            <div class="status">
-                                <div class="mg segment error" m-if="status === 'error'">
-                                    <ul>
-                                        <li m-for="error in message">{{ error }}</li>
-                                    </ul>
-                                </div>
-                                <div class="mg segment success" m-else>
-                                    <ul>
-                                        <li>Maintenance Requested successfully</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Photo</label>
-                                <div class="fields">
-                                    <div class="four-large four-medium six-small field">
-                                        <img src="../images/placeholder.png" class="mg image" id="product-photo-img"
-                                             style="width: 100%"/>
-                                    </div>
-                                    <div class="eight-large eight-medium six-small field">
-                                        <label for="product-photo">Choose Photo
-                                            <input type="file" size="10" id="product-photo" required
-                                                   onchange="displayImageChosen(this)"
-                                                   accept="image/png, image/jpeg"/>
-                                            <input type="hidden" name="photo" id="product-photo-input">
-                                        </label>
-                                        <button class="mg danger button" onclick="removePhoto()"
-                                                type="button" id="product-photo-remove">Remove
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Product Name</label>
-                                <input type="text" name="product_name" id="new-request-product-name" required
-                                       placeholder="Product Name"/>
-                            </div>
-                            <div class="field">
-                                <label>Description</label>
-                                <textarea rows="10" name="description" required id="new-request-description"></textarea>
-                            </div>
-                            <div class="field">
-                                <div class="fields">
-                                    <div class="field">
-                                        <button class="mg button" type="button" onclick="clearRequestForm()">Cancel
-                                        </button>
-                                    </div>
-                                    <div class="field">
-                                        <button class="mg primary button" type="button" onclick="submitMaintenanceRequest()">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -190,26 +95,6 @@
         </div>
         <div class="content">
             <div class="notifications" id="user-home-notifications-2">
-                <div m-if="data.notifications.length == 0" class="empty">
-                    No notifications
-                </div>
-                <div class="item" m-else>
-                    <div class="notification" m-for="notification in data.notifications">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                            </div>
-                            <div class="date">
-                                {{ notification.created_at }}
-                            </div>
-                            <div class="description">
-                                {{ notification.message }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="footer">
@@ -218,6 +103,18 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
-<script src="../js/new-request.js"></script>
+<script type="module">
+    import Notifications from "../js/components/Notifications.js";
+    import {MobileNotifications} from "../js/components/Notifications.js";
+    import NewMaintenanceRequest from "../js/components/NewMaintenanceRequest.js";
+
+    const desktopNotifications = new Notifications("user-home-notifications");
+    desktopNotifications.load();
+
+    const mobileNotifications = new MobileNotifications("user-home-notifications-2");
+    mobileNotifications.load();
+
+    const requestForm = new NewMaintenanceRequest("new-request-form");
+</script>
 </body>
 </html>

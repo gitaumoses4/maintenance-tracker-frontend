@@ -76,7 +76,3 @@ export class MobileNotifications extends Notifications {
         }
     }
 }
-
-window.readNotification = (id, component) => {
-
-};
