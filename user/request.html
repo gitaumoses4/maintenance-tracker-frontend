@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
@@ -40,59 +41,11 @@
         <div class="header">Maintenance Tracker</div>
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
-                <div class="mg dropdown notifications">
-                    <div class="trigger">
-                        Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">2</button>
-                    </div>
-                    <div class="menu">
-                        <div class="item">
-                            <div class="notification">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        5 minutes ago
-                                    </div>
-                                    <div class="description">
-                                        Your product has been approved
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="notification">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        Moses Gitau
-                                    </div>
-                                    <div class="date">
-                                        5 minutes ago
-                                    </div>
-                                    <div class="description">
-                                       Your product has been rejected.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mg dropdown notifications" id="user-request-notifications">
                 </div>
             </div>
             <div class="item right aligned">
-                <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options">
-                            <div class="title">Moses Gitau</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/></div>
-                    </div>
-                    <div class="menu" style="width: 100%">
-                        <a class="item" href="../login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
+                <div class="mg dropdown" id="user-options">
                 </div>
             </div>
         </div>
@@ -114,72 +67,8 @@
             </a>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg row">
-            <div class="mg steps center aligned">
-                <div class="step completed">
-                    <i class="icon fas fa-clock"></i>
-                    <div class="body">
-                        <div class="title">Pending</div>
-                        <div class="description">Request pending approval</div>
-                    </div>
-                </div>
-                <div class="step active">
-                    <i class="icon fas fa-cogs"></i>
-                    <div class="body">
-                        <div class="title">Approved</div>
-                        <div class="description">Your product is being repaired</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <i class="icon fas fa-cog"></i>
-                    <div class="body">
-                        <div class="title">Resolved</div>
-                        <div class="description">Your product has been repaired.</div>
-                    </div>
-                </div>
-                <div class="step failed">
-                    <i class="icon fas fa-cross"></i>
-                    <div class="body">
-                        <div class="title">Rejected</div>
-                        <div class="description">Your repair request was rejected</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mg row">
-            <div class="six-large eight-medium twelve-small column center aligned">
-                <div class="padded">
-                    <h1>
-                        Yamaha Keyboard
-                    </h1>
-                    <div class="center">
-                        <img src="../images/product_2.jpeg" class="mg large image center aligned"/>
-                        <p>
-                            This device did not come with a sustain pedal.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mg vertical divider"></div>
-        <div class="mg container">
-            <div class="feedback-container">
-                <h2>Feedback</h2>
-                <div class="feedback">
-                    <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                    <div class="content">
-                        <div class="title">
-                            Moses Gitau
-                        </div>
-                        <div class="date">
-                            5 minutes ago
-                        </div>
-                        <div class="description">
-                            Kindly provide the device serial number.
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="user-request">
+
         </div>
     </div>
 </div>
@@ -190,39 +79,7 @@
             Notifications
         </div>
         <div class="content">
-            <div class="notifications">
-                <div class="item">
-                    <div class="notification">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                               Your device has been rejected.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="notification">
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                Moses Gitau
-                            </div>
-                            <div class="date">
-                                5 minutes ago
-                            </div>
-                            <div class="description">
-                               Your device has been accepted.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="notifications" id="user-requests-mobile-notifications">
             </div>
         </div>
         <div class="footer">
@@ -231,5 +88,21 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
+<script type="module">
+    import UserOptions from "../js/components/UserOptions.js";
+    import Notifications, {MobileNotifications} from "../js/components/Notifications.js";
+    import UserRequest from "../js/components/UserRequest.js";
+
+    const userOptions = new UserOptions("user-options");
+
+    const desktopNotifications = new Notifications("user-request-notifications");
+    desktopNotifications.load();
+
+    const mobileNotifications = new MobileNotifications("user-requests-mobile-notifications");
+    mobileNotifications.load();
+
+    const userRequest = new UserRequest("user-request", getQueryParameter("id"));
+    userRequest.load();
+</script>
 </body>
 </html>

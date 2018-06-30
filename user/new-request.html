@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="item right aligned">
-                <div class="mg dropdown">
+                <div class="mg dropdown" id="user-options">
                 </div>
             </div>
         </div>
@@ -107,6 +107,7 @@
     import Notifications from "../js/components/Notifications.js";
     import {MobileNotifications} from "../js/components/Notifications.js";
     import NewMaintenanceRequest from "../js/components/NewMaintenanceRequest.js";
+    import UserOptions from "../js/components/UserOptions.js";
 
     const desktopNotifications = new Notifications("user-home-notifications");
     desktopNotifications.load();
@@ -115,6 +116,9 @@
     mobileNotifications.load();
 
     const requestForm = new NewMaintenanceRequest("new-request-form");
+
+    const userOptions = new UserOptions("user-options");
+    userOptions.load();
 </script>
 </body>
 </html>

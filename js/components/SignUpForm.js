@@ -49,10 +49,8 @@ export default class SignUpForm extends FormComponent {
 
     success() {
         super.success();
-        if (this.data.status === "success") {
-            window.setTimeout(() => {
-                window.location.href = "login.html";
-            }, 1000)
-        }
+        window.setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1000)
     }
 }

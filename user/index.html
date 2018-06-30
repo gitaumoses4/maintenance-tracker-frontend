@@ -142,8 +142,7 @@
     const mobileNotifications = new MobileNotifications("user-home-notifications-2");
     mobileNotifications.load();
 
-    const userOptions = new UserOptions("user-options", getUser());
-    initDropdown(userOptions.element);
+    const userOptions = new UserOptions("user-options");
 
     const latestRequests = new LatestRequests("user-home-requests");
     latestRequests.load();
