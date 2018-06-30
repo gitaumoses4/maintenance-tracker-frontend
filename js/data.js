@@ -20,18 +20,18 @@ function guardUserPages(page) {
 }
 
 function deleteUserDetails() {
-    localStorage.clear();
+    sessionStorage.clear();
 }
 
 function setUserDetails(token, user) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("email", user.email);
-    localStorage.setItem("firstname", user.firstname);
-    localStorage.setItem("id", user.id);
-    localStorage.setItem("lastname", user.lastname);
-    localStorage.setItem("profile_picture", user.profile_picture);
-    localStorage.setItem("role", user.role);
-    localStorage.setItem("username", user.username);
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("email", user.email);
+    sessionStorage.setItem("firstname", user.firstname);
+    sessionStorage.setItem("id", user.id);
+    sessionStorage.setItem("lastname", user.lastname);
+    sessionStorage.setItem("profile_picture", user.profile_picture);
+    sessionStorage.setItem("role", user.role);
+    sessionStorage.setItem("username", user.username);
 }
 
 
@@ -41,13 +41,13 @@ function isAuthenticated() {
 
 function getUser() {
     return {
-        "id": localStorage.getItem("id"),
-        "email": localStorage.getItem("email"),
-        "firstname": localStorage.getItem("firstname"),
-        "lastname": localStorage.getItem("lastname"),
-        "profile_picture": localStorage.getItem("profile_picture"),
-        "role": localStorage.getItem("role"),
-        "username": localStorage.getItem("username")
+        "id": sessionStorage.getItem("id"),
+        "email": sessionStorage.getItem("email"),
+        "firstname": sessionStorage.getItem("firstname"),
+        "lastname": sessionStorage.getItem("lastname"),
+        "profile_picture": sessionStorage.getItem("profile_picture"),
+        "role": sessionStorage.getItem("role"),
+        "username": sessionStorage.getItem("username")
     }
 }
 
@@ -56,7 +56,7 @@ function isAdmin() {
 }
 
 function getAuthToken() {
-    return localStorage.getItem("token");
+    return sessionStorage.getItem("token");
 }
 
 function getAuthHeaders() {
@@ -77,6 +77,11 @@ function toJSON(form) {
     return object;
 }
 
+function logout() {
+    deleteUserDetails();
+    window.location.href = "../login.html";
+}
+
 function fetchData(views) {
 
     fetchNext(0);
@@ -90,54 +95,54 @@ function fetchData(views) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    if (isAuthenticated()) {
-        const logout = document.getElementById("logout");
-        logout.addEventListener("click", function () {
-            deleteUserDetails();
-            window.location.href = "../login.html";
-        });
-
-
-        new View({
-            id: "user-name",
-            data: {"user": getUser()}
-        });
-
-    }
-    if (page.startsWith("/user")) {
-        const mobileNotifications = new View({
-            id: "user-home-notifications-2"
-        }).load({
-            method: "GET",
-            url: API_BASE_URL + "/users/notifications/unread",
-            headers: getAuthHeaders()
-        }).start();
-
-        const notifications = new View({
-            id: "user-home-notifications",
-            methods: {
-                readNotification: function (id) {
-                    console.log(id)
-                    fetch(API_BASE_URL + "/users/notifications/" + id, {
-                        method: "PUT",
-                        headers: getAuthHeaders(),
-                        body: ''
-                    }).then(response => response.json())
-                        .then(data => {
-                            notifications.start();
-                            mobileNotifications.start();
-                        })
-                }
-            }
-        }).load({
-            method: "GET",
-            url: API_BASE_URL + "/users/notifications/unread",
-            headers: getAuthHeaders()
-        }).start().then(function () {
-            initDropdown(document.getElementById("user-home-notifications"))
-        });
-
-    }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//
+//     if (isAuthenticated()) {
+//         const logout = document.getElementById("logout");
+//         logout.addEventListener("click", function () {
+//             deleteUserDetails();
+//             window.location.href = "../login.html";
+//         });
+//
+//
+//         new View({
+//             id: "user-name",
+//             data: {"user": getUser()}
+//         });
+//
+//     }
+//     if (page.startsWith("/user")) {
+//         const mobileNotifications = new View({
+//             id: "user-home-notifications-2"
+//         }).load({
+//             method: "GET",
+//             url: API_BASE_URL + "/users/notifications/unread",
+//             headers: getAuthHeaders()
+//         }).start();
+//
+//         const notifications = new View({
+//             id: "user-home-notifications",
+//             methods: {
+//                 readNotification: function (id) {
+//                     console.log(id)
+//                     fetch(API_BASE_URL + "/users/notifications/" + id, {
+//                         method: "PUT",
+//                         headers: getAuthHeaders(),
+//                         body: ''
+//                     }).then(response => response.json())
+//                         .then(data => {
+//                             notifications.start();
+//                             mobileNotifications.start();
+//                         })
+//                 }
+//             }
+//         }).load({
+//             method: "GET",
+//             url: API_BASE_URL + "/users/notifications/unread",
+//             headers: getAuthHeaders()
+//         }).start().then(function () {
+//             initDropdown(document.getElementById("user-home-notifications"))
+//         });
+//
+//     }
+// });

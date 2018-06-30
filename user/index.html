@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="../js/data.js" type="text/javascript"></script>
-    <script src="../js/mg-frontend.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -43,54 +42,12 @@
         <div class="menu">
             <div class="link item" id="largeScreenNotifications">
                 <div class="mg dropdown notifications" id="user-home-notifications">
-                    <div class="trigger">
-                        Notifications
-                        <button class="mg very tiny circle button primary" style="margin-left: 1em;">
-                            {{ data.total_results }}
-                        </button>
-                    </div>
-                    <div class="menu">
-                        <div class="item" m-if="data.notifications.length == 0">
-                            <div class="content">
-                                <div class="title">
-                                    No notifications
-                                </div>
-                                <div class="description">
-                                    You do not have any unread notifications
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item" m-else m-for="notification in data.notifications">
-                            <div class="notification" m-on:click="readNotification(notification.id)">
-                                <i class="close fas fa-times"></i>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                                    </div>
-                                    <div class="date">
-                                        {{ notification.created_at }}
-                                    </div>
-                                    <div class="description">
-                                        {{ notification.message }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="item right aligned">
-                <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options" id="user-name">
-                            <div class="title">{{ user.firstname }} {{ user.lastname }}</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/>
-                        </div>
-                    </div>
-                    <div class="menu" style="width: 100%">
-                        <a class="item" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
+                <div class="mg dropdown" id="user-options">
+
                 </div>
             </div>
         </div>
@@ -117,30 +74,14 @@
             <div class="three-large six-medium six-small column">
                 <div class="padded">
                     <div class="mg segment fluid" id="user-home-resolved">
-                        <div class="header">
-                            Resolved Repair Requests
-                        </div>
-                        <div class="content" style="color: #469d4a">
-                            <h1 class="count">{{ data.total_results }}</h1>
-                        </div>
-                        <div class="footer">
-                            <a href="requests.html?status=resolved" class="right aligned">View...</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="three-large six-medium six-small column">
                 <div class="padded">
                     <div class="mg segment" id="user-home-rejected">
-                        <div class="header">
-                            Disapproved Repair Requests
-                        </div>
-                        <div class="content" style="color: red">
-                            <h1 class="count">{{ data.total_results }}</h1>
-                        </div>
-                        <div class="footer">
-                            <a href="requests.html?status=disapproved" class="right aligned">View...</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -151,76 +92,14 @@
                             Latest Feedback
                         </div>
                         <div class="content feedback-container" id="user-home-feedback">
-                            <div m-if="data.length == 0" class="empty">
-                                No feedback yet <br/>
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <a class="feedback" href="request.html?id={{ feed.feedback.request }}" m-for="feed in data" m-else>
-                                <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                                <div class="content">
-                                    <div class="title">
-                                        {{ feed.created_by.firstname }} {{ feed.created_by.lastname }}
-                                    </div>
-                                    <div class="date">
-                                        {{ feed.feedback.updated_at }}
-                                    </div>
-                                    <div class="description">
-                                        {{ feed.feedback.message }}
-                                    </div>
-                                </div>
-                            </a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg table" id="user-home-requests">
-            <h2>Latest Maintenance/Repair Requests</h2>
-            <div m-if="data.requests.length == 0" class="empty">
-                No maintenance/repair requests <br/>
-                <i class="fas fa-database"></i>
-            </div>
-            <table m-else>
-                <thead>
-                <tr>
-                    <th>Request ID</th>
-                    <th>Request Date</th>
-                    <th>Product Name</th>
-                    <th>Product Image</th>
-                    <th>Repair/Maintenance Request Description</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr m-for="request in data.requests">
-                    <td><a href="request.html?id={{ request.id }}">#{{ request.id }}</a></td>
-                    <td>{{ request.created_at }}</td>
-                    <td>{{ request.product_name }}</td>
-                    <td>
-                        <img src="{{ request.photo }}" class="mg small image" m-if="request.photo != ''"/>
-                        <img src="../images/placeholder.png" class="mg small image" m-else=""/>
-                    </td>
-                    <td>{{ request.description }}</td>
-                    <td>
-                        <button class="mg teal circle tiny button" m-if="request.status === 'Resolved' ">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg blue-grey circle tiny button" m-if="request.status === 'Pending'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg success circle tiny button" m-if="request.status === 'Approved'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <button class="mg danger circle tiny button" m-if="request.status === 'Disapproved'">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <div class="title">{{ request.status }}</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <div id="user-home-requests"></div>
     </div>
 </div>
 <div class="mg modal" data-trigger="mobileNotifications">
@@ -231,26 +110,6 @@
         </div>
         <div class="content">
             <div class="notifications" id="user-home-notifications-2">
-                <div m-if="data.notifications.length == 0" class="empty">
-                    No notifications
-                </div>
-                <div class="item" m-else>
-                    <div class="notification" m-for="notification in data.notifications">
-                        <i class="close fas fa-times"></i>
-                        <img src="../images/user-male.png" alt="" class="mg tiny circle image">
-                        <div class="content">
-                            <div class="title">
-                                {{ notification.admin.firstname }} {{ notification.admin.lastname }}
-                            </div>
-                            <div class="date">
-                                {{ notification.created_at }}
-                            </div>
-                            <div class="description">
-                                {{ notification.message }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="footer">
@@ -259,6 +118,35 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
-<script src="../js/user-home.js"></script>
+<script type="module">
+    import DisapprovedRequestCount from "../js/components/DisapprovedRequestCount.js";
+    import ResolvedRequests from "../js/components/ResolvedRequestCount.js";
+    import LatestFeedback from "../js/components/LatestFeedback.js";
+    import Notifications from "../js/components/Notifications.js";
+    import {MobileNotifications} from "../js/components/Notifications.js";
+    import UserOptions from "../js/components/UserOptions.js";
+    import LatestRequests from "../js/components/LatestRequests.js";
+
+    const disapproved = new DisapprovedRequestCount("user-home-rejected");
+    disapproved.load();
+
+    const resolved = new ResolvedRequests("user-home-resolved");
+    resolved.load();
+
+    const feedback = new LatestFeedback("user-home-feedback");
+    feedback.load();
+
+    const desktopNotifications = new Notifications("user-home-notifications");
+    desktopNotifications.load();
+
+    const mobileNotifications = new MobileNotifications("user-home-notifications-2");
+    mobileNotifications.load();
+
+    const userOptions = new UserOptions("user-options", getUser());
+    initDropdown(userOptions.element);
+
+    const latestRequests = new LatestRequests("user-home-requests");
+    latestRequests.load();
+</script>
 </body>
 </html>

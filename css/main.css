@@ -246,6 +246,14 @@ table img {
     display: none;
 }
 
+.mg.form.error .success {
+    display: none !important;
+}
+
+.mg.form.success .error {
+    display: none !important;
+}
+
 .mg.form.error .error {
     display: block;
 }
@@ -267,12 +275,8 @@ table img {
 .loading {
     position: relative;
     cursor: default;
+    min-height: 12em;
     pointer-events: none;
-}
-
-.loading.container {
-    min-width: 100px;
-    min-height: 100px;
 }
 
 .empty {
