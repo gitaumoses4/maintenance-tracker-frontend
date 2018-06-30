@@ -8,8 +8,10 @@ export default class UserRequestFeedback extends WebComponent {
 
     static empty() {
         return `
-            <div class="empty">
-                No feedback yet.
+            <div class="mg segment">
+                <div class="content empty">
+                    No feedback on this request.
+                </div>
             </div>
         `
     }
