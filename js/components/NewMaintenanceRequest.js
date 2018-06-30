@@ -7,13 +7,11 @@ export default class NewMaintenanceRequest extends FormComponent {
     }
 
     success() {
-        if (this.data.status === "success") {
-            let success = this.element.querySelector(".mg.segment.success");
-            success.innerHTML = `
+        let success = this.element.querySelector(".mg.segment.success");
+        success.innerHTML = `
                     <ul>
                         <li>Maintenance Requested successfully <a href="request.html?id=${this.data.data.request.id}">View Request</a> </li>
                     </ul>`;
-        }
         super.success();
     }
 

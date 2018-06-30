@@ -33,9 +33,7 @@ export default class LoginForm extends FormComponent {
 
     success() {
         super.success();
-        if (this.data.status === "success") {
-            setUserDetails(this.data.data.token, this.data.data.user);
-            window.location.href = isAdmin() ? "/admin" : "/user";
-        }
+        setUserDetails(this.data.data.token, this.data.data.user);
+        window.location.href = isAdmin() ? "/admin" : "/user";
     }
 }

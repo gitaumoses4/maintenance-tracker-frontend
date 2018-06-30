@@ -42,11 +42,18 @@ export default class WebComponent extends Component {
             });
         }
         window.setTimeout(function () {
-            fet.then(response => response.json())
+            fet.then(response => {
+                that.statusCode = response.status;
+                return response.json()
+            })
                 .then(data => {
                     that.data = data;
                     that.state = 2;
-                    that.success();
+                    if (data.status === "success") {
+                        that.success();
+                    } else {
+                        that.error();
+                    }
                 }).catch(error => {
                 that.state = 3;
                 that.error();
@@ -64,10 +71,6 @@ export default class WebComponent extends Component {
 
     success() {
         this.element.classList.remove("loading")
-
-    }
-
-    render() {
 
     }
 }

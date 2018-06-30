@@ -1,8 +1,8 @@
 import Component from "./Component.js";
 
 export default class UserOptions extends Component {
-    constructor(id, data) {
-        super(id, data);
+    constructor(id) {
+        super(id, getUser());
     }
 
     render() {
@@ -17,5 +17,9 @@ export default class UserOptions extends Component {
             <div class="menu" style="width: 100%">
                 <a class="item" onclick="logout()">Logout <i class="fas fa-sign-out-alt"></i></a>
             </div>`;
+    }
+
+    onRender(){
+        initDropdown(this.element)
     }
 }

@@ -31,25 +31,24 @@ export default class FormComponent extends WebComponent {
 
     success() {
         this.element.classList.remove("loading");
+        this.element.classList.add("success");
+        this.element.classList.remove("error");
+    }
+
+    error() {
+        this.element.classList.remove("loading");
         let data = this.data;
+        this.element.classList.add("error");
+        this.element.classList.remove("success");
 
-        if (data.status === "error") {
-            this.element.classList.add("error");
-            this.element.classList.remove("success");
+        let errorPanel = this.element.querySelector(".error");
 
-            let errorPanel = this.element.querySelector(".error");
-
-            if (errorPanel) {
-                errorPanel.style.display = '';
-                errorPanel.innerHTML = `
+        if (errorPanel) {
+            errorPanel.style.display = '';
+            errorPanel.innerHTML = `
 					<ul>
 						${data.message.map(info => `<li>${info}</li>`)}
-					</ul>
-				`;
-            }
-        } else {
-            this.element.classList.add("success");
-            this.element.classList.remove("error");
+					</ul>`;
         }
     }
 }
