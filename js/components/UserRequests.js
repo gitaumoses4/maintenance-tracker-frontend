@@ -12,6 +12,23 @@ export default class UserRequests extends WebComponent {
         this.load();
     }
 
+    static empty() {
+        return `
+        <div class="mg container">
+            <div class="mg segment">
+                <div class="header">
+                    No maintenance/repair requests 
+                </div>
+                <div class="content empty">
+                   You do not have any maintenance/repair requests 
+                   <br>
+                   <i class="fas fa-cogs"></i>
+                </div>
+            </div>
+        </div>
+        `
+    }
+
     static renderRequest(request) {
         return `
         <div class="three-large twelve-small four-medium column">
@@ -46,7 +63,7 @@ export default class UserRequests extends WebComponent {
 
     success() {
         super.success();
-        this.element.innerHTML = `
+        this.element.innerHTML = this.data.data.requests.length === 0 ? UserRequests.empty() : `
             <div class="mg row" style="margin-bottom: 2em;">
                 <div class="mg paginator center" id="user-requests-paginator">
                 </div>
