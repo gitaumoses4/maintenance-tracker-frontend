@@ -20,7 +20,7 @@ export default class LatestRequests extends WebComponent {
 
     static empty() {
         return `
-        <div class="mg segment">
+        <div class="mg segment fluid">
             <div class="content">
                 <div class="empty">
                     <h3>No maintenance/repair requests <br>
