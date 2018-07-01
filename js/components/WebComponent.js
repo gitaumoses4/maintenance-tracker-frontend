@@ -58,7 +58,7 @@ export default class WebComponent extends Component {
                 that.state = 3;
                 that.error();
             })
-        }, 2000);
+        }, 0);
     }
 
     loading() {
