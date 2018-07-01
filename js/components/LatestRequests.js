@@ -11,7 +11,7 @@ export default class LatestRequests extends WebComponent {
 
     render() {
         return `
-            <div class="mg table">
+            <div>
                 <h2>Latest Maintenance/Repair Requests</h2>
                 <div class="content"></div>
             </div>
@@ -20,10 +20,16 @@ export default class LatestRequests extends WebComponent {
 
     static empty() {
         return `
-            <div class="empty">
-                No maintenance/repair requests <br/>
-                <i class="fas fa-database"></i>
+        <div class="mg segment">
+            <div class="content">
+                <div class="empty">
+                    <h3>No maintenance/repair requests <br>
+                    <i class="fas fa-database"></i>
+                    </h3>
+                    ${ !isAdmin() ? `<a href="new-request.html" class="mg primary button">Make Request </a>` : ""  }
+                </div>
             </div>
+        </div>
         `
     }
 
@@ -61,6 +67,7 @@ export default class LatestRequests extends WebComponent {
             content.innerHTML = LatestRequests.empty();
         } else {
             content.innerHTML = `
+            <div class="mg table">
                 <table>
                     <thead>
                     <tr>
@@ -76,6 +83,7 @@ export default class LatestRequests extends WebComponent {
                         ${ data.data.requests.map(request => LatestRequests.renderRequest(request)).join("")}
                     </tbody>
                 </table>
+            </div>
             `
         }
     }
