@@ -37,25 +37,25 @@
     <div class="mg content">
         <h2>Requests</h2>
         <div class="mg row">
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=resolved">
                 <button class="mg teal circle small button">
                     <i class="fas fa-cogs"></i>
                 </button>
                 <div class="title">Resolved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=disapproved">
                 <button class="mg danger circle small button">
                     <i class="fas fa-times"></i>
                 </button>
-                <div class="title">Rejected</div>
+                <div class="title">Disapproved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=approved">
                 <button class="mg success circle small button">
                     <i class="fas fa-check"></i>
                 </button>
                 <div class="title">Approved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=pending">
                 <button class="mg blue-grey circle small button">
                     <i class="fas fa-clock"></i>
                 </button>
@@ -63,88 +63,7 @@
             </a>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg table">
-            <h2>Latest Maintenance/Repair Requests</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Request ID</th>
-                    <th>Request Date</th>
-                    <th>Product Name</th>
-                    <th>Product Image</th>
-                    <th>Repair/Maintenance Request Description</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="request.html">#123456</a></td>
-                    <td>1st January 2012</td>
-                    <td>I Phone 8</td>
-                    <td><img src="../images/product_4.jpeg" class="mg small image"/></td>
-                    <td>Unable to charge</td>
-                    <td>
-                        <button class="mg teal circle tiny button">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <div class="title">Resolved</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="request.html">#232312</a></td>
-                    <td>5th December 2012</td>
-                    <td>Macbook Pro</td>
-                    <td><img src="../images/product_1.jpeg" class="mg small image"/></td>
-                    <td>Spilled coffee on keyboard</td>
-                    <td>
-                        <button class="mg blue-grey circle tiny button">
-                            <i class="fas fa-clock"></i>
-                        </button>
-                        <div class="title">Pending</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="request.html">#134234</a></td>
-                    <td>3rd December 2012</td>
-                    <td>Yamaha Keyboard</td>
-                    <td><img src="../images/product_2.jpeg" class="mg small image"/></td>
-                    <td>Sustain pedal not working</td>
-                    <td>
-                        <button class="mg success circle tiny button">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <div class="title">Approved</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="request.html">#123123</a></td>
-                    <td>4th December 2012</td>
-                    <td>Nikon Camera 230 DSLR</td>
-                    <td><img src="../images/product_3.jpeg" class="mg small image"/></td>
-                    <td>Broken Lens</td>
-                    <td>
-                        <button class="mg danger circle tiny button">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <div class="title">Rejected</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="request.html">#123456</a></td>
-                    <td>6th December 2012</td>
-                    <td>HP Desktop Keyboard</td>
-                    <td><img src="../images/product_5.jpg" class="mg small image"/></td>
-                    <td>Caps Lock not working</td>
-                    <td>
-                        <button class="mg teal circle tiny button">
-                            <i class="fas fa-cogs"></i>
-                        </button>
-                        <div class="title">Resolved</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <div id="admin-latest-requests"></div>
         <div class="mg vertical divider"></div>
         <h2>Resolved Requests</h2>
         <div class="mg row">
@@ -238,8 +157,12 @@
 <script src="../js/mg-framework/mg-framework.js"></script>
 <script type="module">
     import UserOptions from "../js/components/UserOptions.js";
+    import LatestRequests from "../js/components/LatestRequests.js";
 
     const userOptions = new UserOptions("admin_options");
+
+    const adminLatestRequests = new LatestRequests("admin-latest-requests", false);
+    adminLatestRequests.load();
 </script>
 </body>
 </html>

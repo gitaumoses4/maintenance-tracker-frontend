@@ -6,14 +6,14 @@ export default class LatestRequests extends WebComponent {
     }
 
     loading() {
-        this.element.querySelector(".content").classList.add("loading");
+        this.element.querySelector(".mg.table").classList.add("loading");
     }
 
     render() {
         return `
-            <div class="mg table">
+            <div>
                 <h2>Latest Maintenance/Repair Requests</h2>
-                <div class="content"></div>
+                <div class="mg table"></div>
             </div>
         `
     }
@@ -54,7 +54,7 @@ export default class LatestRequests extends WebComponent {
     }
 
     success() {
-        let content = this.element.querySelector(".content");
+        let content = this.element.querySelector(".mg.table");
         content.classList.remove("loading");
         let data = this.data;
         if (data.data.requests.length === 0) {
