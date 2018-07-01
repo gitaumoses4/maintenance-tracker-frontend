@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../js/data.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
@@ -28,19 +29,7 @@
         <div class="header">Maintenance Tracker</div>
         <div class="menu">
             <div class="item right aligned">
-                <div class="mg dropdown">
-                    <div class="trigger">
-                        <div class="account-options">
-                            <div class="title">Moses Gitau</div>
-                            <img src="../images/user-male.png" class="mg tiny image"/></div>
-                    </div>
-                    <div class="menu">
-                        <a class="item" href="requests.html">
-                            Pending Requests
-                            <button class="mg very tiny circle button primary" style="margin-left: 1em;">1</button>
-                        </a>
-                        <a class="item" href="../login.html">Logout</a>
-                    </div>
+                <div class="mg dropdown" id="admin-options">
                 </div>
             </div>
         </div>
@@ -48,25 +37,25 @@
     <div class="mg content">
         <h2>Requests</h2>
         <div class="mg row">
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=resolved">
                 <button class="mg teal circle small button">
                     <i class="fas fa-cogs"></i>
                 </button>
                 <div class="title">Resolved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=disapproved">
                 <button class="mg danger circle small button">
                     <i class="fas fa-times"></i>
                 </button>
-                <div class="title">Rejected</div>
+                <div class="title">Disapproved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=approved">
                 <button class="mg success circle small button">
                     <i class="fas fa-check"></i>
                 </button>
                 <div class="title">Approved</div>
             </a>
-            <a class="request button" href="requests.html">
+            <a class="request button" href="requests.html?status=pending">
                 <button class="mg blue-grey circle small button">
                     <i class="fas fa-clock"></i>
                 </button>
@@ -75,51 +64,7 @@
         </div>
         <div class="mg vertical divider"></div>
         <div class="mg container">
-            <div class="mg segment">
-                <div class="header">
-                    Maintenance / Repair Request
-                </div>
-                <div class="content">
-                    <div class="mg row">
-                        <div class="six-medium twelve-small six-large column">
-                            <img class="mg image" src="../images/product_1.jpeg"/>
-                            <div class="mg vertical divider"></div>
-                            <img class="mg image" src="../images/product_1.jpeg"/>
-                        </div>
-                        <div class="six-large six-medium twelve-small column">
-                            <div style="padding: 2em">
-                                <div class="mg row centered">
-                                    <img src="../images/user-female.png" class="mg small circle image"/>
-                                    <div class="padded">
-                                        <div>Posted by: <b>Jenna</b></div>
-                                        <div>12th January 2012</div>
-                                    </div>
-                                </div>
-                                <div class="mg vertical divider"></div>
-                                <h2>Macbook Pro</h2>
-                                <p>
-                                   The device does not start. It occassionally does start but does not last for
-                                    more than 12 minutes without
-                                </p>
-                                <h2>Request Status</h2>
-                                <form class="mg form">
-                                    <div class="field">
-                                        <select>
-                                            <option>Pending</option>
-                                            <option>Approved</option>
-                                            <option>Rejected</option>
-                                            <option>Resolved</option>
-                                        </select>
-                                    </div>
-                                    <div class="field">
-                                        <button class="mg primary button">Update</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="admin-request"></div>
             <div class="padded">
                 <h2>Provide Feedback</h2>
                 <div class="mg vertical divider"></div>
@@ -143,5 +88,14 @@
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
+<script type="module">
+    import UserOptions from "../js/components/UserOptions.js";
+    import AdminRequest from "../js/components/AdminRequest.js";
+
+    const userOptions = new UserOptions("admin-options");
+
+    const adminRequest = new AdminRequest("admin-request", getQueryParameter("id"));
+    adminRequest.load();
+</script>
 </body>
 </html>

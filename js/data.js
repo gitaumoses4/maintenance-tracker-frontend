@@ -5,11 +5,27 @@ let page = window.location.pathname;
 
 // check user pages
 guardUserPages(page);
+guardAdminPages(page);
 redirectIfAuthenticated(page);
 
 function redirectIfAuthenticated(page) {
     if (["/register.html", "/login.html"].indexOf(page) >= 0 && isAuthenticated()) {
         window.location.href = isAdmin() ? "/admin" : "/user";
+    }
+}
+
+function guardAdminPages(page) {
+    if (page.startsWith("/admin")) {
+        if (isAuthenticated()) {
+            if (!isAdmin()) {
+                window.location.href = "/user/"
+            }
+        } else {
+            window.location.href = "/login.html";
+        }
+    }
+    if (page === "/admin/request.html" && !getQueryParameter("id")) {
+        window.location.href = "/admin/";
     }
 }
 
