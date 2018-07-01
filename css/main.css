@@ -280,11 +280,10 @@ table img {
 }
 
 .empty {
-    background: white;
-    padding: 2em 1em;
-    color: rgba(0, 0, 0, .5);
-    font-size: 2em;
-    text-align: center;
+    background: white !important;
+    padding: 4em 3em !important;
+    color: rgba(0, 0, 0, .5) !important;
+    text-align: center !important;
 }
 
 .loading.dark:before {
