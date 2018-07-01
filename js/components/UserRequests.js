@@ -3,12 +3,14 @@ import Paginator from "./Paginator.js";
 
 export default class UserRequests extends WebComponent {
     constructor(id, type = "all") {
-        super(id, "GET", API_BASE_URL + "/users/requests/" + type, getAuthHeaders());
+        super(id, "GET", API_BASE_URL + (isAdmin() ? "/requests/" : "/users/requests/") + type, getAuthHeaders());
         this.type = type;
     }
 
     loadPage(page) {
-        this.setURL(API_BASE_URL + "/users/requests/" + this.type + "?page=" + page);
+        let url = new URL(this.link);
+        url.searchParams.set("page", page);
+        this.link = url.href;
         this.load();
     }
 
@@ -20,7 +22,7 @@ export default class UserRequests extends WebComponent {
                     No maintenance/repair requests 
                 </div>
                 <div class="content empty">
-                   You do not have any maintenance/repair requests 
+                   There are no any maintenance/repair requests 
                    <br>
                    <i class="fas fa-cogs"></i>
                 </div>
