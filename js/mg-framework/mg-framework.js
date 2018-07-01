@@ -67,6 +67,10 @@ let modals = document.getElementsByClassName("mg modal");
 
 for (let i = 0; i < modals.length; i++) {
     let modal = modals[i];
+    initModal(modal);
+}
+
+function initModal(modal) {
     let triggerId = modal.dataset.trigger;
     let modalBody = modal.getElementsByClassName("body")[0];
 
@@ -111,7 +115,7 @@ function showModal(modal, modalBody) {
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
     window.setTimeout(function () {
-        modal.style.backgroundColor = "rgba(0,0,0,.9)";
+        modal.style.backgroundColor = "rgba(0,0,0,.2)";
         modalBody.style.transform = "translate(-50%, -50%)";
         modalBody.style.opacity = "1";
     }, 100);

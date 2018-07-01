@@ -1,7 +1,7 @@
 import WebComponent from "./WebComponent.js";
 
 export default class LatestRequests extends WebComponent {
-    constructor(id, status = all) {
+    constructor(id, status = "all") {
         super(id, "GET", API_BASE_URL + (!isAdmin() ? "/users/requests/" : "/requests/") + status, getAuthHeaders())
     }
 
