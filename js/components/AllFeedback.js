@@ -1,12 +1,9 @@
 import WebComponent from "./WebComponent.js";
+import Paginator from "./Paginator.js";
 
-export default class LatestFeedback extends WebComponent {
+export default class AllFeedback extends WebComponent {
     constructor(id) {
         super(id, "GET", API_BASE_URL + '/users/feedback', getAuthHeaders());
-    }
-
-    render() {
-        return "";
     }
 
     success() {
@@ -19,9 +16,13 @@ export default class LatestFeedback extends WebComponent {
                 <i class="fas fa-database"></i>
             </div>`
         } else {
-            let feedback = data.data.feedback.slice(0, 4);
+            let feedback = data.data.feedback;
             this.element.innerHTML =
-                `${feedback.map(feed => `
+                `
+                <div class="mg row">
+                    <div class="mg paginator center"></div>
+                </div>
+                ${feedback.map(feed => `
                     <a class="feedback" href="request.html?id=${ feed.request }">
                         <img src="../images/user-male.png" alt="" class="mg tiny circle image">
                         <div class="content">
@@ -35,7 +36,12 @@ export default class LatestFeedback extends WebComponent {
                                 ${ feed.message }
                             </div>
                         </div>
-                    </a>`).join('')}`
+                    </a>`).join('')}`;
+            let paginator = new Paginator(this.element.querySelector(".paginator"), data.data.current_page, data.data.last_page);
+            let that = this;
+            paginator.setOnPageChangeListener(function (page) {
+                that.loadPage(page)
+            })
         }
     }
 }

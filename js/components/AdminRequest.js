@@ -27,7 +27,7 @@ export default class AdminRequest extends WebComponent {
                                     <img src="../images/user-female.png" class="mg small circle image"/>
                                     <div class="padded">
                                         <div>Posted by: <b>${ request.created_by.firstname + " " + request.created_by.lastname}</b></div>
-                                        <div>${ request.created_at }</div>
+                                        <div>${ new Date(Date.parse(request.created_at)).toDateString() }</div>
                                     </div>
                                 </div>
                                 <div class="mg vertical divider"></div>

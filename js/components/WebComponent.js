@@ -8,6 +8,13 @@ export default class WebComponent extends Component {
         this.link = url;
     }
 
+    loadPage(page) {
+        let url = new URL(this.link);
+        url.searchParams.set("page", page);
+        this.link = url.href;
+        this.load();
+    }
+
     onDOMLoaded() {
         this.element.innerHTML = this.render();
         this.onRender();
@@ -58,7 +65,7 @@ export default class WebComponent extends Component {
                 that.state = 3;
                 that.error();
             })
-        }, 0);
+        }, 2000);
     }
 
     loading() {

@@ -7,12 +7,7 @@ export default class UserRequests extends WebComponent {
         this.type = type;
     }
 
-    loadPage(page) {
-        let url = new URL(this.link);
-        url.searchParams.set("page", page);
-        this.link = url.href;
-        this.load();
-    }
+
 
     static empty() {
         return `

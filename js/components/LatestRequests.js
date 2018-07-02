@@ -43,7 +43,7 @@ export default class LatestRequests extends WebComponent {
         return `
             <tr>
                 <td><a href="request.html?id=${ request.id }">#${ request.id }</a></td>
-                <td>${ request.created_at }</td>
+                <td>${ new Date(Date.parse(request.created_at)).toDateString() }</td>
                 <td>${ request.product_name }</td>
                 <td>
                     <img src="${ request.photo || '../images/placeholder.png'}" class="mg small image"/>
