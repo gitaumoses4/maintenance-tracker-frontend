@@ -76,8 +76,9 @@ export default class Paginator extends Component {
 
     render() {
         if (this.numPages === 1 || this.currentPage > this.numPages) {
-            this.element.display = "none";
+            this.element.style.display = "none";
         } else {
+            this.element.style.display = '';
             this.element.innerHTML = '';
             let paginator = this.element;
 
