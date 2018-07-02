@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/mg-framework/mg-framework.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Maintenance Tracker - Request</title>
+    <title>Maintenance Tracker - Admin</title>
 </head>
 <body>
 <div class="mg sidebar" data-trigger="openSidebar">
@@ -35,7 +35,7 @@
         <div class="header">Maintenance Tracker</div>
         <div class="menu">
             <div class="item right aligned">
-                <div class="mg dropdown" id="admin-options">
+                <div class="mg dropdown" id="admin_options">
                 </div>
             </div>
         </div>
@@ -69,47 +69,20 @@
             </a>
         </div>
         <div class="mg vertical divider"></div>
-        <div class="mg container">
-            <div id="admin-request"></div>
-            <div class="padded">
-                <h2>Provide Feedback</h2>
-                <div class="feedback-container" id="request-feedback">
-                </div>
-                <div class="mg vertical divider"></div>
-                <div class="mg row" style="margin-top: 3em;">
-                    <div class="two-large three-medium column">
-                        <img src="../images/user-male.png" alt="" class="mg small circle image feedback-profile"/>
-                    </div>
-                    <div class="ten-large nine-medium twelve-small column">
-                        <form class="mg form" id="request-feedback-form">
+        <div id="admin-view-all-users">
 
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 <script src="../js/mg-framework/mg-framework.js"></script>
 <script type="module">
     import UserOptions from "../js/components/UserOptions.js";
-    import AdminRequest from "../js/components/AdminRequest.js";
-    import RequestFeedbackForm from "../js/components/RequestFeedbackForm.js";
-    import UserRequestFeedback from "../js/components/UserRequestFeedback.js";
+    import AllUsers from "../js/components/AllUsers.js";
 
-    const userOptions = new UserOptions("admin-options");
+    const userOptions = new UserOptions("admin_options");
 
-    const adminRequest = new AdminRequest("admin-request", getQueryParameter("id"));
-    adminRequest.load();
-
-    const requestFeedbackForm = new RequestFeedbackForm("request-feedback-form", getQueryParameter("id"));
-
-    const requestFeedback = new UserRequestFeedback("request-feedback", getQueryParameter("id"));
-    requestFeedback.load();
-
-    requestFeedbackForm.setOnSuccessListener(function(){
-        requestFeedback.load();
-    })
+    const allUsers = new AllUsers("admin-view-all-users");
+    allUsers.load();
 </script>
 </body>
 </html>
