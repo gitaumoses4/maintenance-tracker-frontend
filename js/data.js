@@ -55,6 +55,7 @@ function setUserDetails(token, user) {
     sessionStorage.setItem("lastname", user.lastname);
     sessionStorage.setItem("profile_picture", user.profile_picture);
     sessionStorage.setItem("role", user.role);
+    sessionStorage.setItem("verified", user.verified);
     sessionStorage.setItem("username", user.username);
 }
 
@@ -69,10 +70,15 @@ function getUser() {
         "email": sessionStorage.getItem("email"),
         "firstname": sessionStorage.getItem("firstname"),
         "lastname": sessionStorage.getItem("lastname"),
+        "verified": sessionStorage.getItem("verified"),
         "profile_picture": sessionStorage.getItem("profile_picture"),
         "role": sessionStorage.getItem("role"),
         "username": sessionStorage.getItem("username")
     }
+}
+
+function isVerified() {
+    return getUser().verified === 1;
 }
 
 function isAdmin() {
