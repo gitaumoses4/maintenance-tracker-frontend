@@ -22,11 +22,19 @@ export default class FormComponent extends WebComponent {
             object[key] = value;
         });
 
+        this.body = object;
+
         this.load(object);
     }
 
     loading() {
+        this.element.classList.remove("error");
+        this.element.classList.remove("success");
         this.element.classList.add("loading");
+    }
+
+    notLoading() {
+        this.element.classList.remove("loading");
     }
 
     success() {
@@ -47,7 +55,7 @@ export default class FormComponent extends WebComponent {
             errorPanel.style.display = '';
             errorPanel.innerHTML = `
 					<ul>
-						${data.message.map(info => `<li>${info}</li>`)}
+						${data.message.map(info => `<li>${info}</li>`).join("")}
 					</ul>`;
         }
     }
