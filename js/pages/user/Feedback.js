@@ -7,7 +7,7 @@ export class Feedback extends Dashboard {
     }
     
     getSidebarActiveItem(){
-        return 2; 
+        return isAdmin() ? 3 : 2;
     }
 
     registerComponents() {

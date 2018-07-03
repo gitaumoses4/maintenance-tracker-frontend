@@ -9,78 +9,7 @@
     <title>Maintenance Tracker - Admin</title>
 </head>
 <body>
-<div class="mg sidebar" data-trigger="openSidebar">
-    <div class="menu">
-        <a class="item active" href="index.html">
-            <i class="icon fas fa-tachometer-alt"></i>
-            <div class="title center aligned">My Dashboard</div>
-        </a>
-        <a class="item" href="requests.html">
-            <i class="icon fas fa-cogs"></i>
-            <div class="title center aligned">
-                <div class="title">Repair Requests</div>
-            </div>
-        </a>
-        <a class="item" href="users.html">
-            <i class="icon fas fa-user"></i>
-            <div class="title center aligned">
-                <div class="title">Users</div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="mg pushable">
-    <div class="mg navbar">
-        <i class="open fas fa-bars" id="openSidebar"></i>
-        <div class="header">Maintenance Tracker</div>
-        <div class="menu">
-            <div class="item right aligned">
-                <div class="mg dropdown" id="admin_options">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mg content">
-        <h2>Requests</h2>
-        <div class="mg row">
-            <a class="request button" href="requests.html?status=resolved">
-                <button class="mg teal circle small button">
-                    <i class="fas fa-cogs"></i>
-                </button>
-                <div class="title">Resolved</div>
-            </a>
-            <a class="request button" href="requests.html?status=disapproved">
-                <button class="mg danger circle small button">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="title">Disapproved</div>
-            </a>
-            <a class="request button" href="requests.html?status=approved">
-                <button class="mg success circle small button">
-                    <i class="fas fa-check"></i>
-                </button>
-                <div class="title">Approved</div>
-            </a>
-            <a class="request button" href="requests.html?status=pending">
-                <button class="mg blue-grey circle small button">
-                    <i class="fas fa-clock"></i>
-                </button>
-                <div class="title">Pending</div>
-            </a>
-        </div>
-        <div class="mg vertical divider"></div>
-        <div id="admin-latest-requests"></div>
-    </div>
-</div>
 <script src="../js/mg-framework/mg-framework.js"></script>
-<script type="module">
-    import UserOptions from "../js/components/UserOptions.js";
-    import LatestRequests from "../js/components/LatestRequests.js";
-
-    const userOptions = new UserOptions("admin_options");
-
-    const adminLatestRequests = new LatestRequests("admin-latest-requests");
-    adminLatestRequests.load();
-</script>
+<script type="module" src="../js/pages/admin/AdminDashboard.js"> </script>
 </body>
 </html>

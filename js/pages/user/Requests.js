@@ -8,7 +8,7 @@ export class Requests extends Dashboard {
 
 
     getSidebarActiveItem() {
-        return 1;
+        return isAdmin() ? 2 : 1;
     }
 
     mainContent() {

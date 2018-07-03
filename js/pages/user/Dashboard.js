@@ -24,6 +24,9 @@ export class Dashboard extends App {
                 </div>
             </div>`;
     }
+    getSidebarActiveItem(){
+        return isAdmin() ? 1 : 0;
+    }
 
 
     getTitle() {
@@ -31,10 +34,18 @@ export class Dashboard extends App {
     }
 
     getSideBarMenuItems() {
-        return [
+        let items = [];
+        if (isAdmin()) {
+            items.push({
+                "title": "Admin Dashboard",
+                "href": "/admin",
+                "icon": "fa-tachometer-alt"
+            })
+        }
+        items = items.concat([
             {
-                "title": "My Dashboard",
-                "href": "index.html",
+                "title": isAdmin() ? "User Dashboard" : "My Dashboard",
+                "href": "/user",
                 "icon": "fa-tachometer-alt"
             },
             {
@@ -52,7 +63,8 @@ export class Dashboard extends App {
                 "id": "mobileNotifications",
                 "icon": "fa-bell"
             }
-        ];
+        ]);
+        return items;
     }
 
     content() {
