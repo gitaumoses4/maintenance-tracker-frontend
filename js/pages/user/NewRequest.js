@@ -10,10 +10,15 @@ export class NewRequest extends Dashboard {
         return -1;
     }
 
+
+    getFormTitle() {
+        return "New Maintenance/Repair Request";
+    }
+
     mainContent() {
         return ` <div class="mg segment">
             <div class="header">
-                New Maintenance/Repair Request
+                ${ this.getFormTitle() } 
             </div>
             <div class="content">
                 <div class="mg row">
