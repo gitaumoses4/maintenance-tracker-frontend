@@ -25,6 +25,11 @@ export class Dashboard extends App {
             </div>`;
     }
 
+
+    getTitle() {
+        return "Maintenance Tracker - User Panel"
+    }
+
     getSideBarMenuItems() {
         return [
             {
@@ -132,6 +137,8 @@ export class Dashboard extends App {
     onRender() {
         const desktopNotifications = new Notifications("user-home-notifications");
         desktopNotifications.load();
+
+        initModal(this.element.querySelector(".mg.modal"));
 
         const mobileNotifications = new MobileNotifications("user-home-notifications-2");
         mobileNotifications.load();

@@ -82,7 +82,7 @@ function initModal(modal) {
     }
     // document.body.appendChild(modal);
 
-    let close = modal.getElementsByClassName("close")[0];
+    let close = modal.querySelector(".close");
     close.addEventListener("click", function () {
         hideModal(modal, modalBody);
     });
