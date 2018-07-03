@@ -103,6 +103,7 @@ export default class NewMaintenanceRequest extends FormComponent {
                         }
                     });
             } else {
+                productPhoto.value = product_photo_img.getAttribute("src");
                 that.submit();
             }
         }

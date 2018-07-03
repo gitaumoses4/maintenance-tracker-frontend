@@ -26,6 +26,8 @@ export default class FormComponent extends WebComponent {
     }
 
     loading() {
+        this.element.classList.remove("error");
+        this.element.classList.remove("success");
         this.element.classList.add("loading");
     }
 
