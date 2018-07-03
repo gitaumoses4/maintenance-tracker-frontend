@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://maintenance-tracker-api.herokuapp.com/api/v2";
+const API_BASE_URL = "https://localhost:5000/api/v2";
 const HEADERS = {"Content-Type": "application/json", "Access-Control-Allow-Origin": "all"};
 
 let page = window.location.pathname;
