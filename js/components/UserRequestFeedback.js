@@ -18,7 +18,7 @@ export default class UserRequestFeedback extends WebComponent {
 
     success() {
         super.success();
-        this.element.innerHTML = this.data.data.length === 0 ? UserRequestFeedback.empty() :
+        this.element.innerHTML = this.data.data.feedback.length === 0 ? UserRequestFeedback.empty() :
             `${this.data.data.feedback.map(feedback => `
             <div class="feedback">
                 <img src="../images/user-male.png" alt="" class="mg tiny circle image">
@@ -27,10 +27,10 @@ export default class UserRequestFeedback extends WebComponent {
                         ${feedback.admin.firstname} ${feedback.admin.lastname}
                     </div>
                     <div class="date">
-                        ${ new Date(Date.parse(feedback.feedback.created_at)).toDateString() }
+                        ${ new Date(Date.parse(feedback.created_at)).toDateString() }
                     </div>
                     <div class="description">
-                        ${feedback.feedback.message}
+                        ${feedback.message}
                     </div>
                 </div>
             </div>

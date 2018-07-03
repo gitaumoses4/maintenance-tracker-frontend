@@ -13,6 +13,7 @@ export default class AllUsers extends WebComponent {
             <td>${ user.username }</td>
             <td>${ user.firstname + " " + user.lastname }</td>
             <td>${ user.email }</td>
+            <td>${ user.verified === 1 ? "Verfied" : "Not Verfied" }</td>
             <td>${ user.role } ${ user.role === "User" ? ` - <a href="#">Make Admin</a>` : ""}</td>
         `;
         let that = this;
@@ -44,6 +45,7 @@ export default class AllUsers extends WebComponent {
                         <th>Username</th>
                         <th>Full Names</th>
                         <th>Email</th>
+                        <th>Account Status</th>
                         <th>Role</th>
                     </tr>
                     </thead>
