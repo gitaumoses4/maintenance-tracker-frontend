@@ -47,7 +47,7 @@ export default class FormComponent extends WebComponent {
             errorPanel.style.display = '';
             errorPanel.innerHTML = `
 					<ul>
-						${data.message.map(info => `<li>${info}</li>`)}
+						${data.message.map(info => `<li>${info}</li>`).join("")}
 					</ul>`;
         }
     }

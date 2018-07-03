@@ -16,7 +16,7 @@ export default class WebComponent extends Component {
     }
 
     onDOMLoaded() {
-        this.element.innerHTML = this.render();
+        this.element.innerHTML = this.render() || this.element.innerHTML;
         this.onRender();
     }
 
