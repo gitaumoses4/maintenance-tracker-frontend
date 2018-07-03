@@ -1,12 +1,12 @@
-import App from "./App.js";
-import Notifications, {MobileNotifications} from "../components/Notifications.js";
-import UserOptions from "../components/UserOptions.js";
-import LatestRequests from "../components/LatestRequests.js";
-import LatestFeedback from "../components/LatestFeedback.js";
-import ResolvedRequests from "../components/ResolvedRequestCount.js";
-import DisapprovedRequestCount from "../components/DisapprovedRequestCount.js";
+import App from "../App.js";
+import Notifications, {MobileNotifications} from "../../components/Notifications.js";
+import UserOptions from "../../components/UserOptions.js";
+import LatestRequests from "../../components/LatestRequests.js";
+import LatestFeedback from "../../components/LatestFeedback.js";
+import ResolvedRequests from "../../components/ResolvedRequestCount.js";
+import DisapprovedRequestCount from "../../components/DisapprovedRequestCount.js";
 
-export class UserDashboard extends App {
+export class Dashboard extends App {
     constructor() {
         super();
     }
@@ -156,4 +156,4 @@ export class UserDashboard extends App {
     }
 }
 
-new UserDashboard();
+new Dashboard();
