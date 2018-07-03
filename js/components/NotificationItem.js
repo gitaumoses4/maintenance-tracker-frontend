@@ -6,9 +6,10 @@ export default class NotificationItem extends Component {
         this.parent = parent;
     }
 
-    onDOMLoaded(){
+    onDOMLoaded() {
         let that = this;
         this.element.addEventListener("click", function () {
+            let notification = that.data;
             if (that.data.id) {
                 fetch(API_BASE_URL + "/users/notifications/" + that.data.id, {
                     method: "PUT",
@@ -16,6 +17,7 @@ export default class NotificationItem extends Component {
                 }).then(response => response.json())
                     .then(data => {
                         that.parent.load();
+                        window.location.href = notification.action === "upgrade" ? "/admin" : "request.html?id=" + notification.action;
                     })
             }
         });
