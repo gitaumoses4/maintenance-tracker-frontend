@@ -9,8 +9,10 @@ guardAdminPages(page);
 redirectIfAuthenticated(page);
 
 function redirectIfAuthenticated(page) {
-    if (["/register.html", "/login.html"].indexOf(page) >= 0 && isAuthenticated()) {
-        window.location.href = isAdmin() ? "/admin" : "/user";
+    if (["/register.html", "/login.html", "/verify-account.html"].indexOf(page) >= 0 && isAuthenticated()) {
+        if(isVerified()){
+            window.location.href = isAdmin() ? "/admin" : "/user";
+        }
     }
 }
 
@@ -18,7 +20,7 @@ function guardAdminPages(page) {
     if (page.startsWith("/admin")) {
         if (isAuthenticated()) {
             if (!isAdmin()) {
-                window.location.href = "/user/"
+                window.location.href = isVerified() ? "/user/" : "/verify-account.html";
             }
         } else {
             window.location.href = "/login.html";
@@ -30,8 +32,13 @@ function guardAdminPages(page) {
 }
 
 function guardUserPages(page) {
-    if (page.startsWith("/user") && !isAuthenticated()) {
-        window.location.href = "/login.html";
+    if (page.startsWith("/user")) {
+        if(!isAuthenticated()){
+            window.location.href = "/login.html"
+        }
+        if(!isVerified()){
+            window.location.href = "/verify-account.html";
+        }
     }
     if (page === "/user/request.html" && !getQueryParameter("id")) {
         window.location.href = "/user/";
@@ -78,7 +85,7 @@ function getUser() {
 }
 
 function isVerified() {
-    return getUser().verified === 1;
+    return getUser().verified === "1";
 }
 
 function isAdmin() {

@@ -267,6 +267,14 @@ table img {
     color: #a81005
 }
 
+.mg.button.tiny{
+    padding: 0.4em 0.7em 0.4em;
+}
+.mg.segment.info{
+    border-color: #231586;
+    color: #231586;
+}
+
 .mg.segment.success {
     border-color: #058f12;
     color: #058f12;

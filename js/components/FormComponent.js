@@ -22,6 +22,8 @@ export default class FormComponent extends WebComponent {
             object[key] = value;
         });
 
+        this.body = object;
+
         this.load(object);
     }
 

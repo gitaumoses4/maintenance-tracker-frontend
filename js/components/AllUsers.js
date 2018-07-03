@@ -14,10 +14,10 @@ export default class AllUsers extends WebComponent {
             <td>${ user.firstname + " " + user.lastname }</td>
             <td>${ user.email }</td>
             <td>${ user.verified === 1 ? "Verfied" : "Not Verfied" }</td>
-            <td>${ user.role } ${ user.role === "User" ? ` - <a href="#">Make Admin</a>` : ""}</td>
+            <td>${ user.role } ${ (user.role === "User" &&  user.verified === 1) ? ` - <a href="#" class="mg primary tiny button">Make Admin</a>` : ""}</td>
         `;
         let that = this;
-        if (user.role === "User") {
+        if (user.role === "User" && user.verified === 1) {
             row.querySelector("a").addEventListener("click", function () {
                 that.loading();
                 fetch(API_BASE_URL + "/users/" + user.id + "/upgrade", {

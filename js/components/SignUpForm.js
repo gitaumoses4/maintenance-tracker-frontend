@@ -9,8 +9,18 @@ export default class SignUpForm extends FormComponent {
 
     success() {
         super.success();
-        window.setTimeout(() => {
-            window.location.href = "login.html";
-        }, 1000)
+
+        this.loading();
+        let that = this;
+        fetch(API_BASE_URL + "/auth/login", {
+            method: "POST",
+            headers: HEADERS,
+            body: JSON.stringify(this.body)
+        }).then(response => response.json())
+            .then(data => {
+                that.notLoading();
+                setUserDetails(data.data.token, data.data.user);
+                window.location.href = "verify-account.html";
+            })
     }
 }

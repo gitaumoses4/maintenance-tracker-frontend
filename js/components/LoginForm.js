@@ -8,6 +8,6 @@ export default class LoginForm extends FormComponent {
     success() {
         super.success();
         setUserDetails(this.data.data.token, this.data.data.user);
-        window.location.href = isAdmin() ? "/admin" : "/user";
+        window.location.href = this.data.data.user.verified === 1 ? (isAdmin() ? "/admin" : "/user") : "verify-account.html";
     }
 }
