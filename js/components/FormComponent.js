@@ -10,7 +10,9 @@ export default class FormComponent extends WebComponent {
         super.onDOMLoaded();
         this.element.addEventListener("submit", (event) => {
             event.preventDefault();
-            this.submit();
+            if (this.validate()) {
+                this.submit();
+            }
         })
     }
 
@@ -23,6 +25,22 @@ export default class FormComponent extends WebComponent {
         });
 
         this.load(object);
+    }
+
+    validate() {
+        return true;
+    }
+
+    getValue() {
+        let formData = new FormData(this.element);
+        let object = {};
+
+        formData.forEach(function (value, key) {
+            object[key] = value;
+        });
+
+        return object;
+
     }
 
     loading() {
@@ -47,7 +65,7 @@ export default class FormComponent extends WebComponent {
             errorPanel.style.display = '';
             errorPanel.innerHTML = `
 					<ul>
-						${data.message.map(info => `<li>${info}</li>`)}
+						${data.message.map(info => `<li>${info}</li>`).join("")}
 					</ul>`;
         }
     }
