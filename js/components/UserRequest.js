@@ -64,6 +64,7 @@ export default class UserRequest extends WebComponent {
                                 <p>
                                     ${ data.data.request.description }
                                 </p>
+                                <a href="edit-request.html?id=${ data.data.request.id}" class="mg primary button ${ data.data.request.status.toLowerCase() !== 'pending' ? 'disabled' : ''}">Edit Request</a>
                             </div>
                         </div>
                     </div>

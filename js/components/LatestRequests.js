@@ -41,7 +41,7 @@ export default class LatestRequests extends WebComponent {
             "Disapproved": "danger"
         };
         return `
-            <tr>
+            <tr onclick="window.location.href = 'request.html?id=${request.id}'">
                 <td><a href="request.html?id=${ request.id }">#${ request.id }</a></td>
                 <td>${ new Date(Date.parse(request.created_at)).toDateString() }</td>
                 <td>${ request.product_name }</td>

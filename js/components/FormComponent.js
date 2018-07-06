@@ -24,6 +24,8 @@ export default class FormComponent extends WebComponent {
             object[key] = value;
         });
 
+        this.body = object;
+
         this.load(object);
     }
 
@@ -44,7 +46,13 @@ export default class FormComponent extends WebComponent {
     }
 
     loading() {
+        this.element.classList.remove("error");
+        this.element.classList.remove("success");
         this.element.classList.add("loading");
+    }
+
+    notLoading() {
+        this.element.classList.remove("loading");
     }
 
     success() {

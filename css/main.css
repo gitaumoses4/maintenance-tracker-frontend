@@ -267,6 +267,14 @@ table img {
     color: #a81005
 }
 
+.mg.button.tiny{
+    padding: 0.4em 0.7em 0.4em;
+}
+.mg.segment.info{
+    border-color: #231586;
+    color: #231586;
+}
+
 .mg.segment.success {
     border-color: #058f12;
     color: #058f12;
@@ -295,10 +303,14 @@ table img {
     top: 0;
     left: 0;
     padding: 2em;
-    background: rgba(244,244, 244, .4);
+    background: rgba(244, 244, 244, .4);
     width: 100%;
     height: 100%;
-    z-index: 100000;
+    z-index: 150;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 .loading:after {
@@ -376,6 +388,13 @@ table img {
     font-size: 2em;
     background-color: #1c7dcb;
     color: white;
+}
+.mg.table tr{
+    transition: background 0.5s;
+    cursor: pointer;
+}
+.mg.table tr:hover {
+    background: rgba(0, 0, 0, .05);
 }
 
 /* Responsiveness */
