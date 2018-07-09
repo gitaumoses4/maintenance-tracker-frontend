@@ -267,6 +267,11 @@ table img {
     color: #a81005
 }
 
+.field .error{
+    display: block !important;
+    color:  #a81005;
+}
+
 .mg.button.tiny{
     padding: 0.4em 0.7em 0.4em;
 }
