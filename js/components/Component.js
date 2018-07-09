@@ -1,3 +1,8 @@
+/**
+ * This is a basic custom web component.
+ *
+ * Using Object Oriented Programming, the component can be rendered with specific data during or after the DOM has been created
+ */
 export default class Component {
     constructor(id, data = null) {
         if ((typeof id).toLowerCase() === "string") {
@@ -21,14 +26,25 @@ export default class Component {
 
     }
 
+    /**
+     * Invoked when the DOM has been created.
+     *
+     * Override this method in order to perform a task when the DOM has been loaded.
+     */
     onDOMLoaded() {
     }
 
+
+    /**
+     * Sets the data to the component
+     * @param data
+     * @returns {Component}
+     */
     setData(data) {
         this.data = data;
         if (this.element && data) {
             let content = this.render();
-            if(content){
+            if (content) {
                 this.element.innerHTML = content;
             }
             this.onRender();
@@ -36,11 +52,20 @@ export default class Component {
         return this;
     }
 
+
+    /**
+     * Renders the inner html fo the component
+     * @returns {string}
+     */
     render() {
         return '';
     }
 
-    onRender(){
+
+    /**
+     * Invoked when the component has been rendered
+     */
+    onRender() {
 
     }
 }
