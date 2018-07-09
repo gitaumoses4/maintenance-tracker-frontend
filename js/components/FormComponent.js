@@ -1,5 +1,9 @@
 import WebComponent from "./WebComponent.js";
 
+
+/**
+ * A Form component is a web component that submits data to the API
+ */
 export default class FormComponent extends WebComponent {
 
     constructor(id, method, url, headers) {
@@ -20,6 +24,9 @@ export default class FormComponent extends WebComponent {
         })
     }
 
+    /**
+     * Invoke this method to personally submit the form without the onsubmit function
+     */
     submit() {
         let formData = new FormData(this.element);
         let object = {};
@@ -33,10 +40,17 @@ export default class FormComponent extends WebComponent {
         this.load(object);
     }
 
+    /**
+     * Validate the form's values before submitting it
+     * @returns {Array}
+     */
     validate() {
         return [];
     }
 
+    /**
+     * Get the value of a form field
+     */
     getValue() {
         let formData = new FormData(this.element);
         let object = {};
