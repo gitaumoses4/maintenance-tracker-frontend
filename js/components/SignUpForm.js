@@ -10,12 +10,11 @@ export default class SignUpForm extends FormComponent {
     validate() {
         let formData = this.getValue();
         let errors = [];
-        if(formData['username'].length < 4) {
-            errors.push("Username should be more than 4 characters.")
-        }
         if(formData['password'].trim().length < 8){
-
+            errors.push("Password should be more than 8 characters.");
         }
+
+        return errors;
     }
 
     success() {

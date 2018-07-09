@@ -10,8 +10,12 @@ export default class FormComponent extends WebComponent {
         super.onDOMLoaded();
         this.element.addEventListener("submit", (event) => {
             event.preventDefault();
-            if (this.validate()) {
+            let errors = this.validate();
+            if (errors.length === 0) {
                 this.submit();
+            } else {
+                this.data = {"message": errors};
+                this.error();
             }
         })
     }
@@ -30,7 +34,7 @@ export default class FormComponent extends WebComponent {
     }
 
     validate() {
-        return true;
+        return [];
     }
 
     getValue() {

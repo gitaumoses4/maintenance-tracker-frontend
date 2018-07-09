@@ -15,25 +15,38 @@ export default class NewMaintenanceRequest extends FormComponent {
         super.onDOMLoaded();
     }
 
+    validate() {
+        let value = this.getValue();
+        let errors = [];
+        if (value['product_name'] === '') {
+            errors.push("Product name cannot be empty.");
+        }
+        if (value['description'] === '') {
+            errors.push("Product description cannot be empty");
+        } else if (value['description'].length < 50) {
+            errors.push("Product description must be more then 50 characters.");
+        }
+        return errors;
+    }
+
     loadRequest() {
         this.loading();
-        let that = this;
         fetch(this.link, {
             method: "GET",
             headers: this.headers
         }).then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    that.notLoading();
-                    let form = that.element;
+                    this.notLoading();
+                    let form = this.element;
                     let request = data.data.request;
                     form.querySelector("#product-photo-img").setAttribute("src", request.photo);
                     form.querySelector("#new-request-product-name").value = request.product_name;
                     form.querySelector("#new-request-description").value = request.description
                     if (request.status.toLowerCase() !== "pending") {
-                        that.data = {"message": ["A maintenance/repair request can only be edited if it's awaiting approval"]};
+                        this.data = {"message": ["A maintenance/repair request can only be edited if it's awaiting approval"]};
                         form.classList.add("disabled");
-                        that.error();
+                        this.error();
                     }
                 }
             });
@@ -56,10 +69,9 @@ export default class NewMaintenanceRequest extends FormComponent {
         let submit_request = this.element.querySelector("#submit-request");
         const productPhoto = this.element.querySelector("#product-photo-input");
 
-        let that = this;
         this.product_photo_changed = false;
-        product_photo.onchange = function () {
-            that.product_photo_changed = true;
+        product_photo.onchange =  () => {
+            this.product_photo_changed = true;
             let path = product_photo.files[0];
             if (path) {
                 const reader = new FileReader();
@@ -78,33 +90,42 @@ export default class NewMaintenanceRequest extends FormComponent {
             product_photo_img.setAttribute("src", '../images/placeholder.png');
         };
 
-        submit_request.onclick = function () {
-            if (that.product_photo_changed) {
-                that.element.classList.add("loading");
+        submit_request.onclick = () => {
+            if (this.validate().length === 0) {
+                if (this.product_photo_changed) {
+                    this.element.classList.add("loading");
 
-                const formData = new FormData();
-                formData.append("file", product_photo.files[0]);
-                formData.append("upload_preset", "axu7o5ip");
 
-                fetch("https://api.cloudinary.com/v1_1/dldhztrbs/image/upload", {
-                    method: "POST",
-                    body: formData
-                }).then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            that.data = {"status": "error", "message": ["Error uploading maintenance/request photo"]};
-                            that.error();
-                        } else if (data.secure_url !== '') {
-                            that.element.classList.remove("loading");
+                    const formData = new FormData();
+                    formData.append("file", product_photo.files[0]);
+                    formData.append("upload_preset", "axu7o5ip");
 
-                            productPhoto.value = data.secure_url;
+                    fetch("https://api.cloudinary.com/v1_1/dldhztrbs/image/upload", {
+                        method: "POST",
+                        body: formData
+                    }).then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                this.data = {
+                                    "status": "error",
+                                    "message": ["Error uploading maintenance/request photo"]
+                                };
+                                this.error();
+                            } else if (data.secure_url !== '') {
+                                this.element.classList.remove("loading");
 
-                            that.submit();
-                        }
-                    });
-            } else {
-                productPhoto.value = product_photo_img.getAttribute("src");
-                that.submit();
+                                productPhoto.value = data.secure_url;
+
+                                this.submit();
+                            }
+                        });
+                } else {
+                    productPhoto.value = product_photo_img.getAttribute("src");
+                    this.submit();
+                }
+            }else{
+                this.data = {"message": this.validate()};
+                this.error();
             }
         }
     }

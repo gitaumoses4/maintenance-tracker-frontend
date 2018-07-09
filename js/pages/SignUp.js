@@ -1,5 +1,6 @@
 import SignUpForm from "../components/SignUpForm.js";
 import {Login} from "./Login.js";
+import PasswordField from "../components/PasswordField.js";
 
 export class SignUp extends Login {
     constructor() {
@@ -38,10 +39,10 @@ export class SignUp extends Login {
                     <label for="username">Username</label>
                     <input id="username" name="username" placeholder="Username" required/>
                 </div>
-                <div class="field">
+                <div class="field" id="password_field">
                     <label for="password">Password</label>
-                    <input id="password" name="password" type="password" placeholder="Password"
-                           required/>
+                    <ul class="error"> </ul>
+                    <input id="password" name="password" type="password" placeholder="Password" required/>
                 </div>
                 <div class="field">
                     <button class="mg fluid button primary" id="register">Register</button>
@@ -60,6 +61,7 @@ export class SignUp extends Login {
 
     registerComponents() {
         new SignUpForm("signUpForm");
+        new PasswordField("password_field", document.getElementById("register"));
     }
 }
 

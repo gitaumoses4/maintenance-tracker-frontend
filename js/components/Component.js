@@ -27,7 +27,10 @@ export default class Component {
     setData(data) {
         this.data = data;
         if (this.element && data) {
-            this.element.innerHTML = this.render();
+            let content = this.render();
+            if(content){
+                this.element.innerHTML = content;
+            }
             this.onRender();
         }
         return this;
