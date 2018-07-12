@@ -35,7 +35,7 @@ export default class NotificationItem extends Component {
                     ${ notification.admin.firstname } ${ notification.admin.lastname }
                 </div>
                 <div class="date">
-                    ${ new Date(Date.parse(notification.created_at)).toDateString() }
+                    ${ prettyDate(notification.created_at )}
                 </div>
                 <div class="description">
                     ${ notification.message }

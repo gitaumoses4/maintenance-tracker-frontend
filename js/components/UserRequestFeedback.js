@@ -27,7 +27,7 @@ export default class UserRequestFeedback extends WebComponent {
                         ${feedback.admin.firstname} ${feedback.admin.lastname}
                     </div>
                     <div class="date">
-                        ${ new Date(Date.parse(feedback.created_at)).toDateString() }
+                        ${ prettyDate(feedback.created_at)}
                     </div>
                     <div class="description">
                         ${feedback.message}

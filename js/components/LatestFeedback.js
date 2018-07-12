@@ -39,7 +39,7 @@ export default class LatestFeedback extends WebComponent {
                                 ${ feed.admin.firstname } ${ feed.admin.lastname }
                             </div>
                             <div class="date">
-                                ${ new Date(Date.parse(feed.updated_at)).toDateString() }
+                                ${ prettyDate(feed.updated_at) }
                             </div>
                             <div class="description">
                                 ${ feed.message }
