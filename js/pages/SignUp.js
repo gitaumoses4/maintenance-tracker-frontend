@@ -7,6 +7,10 @@ export class SignUp extends Login {
         super();
     }
 
+    /**
+     * Render the form
+     * @returns {string}
+     */
     getForm() {
         return `
        <form class="mg form" id="signUpForm" method="post"

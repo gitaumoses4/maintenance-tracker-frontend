@@ -1,11 +1,19 @@
 import WebComponent from "./WebComponent.js";
 
+
+/**
+ * Component to display the admin maintenance/repair request
+ */
 export default class AdminRequest extends WebComponent {
     constructor(id, request_id) {
         super(id, "GET", API_BASE_URL + "/users/requests/" + request_id, getAuthHeaders());
         this.request_id = request_id;
     }
 
+
+    /**
+     * Display the Maintenance/Repair request to the Admin
+     */
     success() {
         super.success();
         let data = this.data;
@@ -56,6 +64,7 @@ export default class AdminRequest extends WebComponent {
             </div>
             `;
 
+        // update the details of a request if the status changes
         let that = this;
         this.element.querySelector("form").addEventListener("submit", function (event) {
             event.preventDefault();

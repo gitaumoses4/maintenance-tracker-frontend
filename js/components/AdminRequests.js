@@ -2,11 +2,20 @@ import LatestRequests from "./LatestRequests.js";
 import Paginator from "./Paginator.js";
 import RequestsFilter from "./RequestsFilter.js";
 
+
+/**
+ * Displays a paginated result of all the maintenance/repair requests
+ */
 export default class AdminRequests extends LatestRequests {
 
     constructor(id, status) {
         super(id, status);
     }
+
+    /**
+     * Load the next page
+     * @param page
+     */
 
     loadPage(page) {
         let url = new URL(this.link);
@@ -15,6 +24,13 @@ export default class AdminRequests extends LatestRequests {
         this.load();
     }
 
+    /**
+     * Filter the requests
+     * @param from
+     * @param to
+     * @param query
+     * @param status
+     */
     filterRequests(from, to, query, status) {
         let url = new URL(API_BASE_URL + "/requests/" + status);
         url.searchParams.set("page", 1);
@@ -32,6 +48,11 @@ export default class AdminRequests extends LatestRequests {
         this.load();
     }
 
+
+    /**
+     * Render the requests component
+     * @returns {string}
+     */
     render() {
         return `
             <button class="mg button right aligned" id="filter"><i class="fas fa-filter"></i> Filter</button>
@@ -46,6 +67,9 @@ export default class AdminRequests extends LatestRequests {
         `
     }
 
+    /**
+     * Create the paginator on successful loading of requests
+     */
     success() {
         super.success();
         this.paginator.update(this.data.data.current_page, this.data.data.last_page);
@@ -53,6 +77,9 @@ export default class AdminRequests extends LatestRequests {
     }
 
 
+    /**
+     * When the component is rendered create the listener for the paginator events
+     */
     onRender() {
         this.paginator = new Paginator(this.element.querySelector("#admin-requests-paginator"), 1, 1);
         this.paginatorTop = new Paginator(this.element.querySelector("#admin-requests-paginator-top"), 1, 1);

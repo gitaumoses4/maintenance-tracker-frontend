@@ -10,7 +10,7 @@ redirectIfAuthenticated(page);
 
 function redirectIfAuthenticated(page) {
     if (["/register.html", "/login.html", "/verify-account.html"].indexOf(page) >= 0 && isAuthenticated()) {
-        if(isVerified()){
+        if (isVerified()) {
             window.location.href = isAdmin() ? "/admin" : "/user";
         }
     }
@@ -33,10 +33,10 @@ function guardAdminPages(page) {
 
 function guardUserPages(page) {
     if (page.startsWith("/user")) {
-        if(!isAuthenticated()){
+        if (!isAuthenticated()) {
             window.location.href = "/login.html"
         }
-        if(!isVerified()){
+        if (!isVerified()) {
             window.location.href = "/verify-account.html";
         }
     }
@@ -117,4 +117,24 @@ function toJSON(form) {
 function logout() {
     deleteUserDetails();
     window.location.href = "../login.html";
+}
+
+function prettyDate(time) {
+    let date = new Date(Date.parse(time) || ""), diff = (((new Date(Date.now())).getTime() - date.getTime()) / 1000),
+        day_diff = Math.floor(diff / 86400);
+
+    if (isNaN(day_diff) || day_diff < 0 || day_diff >= 31) {
+        return;
+    }
+
+    return day_diff === 0 &&
+        (diff < 60 && "Just now" ||
+            diff < 120 && "1 minute ago" ||
+            diff < 3600 && Math.floor(diff / 60) + " minutes ago" ||
+            diff < 7200 && "1 hour ago" ||
+            diff < 86400 && Math.floor(diff / 3600) + " hours ago")
+        ||
+        (day_diff === 1 && "Yesterday" ||
+        day_diff < 7 && day_diff + " days ago" ||
+        day_diff < 31 && Math.ceil(day_diff / 7) + " weeks ago")
 }

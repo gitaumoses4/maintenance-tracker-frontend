@@ -1,11 +1,18 @@
 import WebComponent from "./WebComponent.js";
 import Paginator from "./Paginator.js";
 
+/**
+ * A component to allow users to view all their feedback
+ */
 export default class AllFeedback extends WebComponent {
+
     constructor(id) {
         super(id, "GET", API_BASE_URL + '/users/feedback', getAuthHeaders());
     }
 
+    /**
+     * Display a list of feedback and create a paginator
+     */
     success() {
         super.success();
         let data = this.data;

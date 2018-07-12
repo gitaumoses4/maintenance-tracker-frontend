@@ -1,22 +1,44 @@
 import Component from "../components/Component.js";
 
+/**
+ * Renders a full page for the User Interface
+ */
 export default class App extends Component {
     constructor() {
         super(document.body, {});
     }
 
+
+    /**
+     * A component that displays the navigation bar menu
+     * @returns {string}
+     */
     navBarMenu() {
         return ``;
     }
 
+    /**
+     * Return the index of the current selected sidebar item
+     * @returns {number}
+     */
     getSidebarActiveItem() {
         return 0;
     }
 
+
+    /**
+     * Return the side bar items
+     * @returns {Array}
+     */
     getSideBarMenuItems() {
         return []
     }
 
+
+    /**
+     * Render the sidebar menu
+     * @returns {string}
+     */
     sideBarMenu() {
         let items = this.getSideBarMenuItems();
         if (items.length === 0) {
@@ -47,16 +69,30 @@ export default class App extends Component {
         }
     }
 
+    /**
+     * Checks if this page has a sidebar
+     * @returns {boolean}
+     */
     hasSideBar() {
         return this.getSideBarMenuItems().length !== 0;
     }
 
+
+    /**
+     * Returns the sidebar for this page
+     * @returns {string}
+     */
     getSideBar() {
         return `<div class="mg sidebar" data-trigger="openSidebar">
                         ${ this.sideBarMenu() }
                 </div>`
     }
 
+
+    /**
+     * Renders the navbar for the page
+     * @returns {string}
+     */
     navBar() {
         return `<div class="mg navbar">
                     ${ this.hasSideBar() ? ` <i class="open fas fa-bars" id="openSidebar"></i>` : ""}
@@ -67,14 +103,25 @@ export default class App extends Component {
                 </div>`
     }
 
+    /**
+     * Renders the content of the page
+     */
     content() {
 
     }
 
+    /**
+     * The page title displayed on the navbar
+     * @returns {string}
+     */
     getTitle() {
         return "Maintenance Tracker";
     }
 
+    /**
+     * REnder the page content
+     * @returns {string}
+     */
     render() {
         return `
             ${ this.hasSideBar() ? this.getSideBar() : ""}
@@ -87,6 +134,9 @@ export default class App extends Component {
         `;
     }
 
+    /**
+     * Override this method to register components
+     */
     onRender() {
         if (this.sideBarMenu()) {
             initSidebar(this.element.querySelector(".mg.sidebar"))
@@ -94,6 +144,9 @@ export default class App extends Component {
         this.registerComponents();
     }
 
+    /**
+     * Override this method to register components
+     */
     registerComponents() {
 
     }

@@ -1,10 +1,18 @@
 import WebComponent from "./WebComponent.js";
 
+/**
+ * A table component that displays all the users in the system
+ */
 export default class AllUsers extends WebComponent {
     constructor(id) {
         super(id, "GET", API_BASE_URL + "/users", getAuthHeaders());
     }
 
+    /**
+     * Render a single row
+     * @param user
+     * @returns {HTMLTableRowElement}
+     */
     renderUser(user) {
         let row = document.createElement("tr");
 
@@ -32,6 +40,9 @@ export default class AllUsers extends WebComponent {
         return row;
     }
 
+    /**
+     * Create the table on successful loading the user details
+     */
     success() {
         super.success();
         let users = this.data.data.users;

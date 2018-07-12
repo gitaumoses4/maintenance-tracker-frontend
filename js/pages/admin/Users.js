@@ -14,6 +14,10 @@ export class Users extends AdminDashboard{
       const allUsers = new AllUsers("admin-view-all-users");
       allUsers.load();
    }
+
+   getSidebarActiveItem(){
+      return 3;
+   }
 }
 
 new Users();

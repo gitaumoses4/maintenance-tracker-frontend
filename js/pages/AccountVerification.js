@@ -10,6 +10,10 @@ export class AccountVerification extends Login {
         return "Account Verification";
     }
 
+    /**
+     * Render the form
+     * @returns {string}
+     */
     getForm() {
         return `
         <div class="mg segment info">

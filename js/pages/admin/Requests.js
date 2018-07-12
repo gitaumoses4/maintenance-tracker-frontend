@@ -24,6 +24,10 @@ export class Requests extends AdminDashboard {
         const adminRequests = new AdminRequests("admin-requests", status ? status : "all");
         adminRequests.load();
     }
+
+    getSidebarActiveItem(){
+        return 2;
+    }
 }
 
 

@@ -2,10 +2,17 @@ import App from "./App.js";
 import LoginForm from "../components/LoginForm.js";
 
 export class Login extends App {
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     navBarMenu() {
         return `
              <div class="item right aligned">
@@ -14,6 +21,10 @@ export class Login extends App {
             </div>`
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     getForm() {
         return `
        <form class="mg form" method="post" enctype="multipart/form-data"
@@ -42,10 +53,18 @@ export class Login extends App {
         </form>`;
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     getFormTitle(){
         return "Log in";
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     content() {
         return `
         <div class="mg container">
@@ -67,11 +86,18 @@ export class Login extends App {
         </div>`
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     getFormFooter() {
         return `<p>Don't have an account?</p>
                 <a href="register.html">Sign up</a>`
     }
 
+    /**
+     *
+     */
     registerComponents() {
         new LoginForm("loginForm");
     }

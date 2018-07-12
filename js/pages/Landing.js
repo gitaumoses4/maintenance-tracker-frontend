@@ -2,10 +2,17 @@ import App from "./App.js"
 
 export class Landing extends App {
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     navBarMenu() {
         return `
             <div class="item right aligned">
@@ -13,6 +20,10 @@ export class Landing extends App {
             </div>`
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     content() {
         return `<h1 class="landing header">The best way to reach out to our operations and repairs department.</h1>
                 <h2 class="landing sub header">Easily manage your repairs and maintenance</h2>
@@ -22,6 +33,9 @@ export class Landing extends App {
                 </div>`;
     }
 
+    /**
+     *
+     */
     onRender() {
         this.element.querySelector(".mg.content").classList.add("landing");
     }

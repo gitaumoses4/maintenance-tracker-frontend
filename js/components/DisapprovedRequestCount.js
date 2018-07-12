@@ -1,5 +1,8 @@
 import WebComponent from "./WebComponent.js";
 
+/**
+ * A component to display the number of disapproved requests for the user in dashboard
+ */
 
 export default class DisapprovedRequestCount extends WebComponent {
     constructor(id) {
@@ -10,6 +13,9 @@ export default class DisapprovedRequestCount extends WebComponent {
         return "";
     }
 
+    /**
+     * Render the component on success
+     */
     success() {
         super.success();
         let data = this.data;

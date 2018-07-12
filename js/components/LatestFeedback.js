@@ -1,14 +1,24 @@
 import WebComponent from "./WebComponent.js";
 
+/**
+ * Displays the latest feedback for the user
+ */
 export default class LatestFeedback extends WebComponent {
     constructor(id) {
         super(id, "GET", API_BASE_URL + '/users/feedback', getAuthHeaders());
     }
 
+    /**
+     *
+     * @returns {string}
+     */
     render() {
         return "";
     }
 
+    /**
+     * Render the component on successful loading of feedback
+     */
     success() {
         super.success();
         let data = this.data;
