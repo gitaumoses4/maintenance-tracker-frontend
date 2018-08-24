@@ -60,7 +60,6 @@ export default class FormComponent extends WebComponent {
         });
 
         return object;
-
     }
 
     loading() {
