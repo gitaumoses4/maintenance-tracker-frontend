@@ -236,6 +236,10 @@ table img {
     color: white;
 }
 
+.test.fail {
+    display: none;
+}
+
 .approved.ribbon {
     background: #4CAF50;
     color: white;
@@ -267,15 +271,16 @@ table img {
     color: #a81005
 }
 
-.field .error{
+.field .error {
     display: block !important;
-    color:  #a81005;
+    color: #a81005;
 }
 
-.mg.button.tiny{
+.mg.button.tiny {
     padding: 0.4em 0.7em 0.4em;
 }
-.mg.segment.info{
+
+.mg.segment.info {
     border-color: #231586;
     color: #231586;
 }
@@ -394,10 +399,12 @@ table img {
     background-color: #1c7dcb;
     color: white;
 }
-.mg.table tr{
+
+.mg.table tr {
     transition: background 0.5s;
     cursor: pointer;
 }
+
 .mg.table tr:hover {
     background: rgba(0, 0, 0, .05);
 }
