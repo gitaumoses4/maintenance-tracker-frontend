@@ -101,6 +101,5 @@ export default class WebComponent extends Component {
      */
     success() {
         this.element.classList.remove("loading")
-
     }
 }
