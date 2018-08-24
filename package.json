@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test": "mocha --compilers js:babel-core/register",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -13,24 +14,28 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "^2.0.1",
+    "chai": "^4.1.2",
     "cross-env": "^5.1",
-    "laravel-mix": "^1.0"
+    "laravel-mix": "^1.0",
+    "mocha": "^5.2.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gitaumoses4/maintenance-tracker-frontend.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Moses Gitau",
   "license": "GNU",
   "bugs": {
     "url": "https://github.com/gitaumoses4/maintenance-tracker/issues"
   },
   "homepage": "https://github.com/gitaumoses4/maintenance-tracker#readme",
-  "engines":{
+  "engines": {
     "node": "8.10.0"
   }
 }
