@@ -5,7 +5,8 @@ import Component from "../components/Component.js";
  */
 export default class App extends Component {
     constructor() {
-        super(document.body, {});
+        super(document.body.id === "testing" ? document.getElementById("test")
+            : document.body, {});
     }
 
 
@@ -107,7 +108,7 @@ export default class App extends Component {
      * Renders the content of the page
      */
     content() {
-
+        return '';
     }
 
     /**
