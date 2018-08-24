@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body id="testing">
+<div id="test" style="display:none"></div>
+<div id="mocha"><p><a href=".">Index</a></p></div>
+<div id="messages"></div>
+<div id="fixtures"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/mg-framework/mg-framework.js"></script>
+<script src="../js/chai-string.js"></script>
+<script>mocha.setup('bdd')</script>
+<script src="test.js" type="module"></script>
+<script type="module">
+    mocha.checkLeaks();
+    mocha.run();
+</script>
+</body>
+</html>
